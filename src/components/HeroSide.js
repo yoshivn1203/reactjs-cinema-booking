@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 
 import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,30 +7,13 @@ import 'swiper/css';
 import Button, { OutlineButton } from './Button';
 import Modal, { ModalContent } from './Modal';
 
-import tmdbApi, { category, movieType } from '../api/tmdbApi';
-import apiConfig from '../api/apiConfig';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../features/UiSlice';
+import banners from '../assets/banner/banners';
 
 const HeroSlide = () => {
   SwiperCore.use([Autoplay, Navigation, Pagination]);
-
-  const [movieItems, setMovieItems] = useState([]);
-
-  useEffect(() => {
-    const getMovies = async () => {
-      const params = { page: 1 };
-      try {
-        const response = await tmdbApi.getMoviesList(movieType.popular, { params });
-        // console.log(response.results);
-        setMovieItems(response.results.slice(1, 4));
-      } catch {
-        console.log('error');
-      }
-    };
-    getMovies();
-  }, []);
 
   return (
     <Wrapper className='hero-slide'>
@@ -39,11 +22,8 @@ const HeroSlide = () => {
         grabCursor={true}
         spaceBetween={0}
         slidesPerView={1}
-        // navigation
-        // pagination
-        // autoplay={{ delay: 4000 }}
       >
-        {movieItems.map((item, i) => (
+        {banners.map((item, i) => (
           <SwiperSlide key={i}>
             {({ isActive }) => (
               <HeroSlideItem item={item} className={`${isActive ? 'active' : ''}`} />
@@ -51,7 +31,7 @@ const HeroSlide = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {movieItems.map((item, i) => (
+      {banners.map((item, i) => (
         <TrailerModal key={i} item={item} />
       ))}
     </Wrapper>
@@ -62,9 +42,7 @@ const HeroSlideItem = (props) => {
   const dispatch = useDispatch();
   const item = props.item;
 
-  const background = apiConfig.originalImage(
-    item.backdrop_path ? item.backdrop_path : item.poster_path
-  );
+  const background = item.backdrop_path;
 
   return (
     <div
@@ -83,7 +61,7 @@ const HeroSlideItem = (props) => {
           </div>
         </div>
         <div className='hero-slide__item__content__poster'>
-          <img src={apiConfig.w500Image(item.poster_path)} alt='' />
+          <img src={item.poster_path} alt='' />
         </div>
       </div>
     </div>
@@ -91,26 +69,12 @@ const HeroSlideItem = (props) => {
 };
 
 const TrailerModal = (props) => {
-  const [src, setSrc] = useState('');
   const item = props.item;
-
-  useEffect(() => {
-    const getVideos = async () => {
-      try {
-        const videos = await tmdbApi.getVideos(category.movie, item.id);
-        const videSrc = 'https://www.youtube.com/embed/' + videos.results[0].key;
-        setSrc(videSrc);
-      } catch {
-        console.log('error');
-      }
-    };
-    getVideos();
-  }, []);
 
   return (
     <Modal id={item.id}>
       <ModalContent>
-        <iframe width='100%' height='500px' title='trailer' src={src}></iframe>
+        <iframe width='100%' height='500px' title='trailer' src={item.src}></iframe>
       </ModalContent>
     </Modal>
   );

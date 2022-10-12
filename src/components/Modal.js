@@ -1,32 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { closeModal } from '../features/UiSlice';
+
 import styled from 'styled-components';
 
 const Modal = (props) => {
-  const [active, setActive] = useState(false);
-
-  useEffect(() => {
-    setActive(props.active);
-  }, [props.active]);
-
+  const { isModalOpen, modalId } = useSelector((store) => store.Ui);
   return (
-    <Wrapper id={props.id} className={`modal ${active ? 'active' : ''}`}>
+    <Wrapper
+      id={props.id}
+      className={`modal ${isModalOpen && props.id === modalId ? 'active' : ''}`}
+    >
       {props.children}
     </Wrapper>
   );
 };
 
 export const ModalContent = (props) => {
-  const contentRef = useRef(null);
-
-  const closeModal = () => {
-    contentRef.current.parentNode.classList.remove('active');
-    if (props.onClose) props.onClose();
-  };
+  const dispatch = useDispatch();
 
   return (
-    <div ref={contentRef} className='modal__content'>
+    <div className='modal__content'>
       {props.children}
-      <div className='modal__content__close' onClick={closeModal}>
+      <div className='modal__content__close' onClick={() => dispatch(closeModal())}>
         <span>x</span>
       </div>
     </div>

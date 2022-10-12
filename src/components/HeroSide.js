@@ -10,6 +10,8 @@ import Modal, { ModalContent } from './Modal';
 import tmdbApi, { category, movieType } from '../api/tmdbApi';
 import apiConfig from '../api/apiConfig';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../features/UiSlice';
 
 const HeroSlide = () => {
   SwiperCore.use([Autoplay, Navigation, Pagination]);
@@ -23,7 +25,6 @@ const HeroSlide = () => {
         const response = await tmdbApi.getMoviesList(movieType.popular, { params });
         // console.log(response.results);
         setMovieItems(response.results.slice(1, 4));
-        console.log(response);
       } catch {
         console.log('error');
       }
@@ -58,26 +59,12 @@ const HeroSlide = () => {
 };
 
 const HeroSlideItem = (props) => {
+  const dispatch = useDispatch();
   const item = props.item;
 
   const background = apiConfig.originalImage(
     item.backdrop_path ? item.backdrop_path : item.poster_path
   );
-
-  const setModalActive = async () => {
-    const modal = document.querySelector(`#modal_${item.id}`);
-
-    const videos = await tmdbApi.getVideos(category.movie, item.id);
-
-    if (videos.results.length > 0) {
-      const videSrc = 'https://www.youtube.com/embed/' + videos.results[0].key;
-      modal.querySelector('.modal__content iframe').setAttribute('src', videSrc);
-    } else {
-      modal.querySelector('.modal__content').innerHTML = 'No trailer';
-    }
-
-    modal.classList.toggle('active');
-  };
 
   return (
     <div
@@ -90,7 +77,9 @@ const HeroSlideItem = (props) => {
           <div className='overview'>{item.overview}</div>
           <div className='btns'>
             <Button onClick={() => console.log('open movie site')}>Watch now</Button>
-            <OutlineButton onClick={setModalActive}>Watch trailer</OutlineButton>
+            <OutlineButton onClick={() => dispatch(openModal(item.id))}>
+              Watch trailer
+            </OutlineButton>
           </div>
         </div>
         <div className='hero-slide__item__content__poster'>
@@ -102,16 +91,26 @@ const HeroSlideItem = (props) => {
 };
 
 const TrailerModal = (props) => {
+  const [src, setSrc] = useState('');
   const item = props.item;
 
-  const iframeRef = useRef(null);
-
-  const onClose = () => iframeRef.current.setAttribute('src', '');
+  useEffect(() => {
+    const getVideos = async () => {
+      try {
+        const videos = await tmdbApi.getVideos(category.movie, item.id);
+        const videSrc = 'https://www.youtube.com/embed/' + videos.results[0].key;
+        setSrc(videSrc);
+      } catch {
+        console.log('error');
+      }
+    };
+    getVideos();
+  }, []);
 
   return (
-    <Modal active={false} id={`modal_${item.id}`}>
-      <ModalContent onClose={onClose}>
-        <iframe ref={iframeRef} width='100%' height='500px' title='trailer'></iframe>
+    <Modal id={item.id}>
+      <ModalContent>
+        <iframe width='100%' height='500px' title='trailer' src={src}></iframe>
       </ModalContent>
     </Modal>
   );

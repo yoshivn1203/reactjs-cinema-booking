@@ -7,7 +7,7 @@ import MovieCard from './MovieCard';
 
 import { request } from '../services/axios.configs';
 
-const MovieList = (props) => {
+const MovieList = () => {
   const [items, setItems] = useState([]);
   SwiperCore.use([Autoplay, Navigation, Pagination]);
 
@@ -44,11 +44,9 @@ const Wrapper = styled.div`
   &.movie-list {
     .swiper-slide {
       width: 15%;
-
       @media only screen and (max-width: 1024px) {
         width: 30%;
       }
-
       @media only screen and (max-width: 600px) {
         width: 40%;
       }

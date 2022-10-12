@@ -38,15 +38,13 @@ const HeroSlide = () => {
   );
 };
 
-const HeroSlideItem = (props) => {
+const HeroSlideItem = ({ item, className }) => {
   const dispatch = useDispatch();
-  const item = props.item;
-
   const background = item.backdrop_path;
 
   return (
     <div
-      className={`hero-slide__item ${props.className}`}
+      className={`hero-slide__item ${className}`}
       style={{ backgroundImage: `url(${background})` }}
     >
       <div className='hero-slide__item__content container'>
@@ -68,9 +66,7 @@ const HeroSlideItem = (props) => {
   );
 };
 
-const TrailerModal = (props) => {
-  const item = props.item;
-
+const TrailerModal = ({ item }) => {
   return (
     <Modal id={item.id}>
       <ModalContent>

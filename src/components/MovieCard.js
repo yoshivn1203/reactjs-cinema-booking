@@ -6,9 +6,7 @@ import Button from './Button';
 
 import styled from 'styled-components';
 
-const MovieCard = (props) => {
-  const item = props.item;
-
+const MovieCard = ({ item }) => {
   return (
     <Link to='/'>
       <Wrapper className='movie-card' style={{ backgroundImage: `url(${item.hinhAnh})` }}>

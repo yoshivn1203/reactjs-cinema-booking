@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { SwiperSlide, Swiper } from 'swiper/react';
-import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
+import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
+import 'swiper/css/autoplay';
+
 import styled from 'styled-components';
 import MovieCard from './MovieCard';
 
-import { request } from '../services/axios.configs';
+import { request } from '../../services/axios.configs';
 
 const MovieList = () => {
   const [items, setItems] = useState([]);
-  SwiperCore.use([Autoplay, Navigation, Pagination]);
+  SwiperCore.use([Autoplay]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,12 +25,11 @@ const MovieList = () => {
   return (
     <Wrapper className='movie-list'>
       <Swiper
-        modules={[Autoplay, Navigation, Pagination]}
+        modules={[Autoplay]}
         grabCursor={true}
         spaceBetween={10}
         slidesPerView={'auto'}
-        // navigation
-        autoplay={{ delay: 3000 }}
+        // autoplay={true}
       >
         {items?.map((item, i) => (
           <SwiperSlide key={i}>

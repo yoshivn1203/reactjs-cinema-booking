@@ -119,7 +119,7 @@ const Wrapper = styled.div`
         width: 0;
         transition: width 0.5s ease;
         height: 2px;
-        background-color: #ff0000;
+        background-color: var(--primary-yellow);
       }
       &.active::after,
       &:hover::after {

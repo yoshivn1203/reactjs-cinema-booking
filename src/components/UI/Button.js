@@ -28,18 +28,18 @@ const Wrapper = styled.button`
   font-family: 'Montserrat', sans-serif;
   &.btn {
     border: 4px solid transparent;
-    background-color: #ff0000;
+    background-color: var(--primary-yellow);
     color: #fff;
     border-radius: 30px;
     padding: 0.5rem 1.8rem;
     font-size: 1.5rem;
     font-weight: 600;
-    box-shadow: 0px 0px 7px 8px #ff00004d;
+    box-shadow: 0px 0px 7px 8px var(--yellow-shadow);
     transition: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px 0.3s ease;
     position: relative;
   }
   &.btn:hover {
-    box-shadow: 0px 0px 7px 15px #ff00004d;
+    box-shadow: 0px 0px 7px 12px var(--yellow-shadow);
   }
 
   &.btn-outline {
@@ -52,7 +52,7 @@ const Wrapper = styled.button`
 
   &.btn-outline:hover {
     box-shadow: unset;
-    color: #ff0000;
+    color: var(--primary-red);
     background-color: #fff;
   }
 

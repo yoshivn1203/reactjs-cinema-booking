@@ -1,28 +1,20 @@
 import React from 'react';
 
-import SwiperCore, { Autoplay, Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
-import Button, { OutlineButton } from './Button';
-import Modal, { ModalContent } from './Modal';
+import Button, { OutlineButton } from '../UI/Button';
+import Modal, { ModalContent } from '../UI/Modal';
 
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { openModal } from '../features/UiSlice';
-import banners from '../assets/banner/banners';
+import { openModal } from '../../features/uiSlice';
+import banners from '../../assets/banner/banners';
 
 const HeroSlide = () => {
-  SwiperCore.use([Autoplay, Navigation, Pagination]);
-
   return (
     <Wrapper className='hero-slide'>
-      <Swiper
-        modules={[Autoplay, Navigation, Pagination]}
-        grabCursor={true}
-        spaceBetween={0}
-        slidesPerView={1}
-      >
+      <Swiper grabCursor={true} spaceBetween={0} slidesPerView={1}>
         {banners.map((item, i) => (
           <SwiperSlide key={i}>
             {({ isActive }) => (

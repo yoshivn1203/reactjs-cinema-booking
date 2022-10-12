@@ -1,4 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap');
+
+/* GLOBAL VARIABLE-------------------------------------------------------------- */
+
+:root {
+  --primary-white: #f1f1f1;
+  --primary-yellow: #f6aa00;
+  /* --primary-yellow: #f6b400; */
+  --secondary-yellow: #e09900;
+  --yellow-shadow: #f6a80079;
+  --primary-red: #ce0303;
+  --primary-green: #7bc47f;
+  --primary-blue: #1565c0;
+  --secondary-blue: #50a2ff;
+  --primary-gray: #696969;
+  --secondary-gray: #a0a0a0;
+  --primary-transparent: #00000060;
+  --primary-borderRadius: 10px;
+  --primary-boxShadow: rgba(255, 255, 255, 0.19) 0px 10px 20px,
+    rgba(255, 255, 255, 0.23) 0px 6px 6px;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -25,7 +46,7 @@ a {
 }
 
 a:hover {
-  color: #ff0000;
+  color: var(--primary-yellow);
 }
 
 ul {
@@ -74,3 +95,36 @@ iframe {
     font-size: 60%;
   }
 }
+
+/* GLOBAL BUTTON ----------------------------------------------------------------*/
+
+/* overwrite Mui button color */
+#primary-btn {
+  background-color: var(--primary-yellow);
+}
+#primary-btn:hover {
+  background-color: var(--secondary-yellow);
+}
+#primary-btn:disabled {
+  background-color: var(--secondary-gray);
+  pointer-events: auto;
+  cursor: not-allowed;
+}
+#primary-btn:hover:disabled {
+  background-color: var(--secondary-gray);
+}
+#secondary-btn:disabled {
+  background-color: var(--secondary-gray);
+  pointer-events: auto;
+  cursor: not-allowed;
+}
+
+/* overwrite sweatAlert button color */
+.swal2-actions .swal2-styled.swal2-confirm {
+  background-color: var(--primary-blue);
+}
+.swal2-actions .swal2-styled.swal2-confirm:focus {
+  box-shadow: 0 0 0 3px var(--primary-blue);
+}
+
+/* GLOBAL BUTTON ----------------------------------------------------------------*/

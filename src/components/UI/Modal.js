@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeModal } from '../features/UiSlice';
+import { closeModal } from '../../features/uiSlice';
 
 import styled from 'styled-components';
 

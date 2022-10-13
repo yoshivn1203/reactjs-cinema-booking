@@ -1,19 +1,16 @@
 import React from 'react';
-import { SwiperSlide, Swiper } from 'swiper/react';
-import SwiperCore, { Autoplay } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/autoplay';
 
 import styled from 'styled-components';
 import MovieCard from './MovieCard';
 
 const MoviesList = ({ movies }) => {
-  SwiperCore.use([Autoplay]);
+  const listMovies = movies.filter((movie) => movie.dangChieu === true);
+  // console.log(listMovies);
 
   return (
     <Wrapper className='movie-list'>
-      {movies?.map((item, i) => (
-        <MovieCard key={i} item={item} />
+      {listMovies.map((movie, i) => (
+        <MovieCard key={i} movie={movie} />
       ))}
     </Wrapper>
   );
@@ -22,9 +19,14 @@ const MoviesList = ({ movies }) => {
 const Wrapper = styled.div`
   &.movie-list {
     display: grid;
-    grid-template-columns: repeat(5, auto);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     justify-content: center;
-    gap: 1rem;
+    align-items: stretch;
+    row-gap: 3rem;
+    column-gap: 1rem;
+    @media only screen and (max-width: 1024px) {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
   }
 `;
 

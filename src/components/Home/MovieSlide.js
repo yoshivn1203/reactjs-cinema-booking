@@ -10,8 +10,11 @@ import MovieCard from './MovieCard';
 const MovieSlide = ({ movies }) => {
   SwiperCore.use([Autoplay]);
 
+  const slideMovies = movies.filter((movie) => movie.sapChieu === true);
+  // console.log(slideMovies);
+
   return (
-    <Wrapper className='movie-list'>
+    <Wrapper className='movie-list mb-3'>
       <Swiper
         modules={[Autoplay]}
         grabCursor={true}
@@ -19,9 +22,9 @@ const MovieSlide = ({ movies }) => {
         slidesPerView={'auto'}
         // autoplay={true}
       >
-        {movies?.map((item, i) => (
+        {slideMovies.map((movie, i) => (
           <SwiperSlide key={i}>
-            <MovieCard item={item} />
+            <MovieCard movie={movie} />
           </SwiperSlide>
         ))}
       </Swiper>

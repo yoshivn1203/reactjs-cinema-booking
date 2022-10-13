@@ -1,19 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../UI/Button';
+import { useNavigate } from 'react-router-dom';
+import Button, { OutlineButton } from '../UI/Button';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../features/uiSlice';
 
-const MovieCard = ({ item }) => {
+const MovieCard = ({ movie }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   return (
-    <Link to='/'>
-      <Wrapper className='movie-card' style={{ backgroundImage: `url(${item.hinhAnh})` }}>
-        <Button onClick={() => dispatch(openModal(item.trailer))}>Play</Button>
+    <div>
+      <Wrapper
+        className='movie-card'
+        style={{ backgroundImage: `url(${movie.hinhAnh})` }}
+      >
+        <Button onClick={() => navigate(`movies/${movie.maPhim}`)}>Đặt Vé</Button>
+
+        <OutlineButton onClick={() => dispatch(openModal(movie.trailer))}>
+          Trailer
+        </OutlineButton>
       </Wrapper>
-      <h3>{item.tenPhim}</h3>
-    </Link>
+      <h3>{movie.tenPhim}</h3>
+    </div>
   );
 };
 
@@ -29,9 +37,18 @@ const Wrapper = styled.div`
 
     .btn {
       position: absolute;
-      top: 50%;
+      white-space: nowrap;
+      top: 65%;
       left: 50%;
-      transform: translate(-50%, -50%) scale(0);
+      transform: translate(-65%, -50%) scale(0);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-outline {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-35%, -50%) scale(0);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -48,14 +65,12 @@ const Wrapper = styled.div`
       border-radius: 30px;
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover::before {
-        opacity: 0.8;
-      }
+    &:hover::before {
+      opacity: 0.8;
+    }
 
-      &:hover .btn {
-        transform: translate(-50%, -50%) scale(1);
-      }
+    &:hover .btn {
+      transform: translate(-50%, -50%) scale(1);
     }
   }
 `;

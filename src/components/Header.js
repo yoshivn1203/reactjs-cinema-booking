@@ -14,7 +14,7 @@ const headerNav = [
   },
   {
     display: 'Movies',
-    path: '/movie',
+    path: '/movies',
   },
   {
     display: 'TV Series',
@@ -24,6 +24,7 @@ const headerNav = [
 
 const Header = () => {
   const { pathname } = useLocation();
+
   const headerRef = useRef(null);
 
   const active = headerNav.findIndex((e) => e.path === pathname);

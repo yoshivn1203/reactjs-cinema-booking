@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../features/uiSlice';
 import banners from '../../assets/banner/banners';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSlide = () => {
   return (
@@ -27,6 +28,7 @@ const HeroSlide = () => {
 
 const HeroSlideItem = ({ item, className }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const background = item.backdrop_path;
 
   return (
@@ -39,9 +41,9 @@ const HeroSlideItem = ({ item, className }) => {
           <h2 className='title'>{item.title}</h2>
           <div className='overview'>{item.overview}</div>
           <div className='btns'>
-            <Button onClick={() => console.log('open movie site')}>Watch now</Button>
+            <Button onClick={() => navigate(`movies/${item.maPhim}`)}>Đặt Vé</Button>
             <OutlineButton onClick={() => dispatch(openModal(item.trailer))}>
-              Watch trailer
+              Xem trailer
             </OutlineButton>
           </div>
         </div>

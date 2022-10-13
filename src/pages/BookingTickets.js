@@ -187,7 +187,8 @@ const BookingTickets = () => {
 };
 
 const Wrapper = styled.div`
-  padding-top: 200px;
+  padding-top: 14rem;
+  padding-bottom: 12rem;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bg});
   background-size: cover;
   min-height: 100vh;

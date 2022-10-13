@@ -56,7 +56,7 @@ const Wrapper = styled.button`
     background-color: #fff;
   }
 
-  &.btn.small {
+  &.small {
     border-width: 2px;
     padding: 0.25rem 1.5rem;
     font-size: 1rem;

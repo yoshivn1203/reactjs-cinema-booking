@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SwiperSlide, Swiper } from 'swiper/react';
 import SwiperCore, { Autoplay } from 'swiper';
 import 'swiper/css';
@@ -7,20 +7,8 @@ import 'swiper/css/autoplay';
 import styled from 'styled-components';
 import MovieCard from './MovieCard';
 
-import { request } from '../../services/axios.configs';
-
-const MovieList = () => {
-  const [items, setItems] = useState([]);
+const MovieSlide = ({ movies }) => {
   SwiperCore.use([Autoplay]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await request.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=GP03`);
-      console.log(result.data.content);
-      setItems(result.data.content);
-    };
-    fetchData();
-  }, []);
 
   return (
     <Wrapper className='movie-list'>
@@ -31,7 +19,7 @@ const MovieList = () => {
         slidesPerView={'auto'}
         // autoplay={true}
       >
-        {items?.map((item, i) => (
+        {movies?.map((item, i) => (
           <SwiperSlide key={i}>
             <MovieCard item={item} />
           </SwiperSlide>
@@ -55,4 +43,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default MovieList;
+export default MovieSlide;

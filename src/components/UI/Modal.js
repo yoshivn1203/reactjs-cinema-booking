@@ -5,18 +5,13 @@ import { closeModal } from '../../features/uiSlice';
 import styled from 'styled-components';
 
 const Modal = (props) => {
-  const { isModalOpen, modalId } = useSelector((store) => store.Ui);
+  const { isModalOpen } = useSelector((store) => store.Ui);
   return (
-    <Wrapper
-      id={props.id}
-      className={`modal ${isModalOpen && props.id === modalId ? 'active' : ''}`}
-    >
-      {props.children}
-    </Wrapper>
+    <Wrapper className={`modal ${isModalOpen ? 'active' : ''}`}>{props.children}</Wrapper>
   );
 };
 
-export const ModalContent = (props) => {
+const ModalContent = (props) => {
   const dispatch = useDispatch();
 
   return (
@@ -26,6 +21,17 @@ export const ModalContent = (props) => {
         <span>x</span>
       </div>
     </div>
+  );
+};
+
+const TrailerModal = () => {
+  const { trailer } = useSelector((store) => store.Ui);
+  return (
+    <Modal>
+      <ModalContent>
+        <iframe width='100%' height='500px' title='trailer' src={trailer}></iframe>
+      </ModalContent>
+    </Modal>
   );
 };
 
@@ -54,7 +60,7 @@ const Wrapper = styled.div`
       width: 50%;
       opacity: 0;
       transform: translateY(-250px);
-      transition: transform 0.6s ease, opacity 0.6s ease;
+      transition: transform 0.6s ease, opacity 1s ease;
       position: relative;
 
       @media only screen and (max-width: 1024px) {
@@ -80,4 +86,4 @@ const Wrapper = styled.div`
   }
 `;
 
-export default Modal;
+export default TrailerModal;

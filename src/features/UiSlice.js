@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   isModalOpen: false,
-  modalId: '',
+  trailer: '',
 };
 
 const UiSlice = createSlice({
@@ -11,10 +11,11 @@ const UiSlice = createSlice({
   reducers: {
     openModal: (state, { payload }) => {
       state.isModalOpen = true;
-      state.modalId = payload;
+      state.trailer = payload;
     },
     closeModal: (state) => {
       state.isModalOpen = false;
+      state.trailer = '';
     },
   },
 });

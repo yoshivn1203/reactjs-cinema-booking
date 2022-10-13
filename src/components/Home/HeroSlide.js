@@ -4,8 +4,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import Button, { OutlineButton } from '../UI/Button';
-import Modal, { ModalContent } from '../UI/Modal';
-
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../features/uiSlice';
@@ -23,9 +21,6 @@ const HeroSlide = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      {banners.map((item, i) => (
-        <TrailerModal key={i} item={item} />
-      ))}
     </Wrapper>
   );
 };
@@ -45,7 +40,7 @@ const HeroSlideItem = ({ item, className }) => {
           <div className='overview'>{item.overview}</div>
           <div className='btns'>
             <Button onClick={() => console.log('open movie site')}>Watch now</Button>
-            <OutlineButton onClick={() => dispatch(openModal(item.maPhim))}>
+            <OutlineButton onClick={() => dispatch(openModal(item.trailer))}>
               Watch trailer
             </OutlineButton>
           </div>
@@ -55,16 +50,6 @@ const HeroSlideItem = ({ item, className }) => {
         </div>
       </div>
     </div>
-  );
-};
-
-const TrailerModal = ({ item }) => {
-  return (
-    <Modal id={item.maPhim}>
-      <ModalContent>
-        <iframe width='100%' height='500px' title='trailer' src={item.trailer}></iframe>
-      </ModalContent>
-    </Modal>
   );
 };
 

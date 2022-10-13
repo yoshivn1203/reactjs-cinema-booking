@@ -10,7 +10,7 @@ const MovieCard = ({ item }) => {
   return (
     <Link to='/'>
       <Wrapper className='movie-card' style={{ backgroundImage: `url(${item.hinhAnh})` }}>
-        <Button onClick={() => dispatch(openModal)}>Play</Button>
+        <Button onClick={() => dispatch(openModal(item.trailer))}>Play</Button>
       </Wrapper>
       <h3>{item.tenPhim}</h3>
     </Link>

@@ -2,12 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../UI/Button';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../features/uiSlice';
 
 const MovieCard = ({ item }) => {
+  const dispatch = useDispatch();
   return (
     <Link to='/'>
       <Wrapper className='movie-card' style={{ backgroundImage: `url(${item.hinhAnh})` }}>
-        <Button>Play</Button>
+        <Button onClick={() => dispatch(openModal)}>Play</Button>
       </Wrapper>
       <h3>{item.tenPhim}</h3>
     </Link>

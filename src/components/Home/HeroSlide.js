@@ -45,7 +45,7 @@ const HeroSlideItem = ({ item, className }) => {
           <div className='overview'>{item.overview}</div>
           <div className='btns'>
             <Button onClick={() => console.log('open movie site')}>Watch now</Button>
-            <OutlineButton onClick={() => dispatch(openModal(item.id))}>
+            <OutlineButton onClick={() => dispatch(openModal(item.maPhim))}>
               Watch trailer
             </OutlineButton>
           </div>
@@ -60,9 +60,9 @@ const HeroSlideItem = ({ item, className }) => {
 
 const TrailerModal = ({ item }) => {
   return (
-    <Modal id={item.id}>
+    <Modal id={item.maPhim}>
       <ModalContent>
-        <iframe width='100%' height='500px' title='trailer' src={item.src}></iframe>
+        <iframe width='100%' height='500px' title='trailer' src={item.trailer}></iframe>
       </ModalContent>
     </Modal>
   );

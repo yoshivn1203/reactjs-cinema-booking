@@ -65,6 +65,13 @@ iframe {
   margin: auto;
 }
 
+.mb-5 {
+  margin-bottom: 5rem;
+}
+.mb-4 {
+  margin-bottom: 4rem;
+}
+
 .mb-3 {
   margin-bottom: 3rem;
 }

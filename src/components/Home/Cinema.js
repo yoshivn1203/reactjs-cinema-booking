@@ -53,7 +53,7 @@ const Cinema = ({ cinemas }) => {
         })}
       </div>
 
-      <div className='form-control mb-2'>
+      <div className='form-control mb-3'>
         <h3>Cụm Rạp</h3>
         <select
           name='location'
@@ -70,7 +70,7 @@ const Cinema = ({ cinemas }) => {
           })}
         </select>
       </div>
-      <div className='form-control mb-2'>
+      <div className='form-control mb-3'>
         <h3>Chọn Phim</h3>
         <select
           name='movie'
@@ -87,7 +87,7 @@ const Cinema = ({ cinemas }) => {
           })}
         </select>
       </div>
-      <div className='form-control mb-3'>
+      <div className='form-control mb-4'>
         <h3>Chọn Suất Chiếu</h3>
         <select
           name='showTime'
@@ -118,11 +118,11 @@ const Wrapper = styled.div`
     gap: 2rem;
     img {
       width: 5rem;
-      opacity: 0.3;
+      filter: brightness(30%);
       cursor: pointer;
     }
     .selected {
-      opacity: 1;
+      filter: brightness(100%);
     }
   }
 
@@ -136,7 +136,6 @@ const Wrapper = styled.div`
     border-radius: 10px;
     padding: 0.5rem 1rem;
     color: var(--primary-yellow);
-    font-weight: bold;
     background-color: var(--primary-gray);
     cursor: pointer;
   }

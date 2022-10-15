@@ -11,8 +11,7 @@ import MoviesList from '../components/Home/MoviesList';
 import TrailerModal from '../components/UI/Modal';
 import { request } from '../services/axios.configs';
 import { FaSearch } from 'react-icons/fa';
-import Cinema from '../components/Home/Cinema';
-import Sidebar from './Sidebar';
+import Sidebar from '../components/Home/Sidebar';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -43,7 +42,7 @@ const Home = () => {
 
     fetchMovies();
     fetchCinemas();
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const filtered = movies.filter((m) =>

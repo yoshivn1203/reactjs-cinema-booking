@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FaTimes } from 'react-icons/fa';
-import { GiClick } from 'react-icons/gi';
+import { BsFillArrowRightSquareFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
-import { closeSideBar, openSideBar } from '../features/uiSlice';
-import Cinema from '../components/Home/Cinema';
+import { closeSideBar, openSideBar } from '../../features/uiSlice';
+import Cinema from './Cinema';
+import bg from '../../assets/pattern.png';
 
 const Sidebar = ({ cinemas }) => {
   const { isSideBarOpen } = useSelector((store) => store.ui);
@@ -13,16 +14,17 @@ const Sidebar = ({ cinemas }) => {
   return (
     <Wrapper>
       <button onClick={() => dispatch(openSideBar())} className='sidebar-toggle'>
-        <GiClick />
+        <BsFillArrowRightSquareFill />
       </button>
       <aside className={`${isSideBarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
         <div className='sidebar-header'>
-          {/* <img src={logo} className='logo' alt='coding addict' /> */}
           <button className='close-btn' onClick={() => dispatch(closeSideBar())}>
             <FaTimes />
           </button>
         </div>
-        <Cinema cinemas={cinemas} />
+        <div className='cinema'>
+          <Cinema cinemas={cinemas} />
+        </div>
       </aside>
       {isSideBarOpen && <div className='backdrop'></div>}
     </Wrapper>
@@ -32,11 +34,11 @@ const Sidebar = ({ cinemas }) => {
 const Wrapper = styled.div`
   .sidebar-toggle {
     position: fixed;
-    top: 15rem;
+    bottom: 5rem;
     left: 1rem;
     z-index: 99;
 
-    font-size: 2rem;
+    font-size: 2.5rem;
     background: transparent;
     border-color: transparent;
     color: var(--primary-yellow);
@@ -59,9 +61,10 @@ const Wrapper = styled.div`
 
   .sidebar-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
-    padding: 1rem 1.5rem;
+    padding: 1rem 0;
+    padding-left: 8rem;
   }
   .close-btn {
     font-size: 1.75rem;
@@ -70,38 +73,36 @@ const Wrapper = styled.div`
     color: var(--primary-red);
     cursor: pointer;
     margin-top: 0.2rem;
-  }
-
-  li {
-    display: flex;
-    align-items: center;
-    font-size: 1.25rem;
-    text-transform: capitalize;
-    padding: 1rem 1.5rem;
-    color: var(--primary-yellow);
-    transition: all 0.3s linear;
+    transform: skewX(15deg);
   }
 
   .sidebar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: -160px;
+    width: 85rem;
     height: 100%;
     z-index: 99;
-    background: var(--secondary-gray);
+    /* background: var(--secondary-gray); */
+    background: url(${bg}), rgb(39, 47, 53);
     display: grid;
     grid-template-rows: auto 1fr auto;
     row-gap: 1rem;
     transition: all 0.3s linear;
-    transform: translate(-100%);
+    transform: translate(-120%) skewX(-15deg);
+    .cinema {
+      transform: skewX(15deg) translateX(22%);
+    }
   }
   .show-sidebar {
-    transform: translate(0);
+    transform: translate(0) skewX(-15deg);
   }
-  @media screen and (min-width: 676px) {
+  @media screen and (min-width: 1024px) {
+    .sidebar-header {
+      padding-left: 5rem;
+    }
     .sidebar {
-      width: 800px;
+      width: 60rem;
     }
   }
   .backdrop {

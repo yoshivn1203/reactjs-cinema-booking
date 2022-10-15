@@ -9,19 +9,30 @@ import MoviesList from '../components/Home/MoviesList';
 import TrailerModal from '../components/UI/Modal';
 import { request } from '../services/axios.configs';
 import { FaSearch } from 'react-icons/fa';
+import Cinema from '../components/Home/Cinema';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, SetSearchValue] = useState('');
   const [filteredMovies, SetFilteredMovies] = useState([]);
+  const [cinemas, setCinemas] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMovies = async () => {
       const result = await request.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=GP03`);
       // console.log(result.data.content);
       setMovies(result.data.content);
     };
-    fetchData();
+    const fetchCinemas = async () => {
+      const result = await request.get(
+        'QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03'
+      );
+      // console.log(result.data.content);
+      setCinemas(result.data.content);
+    };
+
+    fetchMovies();
+    fetchCinemas();
   }, []);
 
   useEffect(() => {
@@ -62,6 +73,7 @@ const Home = () => {
             </div>
           </div>
           <MoviesList movies={filteredMovies} />
+          <Cinema cinemas={cinemas} />
         </div>
       </Wrapper>
     </>

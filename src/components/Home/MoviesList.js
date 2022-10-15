@@ -18,6 +18,7 @@ const MoviesList = ({ movies }) => {
 
 const Wrapper = styled.div`
   &.movie-list {
+    margin-bottom: 3rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     justify-content: center;

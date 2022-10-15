@@ -34,13 +34,14 @@ const Wrapper = styled.div`
     padding-top: 160%;
     border-radius: 30px;
     margin-bottom: 1rem;
+    cursor: pointer;
 
     .btn {
       position: absolute;
       white-space: nowrap;
       top: 65%;
       left: 50%;
-      transform: translate(-65%, -50%) scale(0);
+      transform: translate(-50%, -50%) scale(0);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
@@ -48,7 +49,7 @@ const Wrapper = styled.div`
       position: absolute;
       top: 35%;
       left: 50%;
-      transform: translate(-35%, -50%) scale(0);
+      transform: translate(-50%, -50%) scale(0);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 

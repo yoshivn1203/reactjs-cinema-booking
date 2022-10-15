@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import BookingTickets from './pages/BookingTickets';
 import MoviesDetails from './pages/MoviesDetails';
+import SeatSelectTest from './pages/SeatSelectTest';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/movies' element={<BookingTickets />} />
         <Route path='/movies/:id' element={<MoviesDetails />} />
+        <Route path='/showTime/:id' element={<SeatSelectTest />} />
       </Routes>
       <Footer />
     </>

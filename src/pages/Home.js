@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { loading, finishLoading } from '../features/uiSlice';
 
 import HeroSide from '../components/Home/HeroSlide';
 import { OutlineButton } from '../components/UI/Button';
@@ -16,19 +18,26 @@ const Home = () => {
   const [searchValue, SetSearchValue] = useState('');
   const [filteredMovies, SetFilteredMovies] = useState([]);
   const [cinemas, setCinemas] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchMovies = async () => {
+      dispatch(loading());
+
       const result = await request.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=GP03`);
       // console.log(result.data.content);
       setMovies(result.data.content);
+      dispatch(finishLoading());
     };
     const fetchCinemas = async () => {
+      dispatch(loading());
+
       const result = await request.get(
         'QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03'
       );
       // console.log(result.data.content);
       setCinemas(result.data.content);
+      dispatch(finishLoading());
     };
 
     fetchMovies();

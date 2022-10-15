@@ -9,15 +9,15 @@ import logo from '../assets/tmovie.png';
 
 const headerNav = [
   {
-    display: 'Home',
+    display: 'Trang Chủ',
     path: '/',
   },
   {
-    display: 'Movies',
+    display: 'Tin Tức',
     path: '/movies',
   },
   {
-    display: 'TV Series',
+    display: 'Ưu Đãi',
     path: '/tv',
   },
 ];

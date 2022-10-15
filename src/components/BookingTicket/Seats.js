@@ -8,13 +8,14 @@ import Timer from './Timer';
 const Seats = ({ data }) => {
   const { selectedSeats, selectedVipSeats } = useSelector((state) => state.seat);
   const dispatch = useDispatch();
+  console.log(data);
   return (
     <Wrapper>
       <div className='Cinema'>
         <Timer />
         <div className='screen' />
         <div className='seats'>
-          {data.danhSachGhe.map((seat) => {
+          {data.map((seat) => {
             const isSelected =
               selectedSeats.includes(seat.tenGhe) ||
               selectedVipSeats.includes(seat.tenGhe);

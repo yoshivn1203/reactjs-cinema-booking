@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -13,8 +13,10 @@ import { FaCcVisa } from 'react-icons/fa';
 import { GiMoneyStack } from 'react-icons/gi';
 import { useSelector, useDispatch } from 'react-redux';
 import { seatActions } from '../features/seatSlice';
+import { loading, finishLoading } from '../features/uiSlice';
 import bg from '../assets/jungle-compressed.jpg';
-import data from '../data/data.json';
+import { useParams } from 'react-router-dom';
+import { request } from '../services/axios.configs';
 import Seats from '../components/BookingTicket/Seats';
 import BookingInfo from '../components/BookingTicket/BookingInfo';
 
@@ -24,6 +26,24 @@ const BookingTickets = () => {
 
   const { selectedSeats, selectedVipSeats } = useSelector((state) => state.seat);
   const dispatch = useDispatch();
+
+  const { id } = useParams();
+  const [movieInfo, setMovieInfo] = useState({});
+  const [seatInfo, setSeatInfo] = useState([]);
+
+  useEffect(() => {
+    const fetchShowTime = async () => {
+      dispatch(loading());
+      const result = await request.get(
+        `QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`
+      );
+      // console.log(result.data.content);
+      setMovieInfo(result.data.content.thongTinPhim);
+      setSeatInfo(result.data.content.danhSachGhe);
+      dispatch(finishLoading());
+    };
+    fetchShowTime();
+  }, []);
 
   const steps = ['Chọn ghế', 'Chọn phương thức thanh toán', 'Hoàn thành'];
 
@@ -52,7 +72,7 @@ const BookingTickets = () => {
       case 0:
         return (
           <>
-            <Seats data={data} />
+            <Seats data={seatInfo} />
           </>
         );
       case 1:
@@ -181,7 +201,7 @@ const BookingTickets = () => {
           ))}
         </Stepper>
       </Box>
-      <BookingInfo data={data} />
+      <BookingInfo data={movieInfo} />
     </Wrapper>
   );
 };

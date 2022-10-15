@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+  isLoading: false,
   isModalOpen: false,
   trailer: '',
 };
 
-const UiSlice = createSlice({
+const uiSlice = createSlice({
   name: 'UI',
   initialState,
   reducers: {
@@ -17,7 +18,13 @@ const UiSlice = createSlice({
       state.isModalOpen = false;
       state.trailer = '';
     },
+    loading: (state) => {
+      state.isLoading = true;
+    },
+    finishLoading: (state) => {
+      state.isLoading = false;
+    },
   },
 });
-export const { openModal, closeModal } = UiSlice.actions;
-export default UiSlice.reducer;
+export const { openModal, closeModal, loading, finishLoading } = uiSlice.actions;
+export default uiSlice.reducer;

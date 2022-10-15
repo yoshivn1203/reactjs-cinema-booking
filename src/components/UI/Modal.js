@@ -5,7 +5,7 @@ import { closeModal } from '../../features/uiSlice';
 import styled from 'styled-components';
 
 const Modal = (props) => {
-  const { isModalOpen } = useSelector((store) => store.Ui);
+  const { isModalOpen } = useSelector((store) => store.ui);
   return (
     <Wrapper className={`modal ${isModalOpen ? 'active' : ''}`}>{props.children}</Wrapper>
   );
@@ -25,7 +25,7 @@ const ModalContent = (props) => {
 };
 
 const TrailerModal = () => {
-  const { trailer } = useSelector((store) => store.Ui);
+  const { trailer } = useSelector((store) => store.ui);
   return (
     <Modal>
       <ModalContent>

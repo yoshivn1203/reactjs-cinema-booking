@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 
 const BookingInfo = ({ data }) => {
   const { selectedSeats, selectedVipSeats, total } = useSelector((state) => state.seat);
-  const { tenPhim, hinhAnh, tenCumRap, tenRap, diaChi, ngayChieu, gioChieu } =
-    data.thongTinPhim;
+  const { tenPhim, hinhAnh, tenCumRap, tenRap, diaChi, ngayChieu, gioChieu } = data;
 
   const formatMoney = (x) =>
     x.toLocaleString('it-IT', { style: 'currency', currency: 'VND' });

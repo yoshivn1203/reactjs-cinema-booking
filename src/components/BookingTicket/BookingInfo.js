@@ -39,7 +39,6 @@ const Wrapper = styled.section`
   display: grid;
   justify-items: center;
   width: 450px;
-  /* max-height: 900px; */
   background-color: var(--primary-transparent);
   border-radius: var(--primary-borderRadius);
   box-shadow: var(--primary-boxShadow);
@@ -81,7 +80,7 @@ const Wrapper = styled.section`
     }
   }
   @media screen and (max-width: 1399px) {
-    width: 380px;
+    width: 23rem;
     height: 650px;
     font-size: 80%;
     img {
@@ -92,6 +91,12 @@ const Wrapper = styled.section`
         font-size: 1rem;
       }
     }
+  }
+  @media screen and (max-width: 1099px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 1399px) {
   }
 `;
 

@@ -84,8 +84,8 @@ const BookingTickets = () => {
               style={{
                 borderRadius: 35,
                 color: `${checked ? 'var(--primary-white)' : 'var(--primary-gray)'}`,
-                padding: '10px 36px',
-                fontSize: '18px',
+                padding: '1rem 2rem',
+                fontSize: '1rem',
               }}
               sx={{ mt: 4 }}
               disabled={!checked}
@@ -100,8 +100,8 @@ const BookingTickets = () => {
               style={{
                 borderRadius: 35,
                 color: `${checked ? 'var(--primary-white)' : 'var(--primary-gray)'}`,
-                padding: '10px 36px',
-                fontSize: '18px',
+                padding: '1rem 2rem',
+                fontSize: '1rem',
               }}
               disabled={!checked}
               variant='contained'
@@ -215,6 +215,7 @@ const Wrapper = styled.div`
   min-height: 100vh;
   display: grid;
   margin: 0 auto;
+
   grid-template-columns: auto auto;
   justify-items: center;
   .steppers-box {
@@ -232,7 +233,7 @@ const Wrapper = styled.div`
 
     // main stepper collapse content
     .MuiCollapse-wrapperInner.MuiCollapse-vertical {
-      width: 880px;
+      width: 55rem;
       display: grid;
       place-items: center;
       text-align: center;
@@ -245,7 +246,7 @@ const Wrapper = styled.div`
     }
 
     .MuiTypography-root {
-      width: 800px;
+      width: 50rem;
     }
 
     #payment-method {
@@ -267,9 +268,28 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: 1299px) {
     .steppers-box {
+      justify-self: start;
+    }
+  }
+
+  @media screen and (max-width: 1099px) {
+    grid-template-columns: auto;
+    .steppers-box {
+      padding-left: 3rem;
       .MuiCollapse-wrapperInner.MuiCollapse-vertical {
-        width: 800px;
-        padding-left: 20px;
+        width: 30rem;
+        padding-left: 0px;
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .steppers-box {
+      .MuiCollapse-wrapperInner.MuiCollapse-vertical {
+        width: 38rem;
+        padding-left: 0px;
+      }
+      .MuiTypography-root {
+        width: 38rem;
       }
     }
   }

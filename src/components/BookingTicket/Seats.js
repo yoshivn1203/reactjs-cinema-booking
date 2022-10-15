@@ -67,6 +67,7 @@ const Wrapper = styled.section`
   background: var(--primary-transparent);
   border-radius: var(--primary-borderRadius);
   box-shadow: var(--primary-boxShadow);
+  width: 50rem;
 
   .Cinema {
     perspective: 400px;
@@ -78,7 +79,7 @@ const Wrapper = styled.section`
     grid-gap: 24px;
     .screen {
       height: 40px;
-      max-width: 620px;
+      max-width: 38rem;
       background: var(--primary-white);
       width: 100%;
       transform: rotateX(-60deg) scale(1.1);
@@ -89,7 +90,7 @@ const Wrapper = styled.section`
     }
     .seats {
       display: grid;
-      grid-gap: 0.5rem;
+      grid-gap: 0.75rem;
       grid-template-columns: repeat(16, min-content);
       align-items: center;
 
@@ -119,8 +120,8 @@ const Wrapper = styled.section`
   }
   .seat {
     display: inline-block;
-    width: 32px;
-    height: 28px;
+    width: 1.5rem;
+    height: 1.5rem;
     transition: transform 0.3s ease-in-out;
     position: relative;
     top: 1px;
@@ -131,8 +132,8 @@ const Wrapper = styled.section`
         position: absolute;
         top: 0;
         left: 0;
-        width: 32px;
-        height: 32px;
+        width: 2rem;
+        height: 2rem;
         border-radius: 100%;
         background: transparent;
         border: 1px solid var(--secondary-blue);
@@ -141,8 +142,8 @@ const Wrapper = styled.section`
       }
     }
     svg {
-      width: 32px;
-      height: 28px;
+      width: 1.5rem;
+      height: 1.5rem;
     }
     &.occupied {
       color: var(--primary-gray);
@@ -166,23 +167,31 @@ const Wrapper = styled.section`
   }
 
   @media screen and (max-width: 1399px) {
-    width: 750px;
+    width: 40rem;
     .Cinema {
-      grid-gap: 16px;
+      grid-gap: 1rem;
       .screen {
-        max-width: 500px;
+        max-width: 31rem;
       }
       .seat {
-        width: 24px;
-        height: 20px;
+        width: 1.5rem;
+        height: 1rem;
         &.selected::after {
-          width: 24px;
-          height: 24px;
+          width: 1.5rem;
+          height: 1.5rem;
         }
         svg {
-          width: 24px;
-          height: 20px;
+          width: 1.5rem;
+          height: 1rem;
         }
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    width: 37rem;
+    .Cinema {
+      .screen {
+        max-width: 30rem;
       }
     }
   }

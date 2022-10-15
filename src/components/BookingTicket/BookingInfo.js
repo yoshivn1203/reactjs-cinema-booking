@@ -23,7 +23,7 @@ const BookingInfo = ({ data }) => {
         <p>Phòng Chiếu:</p>
         <p>{tenRap}</p>
         <p>Thời gian:</p>
-        <p>{`${gioChieu} ngày ${ngayChieu}`}</p>
+        {gioChieu && <p>{`${gioChieu} ngày ${ngayChieu}`}</p>}
         <p>Ghế Phổ Thông:</p>
         <p>{selectedSeats.join(', ')}</p>
         <p>Ghế Vip:</p>

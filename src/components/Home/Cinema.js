@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
+import 'moment/locale/vi';
+
 import styled from 'styled-components';
 import Button from '../UI/Button';
 
@@ -95,7 +98,7 @@ const Cinema = ({ cinemas }) => {
           {showTime?.map((m) => {
             return (
               <option key={m.maLichChieu} value={m.maLichChieu}>
-                {m.ngayChieuGioChieu}
+                {moment(m.ngayChieuGioChieu).format('LLL')}
               </option>
             );
           })}
@@ -118,6 +121,21 @@ const Wrapper = styled.div`
     .selected {
       opacity: 1;
     }
+  }
+
+  h3 {
+    margin-bottom: 1rem;
+  }
+
+  select {
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    color: var(--primary-yellow);
+    font-weight: bold;
+    background-color: var(--primary-gray);
+    cursor: pointer;
   }
 `;
 

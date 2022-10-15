@@ -88,9 +88,7 @@ const Wrapper = styled.section`
       grid-gap: 0.5rem;
       grid-template-columns: repeat(16, min-content);
       align-items: center;
-      span:nth-of-type(8n + 4) {
-        margin-right: 2rem;
-      }
+
       .seat:not(.occupied):hover,
       .seat:not(.occupied):focus {
         cursor: pointer;

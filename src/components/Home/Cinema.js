@@ -39,6 +39,7 @@ const Cinema = ({ cinemas }) => {
 
   return (
     <Wrapper>
+      <h1>Đặt Vé Nhanh</h1>
       <div className='logo-container mb-3'>
         {cinemas.map((c) => {
           return (
@@ -124,6 +125,11 @@ const Wrapper = styled.div`
     .selected {
       filter: brightness(100%);
     }
+  }
+  h1 {
+    font-size: 2rem;
+    color: var(--primary-yellow);
+    margin-bottom: 3rem;
   }
 
   h3 {

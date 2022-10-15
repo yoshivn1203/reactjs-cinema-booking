@@ -104,12 +104,15 @@ const Cinema = ({ cinemas }) => {
           })}
         </select>
       </div>
-      <Button onClick={() => navigate(`showTime/${selectedShowTime}`)}>Đặt Vé</Button>
+      <Button className='medium' onClick={() => navigate(`showTime/${selectedShowTime}`)}>
+        Đặt Vé
+      </Button>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
+  padding-left: 1rem;
   .logo-container {
     display: flex;
     gap: 2rem;

@@ -61,6 +61,16 @@ const Wrapper = styled.button`
     padding: 0.25rem 1.5rem;
     font-size: 1rem;
   }
+
+  &.medium {
+    padding: 0.3rem 1.5rem;
+    font-size: 1.2rem;
+    box-shadow: none;
+  }
+  &.medium:hover {
+    box-shadow: none;
+    background-color: var(--secondary-yellow);
+  }
 `;
 
 export default Button;

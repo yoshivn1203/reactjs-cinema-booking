@@ -43,7 +43,7 @@ const BookingTickets = () => {
       dispatch(finishLoading());
     };
     fetchShowTime();
-  }, []);
+  }, [dispatch, id]);
 
   const steps = ['Chọn ghế', 'Chọn phương thức thanh toán', 'Hoàn thành'];
 

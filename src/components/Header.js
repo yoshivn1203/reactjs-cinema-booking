@@ -70,7 +70,7 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 97;
   transition: height 0.3s ease, background-color 0.3s ease;
   &.shrink {
     height: 5rem;

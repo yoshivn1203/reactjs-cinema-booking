@@ -12,6 +12,7 @@ import TrailerModal from '../components/UI/Modal';
 import { request } from '../services/axios.configs';
 import { FaSearch } from 'react-icons/fa';
 import Cinema from '../components/Home/Cinema';
+import Sidebar from './Sidebar';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -55,6 +56,7 @@ const Home = () => {
     <>
       <TrailerModal />
       <HeroSide />
+      <Sidebar cinemas={cinemas} />
       <Wrapper className='container'>
         <div className='section mb-3'>
           <div className='section__header mb-2'>
@@ -82,7 +84,6 @@ const Home = () => {
             </div>
           </div>
           <MoviesList movies={filteredMovies} />
-          <Cinema cinemas={cinemas} />
         </div>
       </Wrapper>
     </>

@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/UI/LoadingSpinner';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
 import BookingTickets from './pages/BookingTickets';
 import MoviesDetails from './pages/MoviesDetails';
-import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const { isLoading } = useSelector((state) => state.ui);

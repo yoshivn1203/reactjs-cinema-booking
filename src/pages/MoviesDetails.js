@@ -6,9 +6,11 @@ import { loading, finishLoading } from '../features/uiSlice';
 import { useParams } from 'react-router-dom';
 import bg from '../assets/poster2.jpg';
 import casts from '../assets/banner/cast';
+import CinemaSelect from '../components/MoviesDetails/CinemaSelect';
 
 const MoviesDetails = () => {
-  const [item, setItem] = useState({});
+  const [data, setData] = useState({});
+
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -17,7 +19,7 @@ const MoviesDetails = () => {
       dispatch(loading());
       const result = await request.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
       console.log(result.data.content);
-      setItem(result.data.content);
+      setData(result.data.content);
       dispatch(finishLoading());
     };
 
@@ -25,35 +27,35 @@ const MoviesDetails = () => {
   }, [dispatch, id]);
   return (
     <>
-      {item && (
+      {data && (
         <Wrapper>
           <div className='banner' style={{ backgroundImage: `url(${bg})` }}></div>
           <div className='mb-3 movie-content container'>
             <div className='movie-content__poster'>
               <div
                 className='movie-content__poster__img'
-                style={{ backgroundImage: `url(${item.hinhAnh})` }}
+                style={{ backgroundImage: `url(${data.hinhAnh})` }}
               ></div>
             </div>
             <div className='movie-content__info'>
-              <h1 className='title'>{item.tenPhim}</h1>
+              <h1 className='title'>{data.tenPhim}</h1>
               <div className='genres'>
                 <span className='genres__item'>Phim Đang Chiếu</span>
                 <span className='genres__item'>PG-13</span>
               </div>
-              <p className='overview'>{item.moTa}</p>
+              <p className='overview'>{data.moTa}</p>
               <div className='cast'>
                 <div className='section__header'>
                   <h2>Diễn Viên</h2>
                 </div>
                 <div className='casts'>
-                  {casts.map((item, i) => (
+                  {casts.map((cast, i) => (
                     <div key={i} className='casts__item'>
                       <div
                         className='casts__item__img'
-                        style={{ backgroundImage: `url(${item.image})` }}
+                        style={{ backgroundImage: `url(${cast.image})` }}
                       ></div>
-                      <p className='casts__item__name'>{item.name}</p>
+                      <p className='casts__item__name'>{cast.name}</p>
                     </div>
                   ))}
                 </div>
@@ -66,9 +68,10 @@ const MoviesDetails = () => {
                   width='60%'
                   height='300px'
                   title='trailer'
-                  src={item.trailer}
+                  src={data.trailer}
                 ></iframe>
               </div>
+              <CinemaSelect cinemas={data.heThongRapChieu} />
             </div>
           </div>
           <div className='container'></div>
@@ -159,7 +162,6 @@ const Wrapper = styled.div`
       .title {
         font-size: 4rem;
         line-height: 1;
-        color: var(--primary-yellow);
       }
 
       .genres {
@@ -197,6 +199,26 @@ const Wrapper = styled.div`
         text-transform: capitalize;
       }
     }
+  }
+  .form-select {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-items: start;
+    gap: 1rem 3rem;
+  }
+  h1 {
+    color: var(--primary-yellow);
+  }
+
+  select {
+    outline: 0;
+    border: 0;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    color: var(--primary-yellow);
+    background-color: var(--primary-gray);
+    cursor: pointer;
   }
 `;
 

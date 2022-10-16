@@ -105,7 +105,10 @@ const Cinema = ({ cinemas }) => {
           })}
         </select>
       </div>
-      <Button className='medium' onClick={() => navigate(`showTime/${selectedShowTime}`)}>
+      <Button
+        className='medium'
+        onClick={() => navigate(`/showTime/${selectedShowTime}`)}
+      >
         Đặt Vé
       </Button>
     </Wrapper>

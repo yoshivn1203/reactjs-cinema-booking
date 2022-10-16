@@ -84,7 +84,7 @@ const BookingTickets = () => {
               style={{
                 borderRadius: 35,
                 color: `${checked ? 'var(--primary-white)' : 'var(--primary-gray)'}`,
-                padding: '1rem 2rem',
+                padding: '0.75rem 2rem',
                 fontSize: '1rem',
               }}
               sx={{ mt: 4 }}
@@ -100,7 +100,7 @@ const BookingTickets = () => {
               style={{
                 borderRadius: 35,
                 color: `${checked ? 'var(--primary-white)' : 'var(--primary-gray)'}`,
-                padding: '1rem 2rem',
+                padding: '0.75rem 2rem',
                 fontSize: '1rem',
               }}
               disabled={!checked}

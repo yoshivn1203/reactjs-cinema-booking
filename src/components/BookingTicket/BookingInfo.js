@@ -92,11 +92,8 @@ const Wrapper = styled.section`
       }
     }
   }
-  @media screen and (max-width: 1099px) {
+  @media screen and (max-width: 1279px) {
     display: none;
-  }
-
-  @media screen and (max-width: 1399px) {
   }
 `;
 

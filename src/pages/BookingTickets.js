@@ -266,22 +266,10 @@ const Wrapper = styled.div`
     }
   }
 
-  @media screen and (max-width: 1299px) {
-    .steppers-box {
-      justify-self: start;
-    }
+  @media screen and (max-width: 1279px) {
+    grid-template-columns: 1fr;
   }
 
-  @media screen and (max-width: 1099px) {
-    grid-template-columns: auto;
-    .steppers-box {
-      padding-left: 3rem;
-      .MuiCollapse-wrapperInner.MuiCollapse-vertical {
-        width: 30rem;
-        padding-left: 0px;
-      }
-    }
-  }
   @media screen and (max-width: 600px) {
     .steppers-box {
       .MuiCollapse-wrapperInner.MuiCollapse-vertical {

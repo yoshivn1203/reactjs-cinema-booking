@@ -110,7 +110,8 @@ const Wrapper = styled.section`
     list-style: none;
     display: flex;
     justify-content: center;
-    padding: 12px;
+    padding: 0.75rem;
+    font-size: 1rem;
     li {
       margin: 0 12px;
       display: flex;
@@ -132,8 +133,8 @@ const Wrapper = styled.section`
         position: absolute;
         top: 0;
         left: 0;
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
         border-radius: 100%;
         background: transparent;
         border: 1px solid var(--secondary-blue);

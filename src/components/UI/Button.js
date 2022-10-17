@@ -6,6 +6,7 @@ const Button = (props) => {
     <Wrapper
       className={`btn ${props.className}`}
       onClick={props.onClick ? () => props.onClick() : null}
+      type={props.type}
     >
       {props.children}
     </Wrapper>
@@ -17,6 +18,7 @@ export const OutlineButton = (props) => {
     <Button
       className={`btn-outline ${props.className}`}
       onClick={props.onClick ? () => props.onClick() : null}
+      type={props.type}
     >
       {props.children}
     </Button>
@@ -69,7 +71,7 @@ const Wrapper = styled.button`
   }
   &.medium:hover {
     box-shadow: none;
-    background-color: var(--secondary-yellow);
+    /* background-color: var(--secondary-yellow); */
   }
 `;
 

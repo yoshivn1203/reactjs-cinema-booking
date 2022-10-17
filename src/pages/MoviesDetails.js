@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { request } from '../services/axios.configs';
 import { loading, finishLoading } from '../features/uiSlice';
 import { useParams } from 'react-router-dom';
-import bg from '../assets/poster2.jpg';
+import bg from '../assets/snow.jpg';
 import casts from '../assets/banner/cast';
 import CinemaSelect from '../components/MoviesDetails/CinemaSelect';
 

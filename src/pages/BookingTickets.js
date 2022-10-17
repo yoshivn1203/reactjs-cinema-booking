@@ -13,7 +13,7 @@ import { FaCcVisa } from 'react-icons/fa';
 import { GiMoneyStack } from 'react-icons/gi';
 import { useSelector, useDispatch } from 'react-redux';
 import { seatActions } from '../features/seatSlice';
-import { loading, finishLoading, closeSideBar } from '../features/uiSlice';
+import { loading, finishLoading } from '../features/uiSlice';
 import bg from '../assets/jungle-compressed.jpg';
 import { useParams } from 'react-router-dom';
 import { request } from '../services/axios.configs';
@@ -43,7 +43,6 @@ const BookingTickets = () => {
       dispatch(finishLoading());
     };
     fetchShowTime();
-    dispatch(closeSideBar());
   }, [dispatch, id]);
 
   const steps = ['Chọn ghế', 'Chọn phương thức thanh toán', 'Hoàn thành'];

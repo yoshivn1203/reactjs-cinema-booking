@@ -14,11 +14,11 @@ const headerNav = [
   },
   {
     display: 'Tin Tức',
-    path: '/movies',
+    path: '/news',
   },
   {
-    display: 'Ưu Đãi',
-    path: '/tv',
+    display: 'Khuyến Mãi',
+    path: '/events',
   },
 ];
 
@@ -56,6 +56,11 @@ const Header = () => {
               <Link to={e.path}>{e.display}</Link>
             </li>
           ))}
+        </ul>
+        <ul className='login'>
+          <li>
+            <Link to='/'>Đăng Nhập</Link>
+          </li>
         </ul>
       </div>
     </Wrapper>
@@ -100,10 +105,11 @@ const Wrapper = styled.div`
     padding: 0 2rem;
 
     @media only screen and (max-width: 600px) {
-      justify-content: center;
+      /* justify-content: center; */
     }
   }
-  .header__nav {
+  .header__nav,
+  .login {
     display: flex;
     align-items: center;
     li {
@@ -130,7 +136,9 @@ const Wrapper = styled.div`
     li:nth-child(n + 2) {
       margin-left: 2rem;
     }
-    @media only screen and (max-width: 600px) {
+  }
+  @media only screen and (max-width: 800px) {
+    .header__nav {
       position: fixed;
       bottom: 0;
       left: 0;

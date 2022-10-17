@@ -5,6 +5,8 @@ import 'moment/locale/vi';
 
 import styled from 'styled-components';
 import Button from '../UI/Button';
+import { useDispatch } from 'react-redux';
+import { closeSideBar } from '../../features/uiSlice';
 
 const Cinema = ({ cinemas }) => {
   const [selectedCinema, SetSelectedCinema] = useState('BHDStar');
@@ -12,6 +14,7 @@ const Cinema = ({ cinemas }) => {
   const [selectedMovie, setSelectedMovie] = useState('1316');
   const [selectedShowTime, setSelectedShowTime] = useState('16207');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const location = cinemas.find((c) => c.maHeThongRap === selectedCinema)?.lstCumRap;
   const movieList = location?.find((l) => l.maCumRap === selectedLocation)?.danhSachPhim;
@@ -107,7 +110,10 @@ const Cinema = ({ cinemas }) => {
       </div>
       <Button
         className='medium'
-        onClick={() => navigate(`/showTime/${selectedShowTime}`)}
+        onClick={() => {
+          navigate(`/showTime/${selectedShowTime}`);
+          dispatch(closeSideBar());
+        }}
       >
         Đặt Vé
       </Button>

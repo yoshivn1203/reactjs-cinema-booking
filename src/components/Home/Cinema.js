@@ -9,10 +9,10 @@ import { useDispatch } from 'react-redux';
 import { closeSideBar } from '../../features/uiSlice';
 
 const Cinema = ({ cinemas }) => {
-  const [selectedCinema, SetSelectedCinema] = useState('BHDStar');
-  const [selectedLocation, setSelectedLocation] = useState('bhd-star-cineplex-bitexco');
-  const [selectedMovie, setSelectedMovie] = useState('1316');
-  const [selectedShowTime, setSelectedShowTime] = useState('16207');
+  const [selectedCinema, SetSelectedCinema] = useState('');
+  const [selectedLocation, setSelectedLocation] = useState('');
+  const [selectedMovie, setSelectedMovie] = useState('');
+  const [selectedShowTime, setSelectedShowTime] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,6 +21,12 @@ const Cinema = ({ cinemas }) => {
   const showTime = movieList?.find(
     (m) => m.maPhim === Number(selectedMovie)
   )?.lstLichChieuTheoPhim;
+
+  useEffect(() => {
+    if (cinemas?.length > 0) {
+      SetSelectedCinema(cinemas[0].maHeThongRap);
+    }
+  }, [cinemas]);
 
   useEffect(() => {
     location && setSelectedLocation(location[0].maCumRap);

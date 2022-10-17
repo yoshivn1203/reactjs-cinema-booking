@@ -15,6 +15,7 @@
   --primary-gray: #696969;
   --secondary-gray: #a0a0a0;
   --primary-transparent: #00000060;
+  --darker-transparent: #000000b0;
   --primary-borderRadius: 10px;
   --primary-boxShadow: rgba(255, 255, 255, 0.19) 0px 10px 20px,
     rgba(255, 255, 255, 0.23) 0px 6px 6px;

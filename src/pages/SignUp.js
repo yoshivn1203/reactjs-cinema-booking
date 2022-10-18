@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../features/userSlice';
+import { registerUser, toggleRegister } from '../features/userSlice';
 import bg from '../assets/poster2.jpg';
 import 'antd/lib/form/style/index.css';
 import 'antd/lib/input/style/index.css';
@@ -29,7 +29,6 @@ const validateMessages = {
     range: '${label} must be between ${min} and ${max}',
   },
 };
-/* eslint-enable no-template-curly-in-string */
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -38,14 +37,16 @@ const SignUp = () => {
 
   const onFinish = async (values) => {
     const submitSignUpData = { ...values.user, maNhom: 'GP03' };
-    dispatch(registerUser(submitSignUpData));
+    console.log(submitSignUpData);
+    // dispatch(registerUser(submitSignUpData));
   };
 
   useEffect(() => {
     if (isRegistered) {
       navigate('/sign-in');
+      dispatch(toggleRegister());
     }
-  }, [isRegistered, navigate]);
+  }, [isRegistered, navigate, dispatch]);
 
   return (
     <Wrapper>

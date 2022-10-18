@@ -33,7 +33,7 @@ export const registerUser = createAsyncThunk(
     try {
       thunkAPI.dispatch(loading());
       const result = await signUpApi(user);
-      console.log(result.data.content);
+      // console.log(result.data.content);
       thunkAPI.dispatch(finishLoading());
       return result.data.content;
     } catch (error) {
@@ -50,7 +50,10 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       state.userInfo = null;
       removeUserFromLocalStorage();
-      toast.success('Logging out...');
+      toast.success('Bạn đã đăng xuất');
+    },
+    toggleRegister: (state) => {
+      state.isRegistered = false;
     },
   },
   extraReducers: {
@@ -74,5 +77,5 @@ const userSlice = createSlice({
     },
   },
 });
-export const { logoutUser } = userSlice.actions;
+export const { logoutUser, toggleRegister } = userSlice.actions;
 export default userSlice.reducer;

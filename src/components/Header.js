@@ -1,11 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
+import Dropdown from './Dropdown';
 import styled from 'styled-components';
-
-// import './header.scss';
-
 import logo from '../assets/tmovie.png';
+import { useSelector } from 'react-redux';
 
 const headerNav = [
   {
@@ -28,7 +27,7 @@ const Header = () => {
   const headerRef = useRef(null);
 
   const active = headerNav.findIndex((e) => e.path === pathname);
-
+  const { userInfo } = useSelector((store) => store.user);
   useEffect(() => {
     const shrinkHeader = () => {
       if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
@@ -57,11 +56,15 @@ const Header = () => {
             </li>
           ))}
         </ul>
-        <ul className='login'>
-          <li>
-            <Link to='/sign-in'>Đăng Nhập</Link>
-          </li>
-        </ul>
+        {userInfo ? (
+          <Dropdown />
+        ) : (
+          <ul className='login'>
+            <li>
+              <Link to='/sign-in'>Đăng Nhập</Link>
+            </li>
+          </ul>
+        )}
       </div>
     </Wrapper>
   );
@@ -137,6 +140,17 @@ const Wrapper = styled.div`
       margin-left: 2rem;
     }
   }
+  .MuiButton-text {
+    color: var(--primary-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: none;
+    font-family: 'Montserrat';
+    &:hover {
+      color: var(--primary-yellow);
+    }
+  }
+
   @media only screen and (max-width: 800px) {
     .header__nav {
       position: fixed;

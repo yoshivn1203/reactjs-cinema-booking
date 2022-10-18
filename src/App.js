@@ -9,7 +9,9 @@ import BookingTickets from './pages/BookingTickets';
 import MoviesDetails from './pages/MoviesDetails';
 import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
-import SharedLayout from './pages/SharedLayout';
+import SharedLayout from './SharedLayout/HomeLayout';
+import NoUserProtected from './ProtectedRoutes/NoUserProtected';
+import UserProtected from './ProtectedRoutes/UserProtected';
 
 function App() {
   const { isLoading } = useSelector((state) => state.ui);
@@ -22,10 +24,14 @@ function App() {
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route path='/movies/:id' element={<MoviesDetails />} />
-          <Route path='/showTime/:id' element={<BookingTickets />} />
+          <Route element={<UserProtected />}>
+            <Route path='/showTime/:id' element={<BookingTickets />} />
+          </Route>
         </Route>
-        <Route path='/sign-up' element={<SignUp />} />
-        <Route path='/sign-in' element={<SignIn />} />
+        <Route element={<NoUserProtected />}>
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/sign-in' element={<SignIn />} />
+        </Route>
       </Routes>
     </>
   );

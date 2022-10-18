@@ -3,7 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Outlet } from 'react-router-dom';
 
-const SharedLayout = () => {
+const HomeLayout = () => {
   return (
     <>
       <Header />
@@ -13,4 +13,4 @@ const SharedLayout = () => {
   );
 };
 
-export default SharedLayout;
+export default HomeLayout;

@@ -18,7 +18,7 @@ const MoviesDetails = () => {
     const fetchMovie = async () => {
       dispatch(loading());
       const result = await request.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
-      console.log(result.data.content);
+      // console.log(result.data.content);
       setData(result.data.content);
       dispatch(finishLoading());
     };

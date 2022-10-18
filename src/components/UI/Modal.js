@@ -56,7 +56,7 @@ const Wrapper = styled.div`
     }
     .modal__content {
       padding: 2rem;
-      background-color: #0f0f0f;
+      background-color: var(--primary-black);
       width: 50%;
       opacity: 0;
       transform: translateY(-250px);
@@ -74,7 +74,7 @@ const Wrapper = styled.div`
         font-size: 1.5rem;
         cursor: pointer;
         &:hover {
-          color: #ff0000;
+          color: var(--primary-black);
         }
       }
     }

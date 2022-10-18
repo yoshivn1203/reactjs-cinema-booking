@@ -3,15 +3,11 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { loading, finishLoading } from '../features/uiSlice';
-
-import HeroSide from '../components/Home/HeroSlide';
 import { OutlineButton } from '../components/UI/Button';
-import MovieSlide from '../components/Home/MovieSlide';
-import MoviesList from '../components/Home/MoviesList';
 import TrailerModal from '../components/UI/Modal';
-import { request } from '../services/axios.configs';
+import { HeroSlide, MovieSlide, MoviesList, Sidebar } from '../components/Home';
 import { FaSearch } from 'react-icons/fa';
-import Sidebar from '../components/Home/Sidebar';
+import { getCinemas, getMovies } from '../services/movies';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -24,7 +20,7 @@ const Home = () => {
     const fetchMovies = async () => {
       dispatch(loading());
 
-      const result = await request.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=GP03`);
+      const result = await getMovies();
       // console.log(result.data.content);
       setMovies(result.data.content);
       dispatch(finishLoading());
@@ -32,9 +28,7 @@ const Home = () => {
     const fetchCinemas = async () => {
       dispatch(loading());
 
-      const result = await request.get(
-        'QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP03'
-      );
+      const result = await getCinemas();
       // console.log(result.data.content);
       setCinemas(result.data.content);
       dispatch(finishLoading());
@@ -54,7 +48,7 @@ const Home = () => {
   return (
     <>
       <TrailerModal />
-      <HeroSide />
+      <HeroSlide />
       <Sidebar cinemas={cinemas} />
       <Wrapper className='container'>
         <div className='section mb-3'>

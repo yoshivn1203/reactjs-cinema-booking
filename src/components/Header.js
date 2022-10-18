@@ -82,7 +82,7 @@ const Wrapper = styled.div`
   transition: height 0.3s ease, background-color 0.3s ease;
   &.shrink {
     height: 5rem;
-    background-color: #0f0f0f;
+    background-color: var(--primary-black);
   }
   .logo {
     font-size: 2.5rem;
@@ -158,7 +158,7 @@ const Wrapper = styled.div`
       left: 0;
       height: 5rem;
       width: 100%;
-      background-color: #0f0f0f;
+      background-color: var(--primary-black);
       padding: 0 2rem;
       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 

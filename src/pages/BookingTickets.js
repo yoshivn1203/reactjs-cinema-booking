@@ -16,9 +16,9 @@ import { seatActions } from '../features/seatSlice';
 import { loading, finishLoading } from '../features/uiSlice';
 import bg from '../assets/jungle-compressed.jpg';
 import { useParams } from 'react-router-dom';
-import { request } from '../services/axios.configs';
 import Seats from '../components/BookingTicket/Seats';
 import BookingInfo from '../components/BookingTicket/BookingInfo';
+import { getTicketRoomInfo } from '../services/movies';
 
 const BookingTickets = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -34,9 +34,7 @@ const BookingTickets = () => {
   useEffect(() => {
     const fetchShowTime = async () => {
       dispatch(loading());
-      const result = await request.get(
-        `QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`
-      );
+      const result = await getTicketRoomInfo(id);
       // console.log(result.data.content);
       setMovieInfo(result.data.content.thongTinPhim);
       setSeatInfo(result.data.content.danhSachGhe);

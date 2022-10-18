@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { TOKEN_CYBERSOFT } from '../constants/common';
+import { TOKEN_CYBERSOFT } from '../utils/common';
 
 export const request = axios.create({
   baseURL: 'https://movienew.cybersoft.edu.vn/api/',

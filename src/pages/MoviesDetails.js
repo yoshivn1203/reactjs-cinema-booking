@@ -175,7 +175,7 @@ const Wrapper = styled.div`
           border-radius: 30px;
           font-size: 0.8rem;
           font-weight: 600;
-          background-color: #0f0f0f;
+          background-color: var(--primary-black);
         }
       }
     }

@@ -89,10 +89,6 @@ const Wrapper = styled.div`
         a:nth-of-type(n + 2) {
           margin-top: 1rem;
         }
-
-        /* & > * ~ * {
-          margin-top: 1rem;
-        } */
       }
     }
   }

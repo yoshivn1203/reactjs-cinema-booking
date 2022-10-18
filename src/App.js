@@ -4,14 +4,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './components/UI/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
-import Home from './pages/Home';
-import BookingTickets from './pages/BookingTickets';
-import MoviesDetails from './pages/MoviesDetails';
-import SignUp from './pages/SignUp';
-import SignIn from './pages/SignIn';
-import SharedLayout from './SharedLayout/HomeLayout';
-import NoUserProtected from './ProtectedRoutes/NoUserProtected';
-import UserProtected from './ProtectedRoutes/UserProtected';
+import { BookingTickets, Home, MoviesDetails, SignIn, SignUp } from './pages';
+import SharedLayout from './sharedLayout/HomeLayout';
+import NoUserProtected from './protectedRoutes/NoUserProtected';
+import UserProtected from './protectedRoutes/UserProtected';
 
 function App() {
   const { isLoading } = useSelector((state) => state.ui);

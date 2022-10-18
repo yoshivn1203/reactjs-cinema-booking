@@ -37,8 +37,8 @@ const SignUp = () => {
 
   const onFinish = async (values) => {
     const submitSignUpData = { ...values.user, maNhom: 'GP03' };
-    console.log(submitSignUpData);
-    // dispatch(registerUser(submitSignUpData));
+    // console.log(submitSignUpData);
+    dispatch(registerUser(submitSignUpData));
   };
 
   useEffect(() => {

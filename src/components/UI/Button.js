@@ -44,6 +44,16 @@ const Wrapper = styled.button`
     box-shadow: 0px 0px 7px 12px var(--yellow-shadow);
   }
 
+  &.medium {
+    padding: 0.3rem 1.5rem;
+    font-size: 1.2rem;
+    box-shadow: none;
+  }
+  &.medium:hover {
+    box-shadow: none;
+    background-color: var(--secondary-yellow);
+  }
+
   &.btn-outline {
     border: 3px solid #fff;
     background-color: transparent;
@@ -62,16 +72,6 @@ const Wrapper = styled.button`
     border-width: 2px;
     padding: 0.25rem 1.5rem;
     font-size: 1rem;
-  }
-
-  &.medium {
-    padding: 0.3rem 1.5rem;
-    font-size: 1.2rem;
-    box-shadow: none;
-  }
-  &.medium:hover {
-    box-shadow: none;
-    /* background-color: var(--secondary-yellow); */
   }
 `;
 

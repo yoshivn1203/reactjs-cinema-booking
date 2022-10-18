@@ -33,13 +33,13 @@ const validateMessages = {
 const SignUp = () => {
   const navigate = useNavigate();
   const onFinish = async (values) => {
-    console.log(values);
+    // console.log(values);
     const submitSignUpData = { ...values.user, maNhom: 'GP03' };
     console.log({ submitSignUpData });
-    const result = await signUpApi(submitSignUpData);
-    console.log('Sign Up result', result.data.content);
-    message.success('Sign Up Successfully!');
-    navigate('/sign-in');
+    // const result = await signUpApi(submitSignUpData);
+    // console.log('Sign Up result', result.data.content);
+    // message.success('Sign Up Successfully!');
+    // navigate('/sign-in');
   };
 
   return (
@@ -135,7 +135,7 @@ const SignUp = () => {
   );
 };
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   display: flex;
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${bg});

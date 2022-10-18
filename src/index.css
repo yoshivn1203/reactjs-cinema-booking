@@ -3,7 +3,7 @@
 /* GLOBAL VARIABLE-------------------------------------------------------------- */
 
 :root {
-  --primary-white: #f1f1f1;
+  --primary-white: #fff;
   --primary-yellow: #f6aa00;
   /* --primary-yellow: #f6b400; */
   --secondary-yellow: #e09900;
@@ -37,7 +37,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   background-color: #0f0f0f;
-  color: #fff;
+  color: var(--primary-white);
 }
 
 a {

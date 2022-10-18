@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Col, Form, Input, Checkbox, message } from 'antd';
+import { Col, Form, Input, Checkbox } from 'antd';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Wrapper } from './SignUp';
 import Button from '../components/UI/Button';
-import { registerUser } from '../features/userSlice';
+import { loginUser } from '../features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 const layout = {
@@ -19,18 +19,18 @@ const layout = {
 const SignIn = () => {
   const navigate = useNavigate();
   const { userInfo } = useSelector((store) => store.user);
-
   const dispatch = useDispatch();
+
   const onFinish = async (values) => {
     const { taiKhoan, matKhau } = values;
-    dispatch(registerUser({ taiKhoan, matKhau }));
+    dispatch(loginUser({ taiKhoan, matKhau }));
   };
 
   useEffect(() => {
     if (userInfo) {
       setTimeout(() => {
         navigate('/');
-      }, 3000);
+      }, 2000);
     }
   }, [userInfo, navigate]);
 

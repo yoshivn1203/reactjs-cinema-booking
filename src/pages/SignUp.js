@@ -1,9 +1,10 @@
-import { Col, Form, Input, message } from 'antd';
+import { Col, Form, Input } from 'antd';
 import Button from '../components/UI/Button';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { signUpApi } from '../services/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerUser } from '../features/userSlice';
 import bg from '../assets/poster2.jpg';
 import 'antd/lib/form/style/index.css';
 import 'antd/lib/input/style/index.css';
@@ -32,15 +33,19 @@ const validateMessages = {
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isRegistered } = useSelector((store) => store.user);
+
   const onFinish = async (values) => {
-    // console.log(values);
     const submitSignUpData = { ...values.user, maNhom: 'GP03' };
-    console.log({ submitSignUpData });
-    // const result = await signUpApi(submitSignUpData);
-    // console.log('Sign Up result', result.data.content);
-    // message.success('Sign Up Successfully!');
-    // navigate('/sign-in');
+    dispatch(registerUser(submitSignUpData));
   };
+
+  useEffect(() => {
+    if (isRegistered) {
+      navigate('/sign-in');
+    }
+  }, [isRegistered, navigate]);
 
   return (
     <Wrapper>

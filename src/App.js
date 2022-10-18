@@ -1,5 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './components/UI/LoadingSpinner';
 import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
@@ -15,6 +17,7 @@ function App() {
     <>
       {isLoading && <LoadingSpinner />}
       <ScrollToTop />
+      <ToastContainer />
       <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<Home />} />

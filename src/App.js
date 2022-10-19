@@ -12,6 +12,8 @@ import {
   SignUp,
   News,
   Events,
+  Profile,
+  BookingHistory,
 } from './pages';
 import SharedLayout from './sharedLayout/HomeLayout';
 import NoUserProtected from './protectedRoutes/NoUserProtected';
@@ -32,6 +34,8 @@ function App() {
           <Route path='/events' element={<Events />} />
           <Route element={<UserProtected />}>
             <Route path='/showTime/:id' element={<BookingTickets />} />
+            <Route path='/profile' element={<Profile />} />
+            <Route path='/booking-history' element={<BookingHistory />} />
           </Route>
         </Route>
         <Route element={<NoUserProtected />}>

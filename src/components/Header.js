@@ -154,7 +154,7 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 800px) {
     .header__nav {
       position: fixed;
-      bottom: 0;
+      bottom: -2px;
       left: 0;
       height: 5rem;
       width: 100%;

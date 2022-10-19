@@ -7,15 +7,6 @@ import Button from '../components/UI/Button';
 import { loginUser } from '../features/userSlice';
 import { useDispatch } from 'react-redux';
 
-const layout = {
-  labelCol: {
-    span: 6,
-  },
-  wrapperCol: {
-    span: 18,
-  },
-};
-
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -30,7 +21,6 @@ const SignIn = () => {
       <div className='card'>
         <h1 className='center mb-2'>Đăng Nhập</h1>
         <Form
-          {...layout}
           name='nest-messages'
           onFinish={onFinish}
           initialValues={{

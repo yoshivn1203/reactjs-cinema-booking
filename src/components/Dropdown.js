@@ -17,13 +17,6 @@ export default function BasicMenu() {
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-  const handleLogout = () => {
-    dispatch(logoutUser());
-    navigate('/');
-  };
 
   return (
     <div>
@@ -40,14 +33,35 @@ export default function BasicMenu() {
         id='basic-menu'
         anchorEl={anchorEl}
         open={open}
-        onClose={handleClose}
+        onClose={() => setAnchorEl(null)}
         MenuListProps={{
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Thông tin tài khoản</MenuItem>
-        <MenuItem onClick={handleClose}>Lịch sử đặt vé</MenuItem>
-        <MenuItem onClick={handleLogout}>Đăng Xuất</MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate('/profile');
+            setAnchorEl(null);
+          }}
+        >
+          Hồ Sơ Cá Nhân
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            navigate('/booking-history');
+            setAnchorEl(null);
+          }}
+        >
+          Lịch sử đặt vé
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            dispatch(logoutUser());
+            navigate('/');
+          }}
+        >
+          Đăng Xuất
+        </MenuItem>
       </Menu>
     </div>
   );

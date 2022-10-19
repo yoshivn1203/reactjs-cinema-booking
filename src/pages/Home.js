@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { loading, finishLoading } from '../features/uiSlice';
-import { OutlineButton } from '../components/UI/Button';
 import TrailerModal from '../components/UI/Modal';
 import { HeroSlide, MovieSlide, MoviesList, Sidebar } from '../components/Home';
 import { FaSearch } from 'react-icons/fa';

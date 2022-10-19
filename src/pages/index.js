@@ -5,5 +5,17 @@ import SignIn from './SignIn';
 import SignUp from './SignUp';
 import News from './News';
 import Events from './Events';
+import BookingHistory from './BookingHistory';
+import Profile from './Profile';
 
-export { BookingTickets, Home, MoviesDetails, SignIn, SignUp, News, Events };
+export {
+  BookingTickets,
+  Home,
+  MoviesDetails,
+  SignIn,
+  SignUp,
+  News,
+  Events,
+  Profile,
+  BookingHistory,
+};

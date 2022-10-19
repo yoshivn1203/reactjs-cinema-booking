@@ -8,14 +8,7 @@ import { registerUser, toggleRegister } from '../features/userSlice';
 import bg from '../assets/poster2.jpg';
 import 'antd/lib/form/style/index.css';
 import 'antd/lib/input/style/index.css';
-const layout = {
-  labelCol: {
-    span: 6,
-  },
-  wrapperCol: {
-    span: 18,
-  },
-};
+
 /* eslint-disable no-template-curly-in-string */
 
 const validateMessages = {
@@ -53,7 +46,6 @@ const SignUp = () => {
       <div className='card'>
         <h1 className='center mb-2'>Đăng Ký</h1>
         <Form
-          {...layout}
           name='nest-messages'
           onFinish={onFinish}
           validateMessages={validateMessages}

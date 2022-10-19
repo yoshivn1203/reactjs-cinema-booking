@@ -54,9 +54,6 @@ const Home = () => {
         <div className='section mb-3'>
           <div className='section__header mb-2'>
             <h2>Phim Sắp Chiếu</h2>
-            <Link to='/movie'>
-              <OutlineButton className='small'>View more</OutlineButton>
-            </Link>
           </div>
           <MovieSlide movies={movies} />
           <div className='section__header mb-2'>

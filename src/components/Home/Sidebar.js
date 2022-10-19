@@ -116,7 +116,8 @@ const Wrapper = styled.div`
     right: 0;
     bottom: 0;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
   }
 `;
 

@@ -22,6 +22,8 @@ const Wrapper = styled.div`
     bottom: 0;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+
     .loading-spiner {
       width: 6rem;
       height: 6rem;

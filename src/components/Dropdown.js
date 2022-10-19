@@ -48,14 +48,6 @@ export default function BasicMenu() {
         </MenuItem>
         <MenuItem
           onClick={() => {
-            navigate('/booking-history');
-            setAnchorEl(null);
-          }}
-        >
-          Lịch sử đặt vé
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
             dispatch(logoutUser());
             navigate('/');
           }}

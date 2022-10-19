@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import { Col, Form, Input, message, Row } from 'antd';
+import { Col, Form, Input, Row } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import Button, { OutlineButton } from '../UI/Button';
+import { MOVIE_GROUP_ID } from '../../utils/common';
+import { signInApi, UpdateUserInfoApi } from '../../services/user';
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../../features/userSlice';
+import { finishLoading, loading } from '../../features/uiSlice';
 
 const layout = {
   labelCol: {
@@ -28,7 +33,8 @@ const validateMessages = {
 
 const UserInfo = ({ userInfo }) => {
   const [isEdit, setIsEdit] = useState(false);
-  const { matKhau, hoTen, soDT, email, taiKhoan } = userInfo;
+  const { matKhau, hoTen, soDT, email, taiKhoan, maLoaiNguoiDung } = userInfo;
+  const dispatch = useDispatch();
   const initialValues = {
     user: {
       matKhau,
@@ -38,25 +44,18 @@ const UserInfo = ({ userInfo }) => {
       taiKhoan,
     },
   };
-
   const onFinish = async (values) => {
-    console.log(values);
-    // const submitUpdateUserInfo = {
-    //   ...values.user,
-    //   maLoaiNguoiDung,
-    //   maNhom: MOVIE_GROUP_ID,
-    // };
-    // console.log({ submitUpdateUserInfo });
-    // const result = await UpdateUserInfoApi(submitUpdateUserInfo);
-    // console.log("Update User result: ", result.data.content);
-    // const signInResult = await signInApi({ taiKhoan, matKhau });
-    // localStorage.setItem(
-    //   USER_INFO_KEY,
-    //   JSON.stringify(signInResult.data.content)
-    // );
-    // dispatch(setUserAction(signInResult.data.content));
-    // setIsEdit(false);
-    // message.success("Successfully Updated!");
+    const submitUpdateUserInfo = {
+      ...values.user,
+      maLoaiNguoiDung,
+      maNhom: MOVIE_GROUP_ID,
+    };
+    dispatch(loading());
+    await UpdateUserInfoApi(submitUpdateUserInfo);
+    const signInResult = await signInApi({ taiKhoan, matKhau });
+    dispatch(updateUser(signInResult.data.content));
+    dispatch(finishLoading());
+    setIsEdit(false);
   };
   return (
     <div className='user-info'>

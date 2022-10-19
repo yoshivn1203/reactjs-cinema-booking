@@ -78,7 +78,7 @@ const SignIn = () => {
               Về Trang Chủ
             </Button>
           </div>
-          <Col span={18} offset={6} className='center'>
+          <Col className='center'>
             Bạn Đã Chưa Tài Khoản? <NavLink to='/sign-up'>Đăng Ký</NavLink>
           </Col>
         </Form>

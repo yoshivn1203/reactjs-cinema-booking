@@ -55,6 +55,11 @@ const userSlice = createSlice({
     toggleRegister: (state) => {
       state.isRegistered = false;
     },
+    updateUser: (state, { payload }) => {
+      state.userInfo = payload;
+      addUserToLocalStorage(payload);
+      toast.success('Cập nhật thành công');
+    },
   },
   extraReducers: {
     [loginUser.pending]: (state) => {},
@@ -77,5 +82,5 @@ const userSlice = createSlice({
     },
   },
 });
-export const { logoutUser, toggleRegister } = userSlice.actions;
+export const { logoutUser, toggleRegister, updateUser } = userSlice.actions;
 export default userSlice.reducer;

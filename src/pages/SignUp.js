@@ -23,6 +23,14 @@ const validateMessages = {
   },
 };
 
+const layout = {
+  labelCol: {
+    span: 24,
+  },
+  wrapperCol: {
+    span: 24,
+  },
+};
 const SignUp = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -46,6 +54,7 @@ const SignUp = () => {
       <div className='card'>
         <h1 className='center mb-2'>Đăng Ký</h1>
         <Form
+          {...layout}
           name='nest-messages'
           onFinish={onFinish}
           validateMessages={validateMessages}
@@ -124,7 +133,7 @@ const SignUp = () => {
               Về Trang Chủ
             </Button>
           </div>
-          <Col span={18} offset={6} className='center'>
+          <Col className='center'>
             Bạn Đã Có Tài Khoản? <NavLink to='/sign-in'>Đăng Nhập</NavLink>
           </Col>
         </Form>
@@ -151,7 +160,6 @@ export const Wrapper = styled.div`
     background-color: var(--darker-transparent);
     padding: 2rem;
     border-radius: 30px;
-
     .ant-form-item {
       padding: 0 2rem;
       label {

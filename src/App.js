@@ -13,16 +13,21 @@ import {
   News,
   Events,
   Profile,
-  BookingHistory,
 } from './pages';
 import SharedLayout from './sharedLayout/HomeLayout';
 import NoUserProtected from './protectedRoutes/NoUserProtected';
 import UserProtected from './protectedRoutes/UserProtected';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 function App() {
   const { isLoading } = useSelector((state) => state.ui);
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
   return (
-    <>
+    <ThemeProvider theme={darkTheme}>
       {isLoading && <LoadingSpinner />}
       <ScrollToTop />
       <ToastContainer />
@@ -35,7 +40,6 @@ function App() {
           <Route element={<UserProtected />}>
             <Route path='/showTime/:id' element={<BookingTickets />} />
             <Route path='/profile' element={<Profile />} />
-            <Route path='/booking-history' element={<BookingHistory />} />
           </Route>
         </Route>
         <Route element={<NoUserProtected />}>
@@ -43,7 +47,7 @@ function App() {
           <Route path='/sign-in' element={<SignIn />} />
         </Route>
       </Routes>
-    </>
+    </ThemeProvider>
   );
 }
 

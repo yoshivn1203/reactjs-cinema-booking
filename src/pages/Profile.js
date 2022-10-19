@@ -6,7 +6,7 @@ import 'antd/lib/tabs/style/index.css';
 import 'antd/lib/grid/style/index.css';
 import LoadingSpinner from '../components/UI/LoadingSpinner';
 import UserInfo from '../components/Profile/UserInfo';
-
+import BookingHistory from '../components/Profile/BookingHistory';
 const Profile = () => {
   const [userInfo, setUserInfo] = useState();
 
@@ -30,7 +30,7 @@ const Profile = () => {
           <UserInfo userInfo={userInfo} />
         </Tabs.TabPane>
         <Tabs.TabPane tab='Lịch Sử Đặt Vé' key='2'>
-          <div>ádasdasd</div>
+          <BookingHistory userInfo={userInfo} />
         </Tabs.TabPane>
       </Tabs>
     </Wrapper>

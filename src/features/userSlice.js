@@ -50,7 +50,7 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       state.userInfo = null;
       removeUserFromLocalStorage();
-      toast.success('Bạn đã đăng xuất');
+      toast('✔️ Bạn đã đăng xuất');
     },
     toggleRegister: (state) => {
       state.isRegistered = false;
@@ -58,7 +58,7 @@ const userSlice = createSlice({
     updateUser: (state, { payload }) => {
       state.userInfo = payload;
       addUserToLocalStorage(payload);
-      toast.success('Cập nhật thành công');
+      toast('✔️ Cập nhật thành công');
     },
   },
   extraReducers: {
@@ -67,7 +67,7 @@ const userSlice = createSlice({
       state.userInfo = payload;
       state.isRegistered = false;
       addUserToLocalStorage(payload);
-      toast.success(`Đăng nhập thành công`);
+      toast(`✔️ Đăng nhập thành công`);
     },
     [loginUser.rejected]: (state, { payload }) => {
       toast.error(payload);
@@ -75,7 +75,7 @@ const userSlice = createSlice({
     [registerUser.pending]: (state) => {},
     [registerUser.fulfilled]: (state, { payload }) => {
       state.isRegistered = true;
-      toast.success(`Đăng ký tài khoản thành công, xin vui lòng đăng nhập`);
+      toast(`✔️ Đăng ký tài khoản thành công, xin vui lòng đăng nhập`);
     },
     [registerUser.rejected]: (state, { payload }) => {
       toast.error(payload);

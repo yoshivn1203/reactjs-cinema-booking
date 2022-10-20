@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -9,39 +9,29 @@ import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 import { FaCcVisa } from 'react-icons/fa';
 import { GiMoneyStack } from 'react-icons/gi';
 import { useSelector, useDispatch } from 'react-redux';
 import { seatActions } from '../features/seatSlice';
-import { loading, finishLoading } from '../features/uiSlice';
 import bg from '../assets/jungle-compressed.jpg';
 import { useParams } from 'react-router-dom';
 import Seats from '../components/BookingTicket/Seats';
 import BookingInfo from '../components/BookingTicket/BookingInfo';
-import { getTicketRoomInfo } from '../services/movies';
+import { getTicketRoomInfo, bookingMovie } from '../services/moviesApi';
+import useFetch from '../hooks/useFetch';
+import { finishLoading, loading } from '../features/uiSlice';
 
 const BookingTickets = () => {
+  const { id } = useParams();
+  const { state } = useFetch(getTicketRoomInfo, id);
   const [activeStep, setActiveStep] = useState(0);
   const [checked, setChecked] = useState(false);
 
-  const { selectedSeats, selectedVipSeats } = useSelector((state) => state.seat);
+  const { selectedSeats, selectedVipSeats, bookingData } = useSelector(
+    (state) => state.seat
+  );
   const dispatch = useDispatch();
-
-  const { id } = useParams();
-  const [movieInfo, setMovieInfo] = useState({});
-  const [seatInfo, setSeatInfo] = useState([]);
-
-  useEffect(() => {
-    const fetchShowTime = async () => {
-      dispatch(loading());
-      const result = await getTicketRoomInfo(id);
-      // console.log(result.data.content);
-      setMovieInfo(result.data.content.thongTinPhim);
-      setSeatInfo(result.data.content.danhSachGhe);
-      dispatch(finishLoading());
-    };
-    fetchShowTime();
-  }, [dispatch, id]);
 
   const steps = ['Chọn ghế', 'Chọn phương thức thanh toán', 'Hoàn thành'];
 
@@ -65,14 +55,25 @@ const BookingTickets = () => {
     dispatch(seatActions.reset());
   };
 
+  const handleBooking = async () => {
+    try {
+      dispatch(loading);
+      await bookingMovie({
+        maLichChieu: id,
+        danhSachVe: bookingData,
+      });
+      dispatch(finishLoading);
+    } catch (error) {
+      console.log(error);
+    }
+    toast('✔️ Đặt vé thành công');
+    handleNext();
+  };
+
   const getStepContent = (step) => {
     switch (step) {
       case 0:
-        return (
-          <>
-            <Seats data={seatInfo} />
-          </>
-        );
+        return <>{state && <Seats data={state.danhSachGhe} />}</>;
       case 1:
         return (
           <div id='payment-method'>
@@ -87,7 +88,7 @@ const BookingTickets = () => {
               sx={{ mt: 4 }}
               disabled={!checked}
               variant='contained'
-              onClick={handleNext}
+              onClick={handleBooking}
             >
               <GiMoneyStack />
               Thanh Toán Tại Quầy
@@ -162,25 +163,24 @@ const BookingTickets = () => {
                 <Typography component='span'>{getStepContent(index)}</Typography>
                 <Box>
                   <div>
-                    {index !== 1 && (
-                      <Button
-                        id='primary-btn'
-                        variant='contained'
-                        onClick={index === steps.length - 1 ? handleReset : handleNext}
-                        sx={{ mr: 1 }}
-                      >
-                        {index === steps.length - 1 ? 'Hoàn Thành' : 'Tiếp Tục'}
-                      </Button>
-                    )}
-
                     {index === 0 && (
-                      <Button
-                        style={{ color: 'var(--primary-white)', border: '1px solid' }}
-                        variant='outlined'
-                        onClick={() => dispatch(seatActions.reset())}
-                      >
-                        bỏ chọn tất cả
-                      </Button>
+                      <>
+                        <Button
+                          id='primary-btn'
+                          variant='contained'
+                          onClick={handleNext}
+                          sx={{ mr: 1 }}
+                        >
+                          Tiếp Tục
+                        </Button>
+                        <Button
+                          style={{ color: 'var(--primary-white)', border: '1px solid' }}
+                          variant='outlined'
+                          onClick={() => dispatch(seatActions.reset())}
+                        >
+                          bỏ chọn tất cả
+                        </Button>
+                      </>
                     )}
                     {index === 1 && (
                       <Button
@@ -192,6 +192,16 @@ const BookingTickets = () => {
                         &larr; trở về
                       </Button>
                     )}
+                    {index === 2 && (
+                      <Button
+                        id='primary-btn'
+                        variant='contained'
+                        onClick={handleReset}
+                        sx={{ mr: 1 }}
+                      >
+                        Hoàn Thành
+                      </Button>
+                    )}
                   </div>
                 </Box>
               </StepContent>
@@ -199,7 +209,7 @@ const BookingTickets = () => {
           ))}
         </Stepper>
       </Box>
-      <BookingInfo data={movieInfo} />
+      {state && <BookingInfo data={state.thongTinPhim} />}
     </Wrapper>
   );
 };

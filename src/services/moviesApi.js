@@ -19,10 +19,11 @@ export const getTicketRoomInfo = (showtimeId) => {
   return request.get(`/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${showtimeId}`);
 };
 
-export const bookingApi = (data) => {
-  return request({
-    url: '/QuanLyDatVe/DatVe',
-    method: 'post',
-    data,
-  });
+export const bookingMovie = (data) => {
+  // return request({
+  //   url: '/QuanLyDatVe/DatVe',
+  //   method: 'post',
+  //   data,
+  // });
+  return request.post('/QuanLyDatVe/DatVe', data);
 };

@@ -30,7 +30,7 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       {isLoading && <LoadingSpinner />}
       <ScrollToTop />
-      <ToastContainer />
+      <ToastContainer theme='dark' autoClose={3000} />
       <Routes>
         <Route path='/' element={<SharedLayout />}>
           <Route index element={<Home />} />

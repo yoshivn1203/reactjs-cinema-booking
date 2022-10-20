@@ -1,59 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useDispatch } from 'react-redux';
-import { loading, finishLoading } from '../features/uiSlice';
 import TrailerModal from '../components/UI/Modal';
 import { HeroSlide, MovieSlide, MoviesList, Sidebar } from '../components/Home';
 import { FaSearch } from 'react-icons/fa';
-import { getCinemas, getMovies } from '../services/movies';
+import { getCinemas, getMovies } from '../services/moviesApi';
+import useFetch from '../hooks/useFetch';
 
 const Home = () => {
-  const [movies, setMovies] = useState([]);
+  const { state: movies } = useFetch(getMovies);
+  const { state: cinemas } = useFetch(getCinemas);
   const [searchValue, SetSearchValue] = useState('');
   const [filteredMovies, SetFilteredMovies] = useState([]);
-  const [cinemas, setCinemas] = useState([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchMovies = async () => {
-      dispatch(loading());
-
-      const result = await getMovies();
-      // console.log(result.data.content);
-      setMovies(result.data.content);
-      dispatch(finishLoading());
-    };
-    const fetchCinemas = async () => {
-      dispatch(loading());
-
-      const result = await getCinemas();
-      // console.log(result.data.content);
-      setCinemas(result.data.content);
-      dispatch(finishLoading());
-    };
-
-    fetchMovies();
-    fetchCinemas();
-  }, [dispatch]);
-
-  useEffect(() => {
-    const filtered = movies.filter((m) =>
-      m.tenPhim.toLowerCase().includes(searchValue.toLowerCase().trim())
-    );
-    searchValue.trim() === '' ? SetFilteredMovies(movies) : SetFilteredMovies(filtered);
+    if (movies) {
+      const filtered = movies.filter((m) =>
+        m.tenPhim.toLowerCase().includes(searchValue.toLowerCase().trim())
+      );
+      searchValue.trim() === '' ? SetFilteredMovies(movies) : SetFilteredMovies(filtered);
+    }
   }, [movies, searchValue]);
 
   return (
     <>
       <TrailerModal />
       <HeroSlide />
-      <Sidebar cinemas={cinemas} />
+      {cinemas && <Sidebar cinemas={cinemas} />}
       <Wrapper className='container'>
         <div className='section mb-3'>
           <div className='section__header mb-2'>
             <h2>Phim Sắp Chiếu</h2>
           </div>
-          <MovieSlide movies={movies} />
+          {movies && <MovieSlide movies={movies} />}
           <div className='section__header mb-2'>
             <h2>Phim Đang Chiếu</h2>
             <div className='search'>

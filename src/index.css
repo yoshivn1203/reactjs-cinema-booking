@@ -108,7 +108,7 @@ iframe {
 /* GLOBAL BUTTON ----------------------------------------------------------------*/
 
 /* overwrite Mui button color */
-#primary-btn {
+/* #primary-btn {
   background-color: var(--primary-yellow);
 }
 #primary-btn:hover {
@@ -126,7 +126,7 @@ iframe {
   background-color: var(--secondary-gray);
   pointer-events: auto;
   cursor: not-allowed;
-}
+} */
 
 /* overwrite sweatAlert button color */
 .swal2-actions .swal2-styled.swal2-confirm {

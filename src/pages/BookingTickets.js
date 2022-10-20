@@ -8,14 +8,13 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Checkbox from '@mui/material/Checkbox';
 import Typography from '@mui/material/Typography';
-import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 import { FaCcVisa } from 'react-icons/fa';
 import { GiMoneyStack } from 'react-icons/gi';
 import { useSelector, useDispatch } from 'react-redux';
 import { seatActions } from '../features/seatSlice';
 import bg from '../assets/jungle-compressed.jpg';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Seats from '../components/BookingTicket/Seats';
 import BookingInfo from '../components/BookingTicket/BookingInfo';
 import { getTicketRoomInfo, bookingMovie } from '../services/moviesApi';
@@ -31,6 +30,7 @@ const BookingTickets = () => {
   const { selectedSeats, selectedVipSeats, bookingData } = useSelector(
     (state) => state.seat
   );
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const steps = ['Chọn ghế', 'Chọn phương thức thanh toán', 'Hoàn thành'];
@@ -39,10 +39,7 @@ const BookingTickets = () => {
     if (selectedSeats.length > 0 || selectedVipSeats.length > 0) {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     } else {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Bạn chưa chọn ghế nào',
-      });
+      toast.error('Bạn chưa chọn ghế nào');
     }
   };
 
@@ -78,38 +75,33 @@ const BookingTickets = () => {
         return (
           <div id='payment-method'>
             <Button
-              id='secondary-btn'
               style={{
                 borderRadius: 35,
-                color: `${checked ? 'var(--primary-white)' : 'var(--primary-gray)'}`,
                 padding: '0.75rem 2rem',
                 fontSize: '1rem',
+                fontWeight: 'bold',
+                border: '2px solid',
               }}
               sx={{ mt: 4 }}
               disabled={!checked}
-              variant='contained'
+              variant='outlined'
               onClick={handleBooking}
             >
               <GiMoneyStack />
               Thanh Toán Tại Quầy
             </Button>
             <Button
-              id='primary-btn'
+              color='warning'
               style={{
                 borderRadius: 35,
-                color: `${checked ? 'var(--primary-white)' : 'var(--primary-gray)'}`,
                 padding: '0.75rem 2rem',
                 fontSize: '1rem',
+                fontWeight: 'bold',
               }}
               disabled={!checked}
               variant='contained'
               sx={{ mt: 5, mb: 5 }}
-              onClick={() =>
-                Swal.fire({
-                  icon: 'warning',
-                  title: 'Tính năng này đang được cập nhật',
-                })
-              }
+              onClick={() => toast.error('Tính năng đang được cập nhật')}
             >
               <FaCcVisa />
               Thanh Toán Qua Thẻ
@@ -166,7 +158,7 @@ const BookingTickets = () => {
                     {index === 0 && (
                       <>
                         <Button
-                          id='primary-btn'
+                          color='warning'
                           variant='contained'
                           onClick={handleNext}
                           sx={{ mr: 1 }}
@@ -193,14 +185,24 @@ const BookingTickets = () => {
                       </Button>
                     )}
                     {index === 2 && (
-                      <Button
-                        id='primary-btn'
-                        variant='contained'
-                        onClick={handleReset}
-                        sx={{ mr: 1 }}
-                      >
-                        Hoàn Thành
-                      </Button>
+                      <>
+                        <Button
+                          color='warning'
+                          variant='contained'
+                          onClick={() => navigate('/profile')}
+                          sx={{ mr: 1 }}
+                        >
+                          Xem Lịch Sử Đặt Vé
+                        </Button>
+                        <Button
+                          style={{ color: 'var(--primary-white)', border: '1px solid' }}
+                          variant='outlined'
+                          onClick={() => navigate('/')}
+                          sx={{ mr: 1 }}
+                        >
+                          Về Trang Chủ
+                        </Button>
+                      </>
                     )}
                   </div>
                 </Box>

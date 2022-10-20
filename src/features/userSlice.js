@@ -6,7 +6,7 @@ import {
   getUserFromLocalStorage,
   addUserToLocalStorage,
 } from '../utils/localStorage';
-import { signInApi, signUpApi } from '../services/user';
+import { signInApi, signUpApi } from '../services/userApi';
 import { loading, finishLoading } from './uiSlice';
 
 const initialState = {

@@ -104,36 +104,3 @@ iframe {
     font-size: 60%;
   }
 }
-
-/* GLOBAL BUTTON ----------------------------------------------------------------*/
-
-/* overwrite Mui button color */
-/* #primary-btn {
-  background-color: var(--primary-yellow);
-}
-#primary-btn:hover {
-  background-color: var(--secondary-yellow);
-}
-#primary-btn:disabled {
-  background-color: var(--secondary-gray);
-  pointer-events: auto;
-  cursor: not-allowed;
-}
-#primary-btn:hover:disabled {
-  background-color: var(--secondary-gray);
-}
-#secondary-btn:disabled {
-  background-color: var(--secondary-gray);
-  pointer-events: auto;
-  cursor: not-allowed;
-} */
-
-/* overwrite sweatAlert button color */
-.swal2-actions .swal2-styled.swal2-confirm {
-  background-color: var(--primary-blue);
-}
-.swal2-actions .swal2-styled.swal2-confirm:focus {
-  box-shadow: 0 0 0 3px var(--primary-blue);
-}
-
-/* GLOBAL BUTTON ----------------------------------------------------------------*/

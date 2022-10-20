@@ -20,10 +20,5 @@ export const getTicketRoomInfo = (showtimeId) => {
 };
 
 export const bookingMovie = (data) => {
-  // return request({
-  //   url: '/QuanLyDatVe/DatVe',
-  //   method: 'post',
-  //   data,
-  // });
   return request.post('/QuanLyDatVe/DatVe', data);
 };

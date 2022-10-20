@@ -13,10 +13,5 @@ export const getUserInfoApi = () => {
 };
 
 export const UpdateUserInfoApi = (data) => {
-  // return request({
-  //   url: 'QuanLyNguoiDung/CapNhatThongTinNguoiDung',
-  //   method: 'PUT',
-  //   data,
-  // });
   return request.put('/QuanLyNguoiDung/CapNhatThongTinNguoiDung', data);
 };

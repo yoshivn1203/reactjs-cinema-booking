@@ -1,36 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { getUserInfoApi } from '../services/user';
+import { getUserInfoApi } from '../services/userApi';
 import { Tabs } from 'antd';
 import 'antd/lib/tabs/style/index.css';
 import 'antd/lib/grid/style/index.css';
-import LoadingSpinner from '../components/UI/LoadingSpinner';
 import UserInfo from '../components/Profile/UserInfo';
 import BookingHistory from '../components/Profile/BookingHistory';
+import useFetch from '../hooks/useFetch';
+
 const Profile = () => {
-  const [userInfo, setUserInfo] = useState();
-
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      const result = await getUserInfoApi();
-      // console.log(result.data.content);
-      setUserInfo(result.data.content);
-    };
-    fetchUserInfo();
-  }, []);
-
-  if (!userInfo) {
-    return <LoadingSpinner />;
-  }
+  const { state: userInfo } = useFetch(getUserInfoApi);
 
   return (
     <Wrapper>
       <Tabs defaultActiveKey='1'>
         <Tabs.TabPane tab='Thông Tin Tài Khoản' key='1'>
-          <UserInfo userInfo={userInfo} />
+          {userInfo && <UserInfo userInfo={userInfo} />}
         </Tabs.TabPane>
         <Tabs.TabPane tab='Lịch Sử Đặt Vé' key='2'>
-          <BookingHistory userInfo={userInfo} />
+          {userInfo && <BookingHistory userInfo={userInfo} />}
         </Tabs.TabPane>
       </Tabs>
     </Wrapper>

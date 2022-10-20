@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const format = (time) => {
   const date = new Date(time * 1000);
@@ -22,6 +23,7 @@ const defaultTime = 5 * 60;
 
 const Timer = () => {
   const [time, setTime] = useState(defaultTime);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -32,25 +34,14 @@ const Timer = () => {
     }, 1000);
 
     if (time === 0) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Đã hết thời gian giữ vé, bạn có muốn tiếp tục?',
-        showCancelButton: true,
-        confirmButtonText: 'Tiếp tục đặt vé',
-        cancelButtonText: 'Quay về trang chủ',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setTime(defaultTime);
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-          alert('em chưa làm trang chủ');
-        }
-      });
+      toast.error('Hết thời gian giữ ghế, quay về trang chủ');
+      navigate('/');
     }
 
     return () => {
       clearInterval(timer);
     };
-  }, [time]);
+  }, [time, navigate]);
 
   return (
     <div className='container'>

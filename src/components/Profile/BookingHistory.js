@@ -6,9 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import moment from 'moment';
-import 'moment/locale/vi';
-
+import formatDate from '../../utils/formatDate';
 export default function BookingHistory({ userInfo }) {
   // console.log(userInfo.thongTinDatVe);
 
@@ -49,7 +47,7 @@ export default function BookingHistory({ userInfo }) {
               </TableCell>
               <TableCell>{item.tenPhim}</TableCell>
               <TableCell>{item.Rap}</TableCell>
-              <TableCell>{moment(item.ngayDat).format('LLL')}</TableCell>
+              <TableCell>{formatDate(item.ngayDat)}</TableCell>
               <TableCell>{item.listGhe.join(', ')}</TableCell>
             </TableRow>
           ))}

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment';
-import 'moment/locale/vi';
-
 import styled from 'styled-components';
 import Button from '../UI/Button';
 import { useDispatch } from 'react-redux';
 import { closeSideBar } from '../../features/uiSlice';
+import formatDate from '../../utils/formatDate';
 
 const Cinema = ({ cinemas }) => {
   const [selectedCinema, SetSelectedCinema] = useState('');
@@ -108,7 +106,7 @@ const Cinema = ({ cinemas }) => {
           {showTime?.map((m) => {
             return (
               <option key={m.maLichChieu} value={m.maLichChieu}>
-                {moment(m.ngayChieuGioChieu).format('LLL')}
+                {formatDate(m.ngayChieuGioChieu)}
               </option>
             );
           })}

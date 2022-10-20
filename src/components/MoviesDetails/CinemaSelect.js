@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import moment from 'moment';
-import 'moment/locale/vi';
 import Button from '../UI/Button';
+import formatDate from '../../utils/formatDate';
 
 const CinemaSelect = ({ cinemas }) => {
   const [selectedCinema, SetSelectedCinema] = useState('');
@@ -76,7 +75,7 @@ const CinemaSelect = ({ cinemas }) => {
               {showTime?.map((m) => {
                 return (
                   <option key={m.maLichChieu} value={m.maLichChieu}>
-                    {moment(m.ngayChieuGioChieu).format('LLL')}
+                    {formatDate(m.ngayChieuGioChieu)}
                   </option>
                 );
               })}

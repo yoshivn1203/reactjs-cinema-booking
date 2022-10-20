@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import bg from '../assets/footer-bg.jpg';
-import logo from '../assets/tmovie.png';
+import logo from '../assets/logo2.png';
 
 const Footer = () => {
   return (
@@ -12,26 +12,27 @@ const Footer = () => {
         <div className='footer__content__logo'>
           <div className='logo'>
             <img src={logo} alt='' />
-            <Link to='/'>tMovies</Link>
+            <Link to='/'>Cyber</Link>
           </div>
         </div>
         <div className='footer__content__menus'>
           <div className='footer__content__menu'>
-            <Link to='/'>Home</Link>
-            <Link to='/'>Contact us</Link>
-            <Link to='/'>Term of services</Link>
-            <Link to='/'>About us</Link>
+            <Link to='/'>Giới Thiệu</Link>
+            <Link to='/'>Tiện Ích Online</Link>
+            <Link to='/'>Thẻ Quà Tặng</Link>
+            <Link to='/'>Tuyển Dụng</Link>
           </div>
           <div className='footer__content__menu'>
-            <Link to='/'>Live</Link>
-            <Link to='/'>FAQ</Link>
-            <Link to='/'>Premium</Link>
-            <Link to='/'>Pravacy policy</Link>
+            <Link to='/'>Điều Khoản Chung</Link>
+            <Link to='/'>Điều Khoản Giao Dịch</Link>
+            <Link to='/'>Chính Sách Thanh Toán</Link>
+            <Link to='/'>Chính Sách Bảo Mật</Link>
           </div>
           <div className='footer__content__menu'>
-            <Link to='/'>You must watch</Link>
-            <Link to='/'>Recent release</Link>
-            <Link to='/'>Top IMDB</Link>
+            <Link to='/'>Câu Hỏi Thường Gặp</Link>
+            <Link to='/'>Chăm Sóc Khách Hàng</Link>
+            <Link to='/'>Bình Luận Phim</Link>
+            <Link to='/'>Góp Ý</Link>
           </div>
         </div>
       </div>
@@ -48,7 +49,7 @@ const Wrapper = styled.div`
     background-repeat: no-repeat;
 
     .footer__content {
-      max-width: 1000px;
+      max-width: 1200px;
 
       .footer__content__logo {
         .logo {
@@ -58,7 +59,7 @@ const Wrapper = styled.div`
           align-items: center;
           img {
             margin-right: 10px;
-            width: 50px;
+            width: 60px;
           }
         }
         display: flex;
@@ -69,10 +70,10 @@ const Wrapper = styled.div`
 
       .footer__content__menus {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, auto);
 
-        @media only screen and (max-width: 600px) {
-          grid-template-columns: repeat(2, 1fr);
+        @media only screen and (max-width: 800px) {
+          grid-template-columns: repeat(2, auto);
         }
       }
 

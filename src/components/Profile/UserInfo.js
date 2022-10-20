@@ -3,7 +3,7 @@ import { Col, Form, Input, Row } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import Button, { OutlineButton } from '../UI/Button';
 import { MOVIE_GROUP_ID } from '../../utils/common';
-import { signInApi, UpdateUserInfoApi } from '../../services/user';
+import { signInApi, UpdateUserInfoApi } from '../../services/userApi';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../features/userSlice';
 import { finishLoading, loading } from '../../features/uiSlice';

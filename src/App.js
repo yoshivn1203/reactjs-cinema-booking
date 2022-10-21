@@ -46,8 +46,8 @@ function App() {
           </Route>
         </Route>
         <Route element={<NoUserProtected />}>
-          <Route path='sign-up' element={<SignUp />} />
-          <Route path='sign-in' element={<SignIn />} />
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/sign-in' element={<SignIn />} />
         </Route>
         <Route path='/admin' element={<AdminLayout />}>
           <Route index element={<UserManagement />} />

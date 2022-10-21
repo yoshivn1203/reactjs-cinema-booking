@@ -8,7 +8,7 @@ import Events from './Events';
 import Profile from './Profile';
 import MoviesManagement from './Admin/MoviesManagement';
 import UserManagement from './Admin/UserManagement';
-
+import UnderMaintenance from './Admin/UnderMaintenance';
 export {
   BookingTickets,
   Home,
@@ -20,4 +20,5 @@ export {
   Profile,
   MoviesManagement,
   UserManagement,
+  UnderMaintenance,
 };

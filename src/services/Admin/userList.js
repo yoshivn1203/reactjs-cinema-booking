@@ -1,16 +1,13 @@
-import { request } from "../axios.configs";
-
+import { MOVIE_GROUP_ID } from '../../utils/common';
+import { request } from '../axios.configs';
 export const fetchUserListApi = () => {
-  return request({
-    url: "/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02",
-    method: "GET",
-  });
+  return request.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${MOVIE_GROUP_ID}`);
 };
 
 export const deleteUserApi = (taiKhoan) => {
   return request({
     url: `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
-    method: "DELETE",
+    method: 'DELETE',
     TaiKhoan: taiKhoan,
   });
 };
@@ -18,7 +15,7 @@ export const deleteUserApi = (taiKhoan) => {
 export const UpdateUserApi = (data) => {
   return request({
     url: `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
-    method: "POST",
+    method: 'POST',
     data,
   });
 };
@@ -26,14 +23,14 @@ export const UpdateUserApi = (data) => {
 export const fetchSearchUserApi = (tuKhoa) => {
   return request({
     url: `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02&tuKhoa=${tuKhoa}`,
-    method: "GET",
+    method: 'GET',
   });
 };
 
 export const addUserApi = (data) => {
   return request({
     url: `/QuanLyNguoiDung/ThemNguoiDung`,
-    method: "POST",
+    method: 'POST',
     data,
   });
 };

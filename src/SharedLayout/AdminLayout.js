@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { BsPersonFill, BsChevronDown } from 'react-icons/bs';
+import { BsPersonFill, BsChevronDown, BsFillBugFill } from 'react-icons/bs';
+import { BiSupport } from 'react-icons/bi';
 import { RiMovieFill } from 'react-icons/ri';
 import { AiFillSchedule } from 'react-icons/ai';
 import logo from '../assets/logo3.png';
 import { RiMenu2Fill } from 'react-icons/ri';
 import { useSelector } from 'react-redux';
+import { OutlineButton } from '../components/UI/Button';
 
 const items = [
   {
@@ -24,15 +26,25 @@ const items = [
       },
       {
         title: 'Thêm Phim Mới',
-        path: '/add-movie',
+        path: 'add-movie',
       },
     ],
   },
-
   {
     title: 'Lịch Chiếu',
     icon: <AiFillSchedule />,
-    path: '/show-time',
+    path: 'show-time',
+  },
+
+  {
+    title: 'Hỗ Trợ',
+    icon: <BiSupport />,
+    path: 'support',
+  },
+  {
+    title: 'Báo Cáo Lỗi',
+    icon: <BsFillBugFill />,
+    path: 'report-bug',
   },
 ];
 
@@ -77,6 +89,7 @@ const SidebarItem = ({ item }) => {
 export default function AdminLayout() {
   const [openSidebar, SetOpenSidebar] = useState(true);
   const { userInfo } = useSelector((store) => store.user);
+  const navigate = useNavigate();
   return (
     <Wrapper>
       <div className={`sidebar ${openSidebar ? 'open' : ''}`}>
@@ -87,6 +100,11 @@ export default function AdminLayout() {
         {items.map((item, index) => (
           <SidebarItem key={index} item={item} />
         ))}
+        <div className='btn-container'>
+          <OutlineButton className='small' onClick={() => navigate('/')}>
+            Về Trang Chủ
+          </OutlineButton>
+        </div>
       </div>
       <div className='main'>
         <div className='navbar'>
@@ -94,7 +112,7 @@ export default function AdminLayout() {
             <RiMenu2Fill />
           </button>
           <h2>Dashboard</h2>
-          <h2>Hello {userInfo.taiKhoan}</h2>
+          <h3>Hello {userInfo.taiKhoan}</h3>
         </div>
         <div className='content'>
           <Outlet />
@@ -124,12 +142,12 @@ const Wrapper = styled.div`
 
   .sidebar {
     z-index: 1;
-    /* padding-top: 5rem; */
     min-height: 100vh;
     height: 100%;
     width: 16rem;
     flex-shrink: 0;
-    background-color: #001529;
+
+    background-color: #1e1e1e;
     height: 100%;
     overflow: auto;
     transition: all 0.3s linear;
@@ -211,15 +229,19 @@ const Wrapper = styled.div`
     text-decoration: underline;
   }
   .sidebar-item.active {
-    color: var(--secondary-blue);
+    color: var(--primary-yellow);
     font-weight: bold;
     text-decoration: underline;
+  }
+  .btn-container {
+    margin-top: 10rem;
+    text-align: center;
   }
 
   .navbar {
     width: 100%;
     height: 5rem;
-    background-color: #001529;
+    background-color: #1e1e1e;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -233,5 +255,8 @@ const Wrapper = styled.div`
       border: none;
       cursor: pointer;
     }
+  }
+  .content {
+    padding: 1.5rem;
   }
 `;

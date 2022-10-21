@@ -15,6 +15,7 @@ import {
   Profile,
   MoviesManagement,
   UserManagement,
+  UnderMaintenance,
 } from './pages';
 import HomeLayout from './sharedLayout/HomeLayout';
 import AdminLayout from './sharedLayout/AdminLayout';
@@ -52,6 +53,8 @@ function App() {
         <Route path='/admin' element={<AdminLayout />}>
           <Route index element={<UserManagement />} />
           <Route path='movies-management' element={<MoviesManagement />} />
+          <Route path='support' element={<UnderMaintenance />} />
+          <Route path='report-bug' element={<UnderMaintenance />} />
         </Route>
       </Routes>
     </ThemeProvider>

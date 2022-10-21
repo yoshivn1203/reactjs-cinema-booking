@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import bg from '../assets/footer-bg.jpg';
-import logo from '../assets/logo2.png';
+import logo from '../assets/logo3.png';
 
 const Footer = () => {
   return (
@@ -59,7 +59,7 @@ const Wrapper = styled.div`
           align-items: center;
           img {
             margin-right: 10px;
-            width: 60px;
+            width: 3.5rem;
           }
         }
         display: flex;

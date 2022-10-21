@@ -3,21 +3,19 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { logoutUser } from '../features/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { MdOutlineArrowDropDown } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 
-export default function BasicMenu() {
+export default function BasicMenu({ userInfo }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { userInfo } = useSelector((store) => store.user);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   return (
     <div>
       <Button
@@ -38,6 +36,16 @@ export default function BasicMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
+        {userInfo.maLoaiNguoiDung === 'QuanTri' && (
+          <MenuItem
+            onClick={() => {
+              navigate('/admin');
+              setAnchorEl(null);
+            }}
+          >
+            Quản Trị
+          </MenuItem>
+        )}
         <MenuItem
           onClick={() => {
             navigate('/profile');

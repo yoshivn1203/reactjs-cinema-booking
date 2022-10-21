@@ -47,11 +47,6 @@ const BookingTickets = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-    dispatch(seatActions.reset());
-  };
-
   const handleBooking = async () => {
     try {
       dispatch(loading);

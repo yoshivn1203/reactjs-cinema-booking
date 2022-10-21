@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import styled from 'styled-components';
-import logo from '../assets/logo2.png';
+import logo from '../assets/logo3.png';
 import { useSelector } from 'react-redux';
 
 const headerNav = [
@@ -57,7 +57,7 @@ const Header = () => {
           ))}
         </ul>
         {userInfo ? (
-          <Dropdown />
+          <Dropdown userInfo={userInfo} />
         ) : (
           <ul className='login'>
             <li>
@@ -88,11 +88,11 @@ const Wrapper = styled.div`
     font-size: 2rem;
     font-weight: 600;
     display: flex;
-    align-items: start;
+    align-items: center;
 
     img {
       margin-right: 10px;
-      width: 60px;
+      width: 50px;
 
       @media only screen and (max-width: 600px) {
         width: 30px;
@@ -152,9 +152,6 @@ const Wrapper = styled.div`
   }
 
   @media only screen and (max-width: 1024px) {
-    .logo {
-      align-items: center;
-    }
     .header__nav {
       position: fixed;
       bottom: -2px;
@@ -172,6 +169,11 @@ const Wrapper = styled.div`
       li:nth-child(n + 2) {
         margin-left: 0;
       }
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .logo {
+      gap: 0.5rem;
     }
   }
 `;

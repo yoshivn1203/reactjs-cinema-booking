@@ -13,8 +13,11 @@ import {
   News,
   Events,
   Profile,
+  MoviesManagement,
+  UserManagement,
 } from './pages';
-import SharedLayout from './sharedLayout/HomeLayout';
+import HomeLayout from './sharedLayout/HomeLayout';
+import AdminLayout from './sharedLayout/AdminLayout';
 import NoUserProtected from './protectedRoutes/NoUserProtected';
 import UserProtected from './protectedRoutes/UserProtected';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -32,19 +35,23 @@ function App() {
       <ScrollToTop />
       <ToastContainer theme='dark' autoClose={3000} />
       <Routes>
-        <Route path='/' element={<SharedLayout />}>
+        <Route path='/' element={<HomeLayout />}>
           <Route index element={<Home />} />
-          <Route path='/movies/:id' element={<MoviesDetails />} />
-          <Route path='/news' element={<News />} />
-          <Route path='/events' element={<Events />} />
+          <Route path='movies/:id' element={<MoviesDetails />} />
+          <Route path='news' element={<News />} />
+          <Route path='events' element={<Events />} />
           <Route element={<UserProtected />}>
-            <Route path='/showTime/:id' element={<BookingTickets />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='showTime/:id' element={<BookingTickets />} />
+            <Route path='profile' element={<Profile />} />
           </Route>
         </Route>
         <Route element={<NoUserProtected />}>
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/sign-in' element={<SignIn />} />
+          <Route path='sign-up' element={<SignUp />} />
+          <Route path='sign-in' element={<SignIn />} />
+        </Route>
+        <Route path='/admin' element={<AdminLayout />}>
+          <Route index element={<UserManagement />} />
+          <Route path='movies-management' element={<MoviesManagement />} />
         </Route>
       </Routes>
     </ThemeProvider>

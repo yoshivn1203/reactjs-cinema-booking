@@ -20,10 +20,10 @@ const layout = {
 /* eslint-disable no-template-curly-in-string */
 
 const validateMessages = {
-  required: '${label} is required!',
-  pattern: { mismatch: '${label} is not valid' },
+  required: '${label} không được bỏ trống!',
+  pattern: { mismatch: '${label} không hợp lệ' },
   types: {
-    email: '${label} is not a valid email!',
+    email: '${label} không hợp lệ!',
     number: '${label} is not a valid number!',
   },
   number: {
@@ -103,7 +103,7 @@ const UserInfo = ({ userInfo }) => {
                   pattern:
                     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
                   message:
-                    'Password must have at least 8 characters, 1 letter, 1 number and 1 special character',
+                    'Mật khẩu phải có ít nhất 8 ký tự, 1 chữ cái, 1 số and 1 ký tự đặc biệt',
                 },
               ]}
               validateTrigger='onBlur'

@@ -6,5 +6,18 @@ import SignUp from './SignUp';
 import News from './News';
 import Events from './Events';
 import Profile from './Profile';
+import MoviesManagement from './Admin/MoviesManagement';
+import UserManagement from './Admin/UserManagement';
 
-export { BookingTickets, Home, MoviesDetails, SignIn, SignUp, News, Events, Profile };
+export {
+  BookingTickets,
+  Home,
+  MoviesDetails,
+  SignIn,
+  SignUp,
+  News,
+  Events,
+  Profile,
+  MoviesManagement,
+  UserManagement,
+};

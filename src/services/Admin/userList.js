@@ -1,7 +1,20 @@
 import { MOVIE_GROUP_ID } from '../../utils/common';
 import { request } from '../axios.configs';
-export const fetchUserListApi = () => {
-  return request.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${MOVIE_GROUP_ID}`);
+
+export const fetchUserListApi = (page, rowsPerPage) => {
+  return request.get(
+    `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${MOVIE_GROUP_ID}&soTrang=${
+      page + 1
+    }&soPhanTuTrenTrang=${rowsPerPage}`
+  );
+};
+
+export const fetchSearchUserApi = (page, rowsPerPage, searchValue) => {
+  return request.get(
+    `/QuanLyNguoiDung/TimKiemNguoiDungPhanTrang?MaNhom=${MOVIE_GROUP_ID}&tuKhoa=${searchValue.trim()}&soTrang=${
+      page + 1
+    }&soPhanTuTrenTrang=${rowsPerPage}`
+  );
 };
 
 export const deleteUserApi = (taiKhoan) => {
@@ -17,13 +30,6 @@ export const UpdateUserApi = (data) => {
     url: `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
     method: 'POST',
     data,
-  });
-};
-
-export const fetchSearchUserApi = (tuKhoa) => {
-  return request({
-    url: `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP02&tuKhoa=${tuKhoa}`,
-    method: 'GET',
   });
 };
 

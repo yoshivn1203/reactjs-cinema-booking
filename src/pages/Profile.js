@@ -4,6 +4,7 @@ import { getUserInfoApi } from '../services/userApi';
 import { Tabs } from 'antd';
 import 'antd/lib/tabs/style/index.css';
 import 'antd/lib/grid/style/index.css';
+
 import UserInfo from '../components/Profile/UserInfo';
 import BookingHistory from '../components/Profile/BookingHistory';
 import useFetch from '../hooks/useFetch';

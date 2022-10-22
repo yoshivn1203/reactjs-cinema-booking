@@ -16,6 +16,7 @@ import {
   MoviesManagement,
   UserManagement,
   UnderMaintenance,
+  AddAndEditUsers,
 } from './pages';
 import HomeLayout from './sharedLayout/HomeLayout';
 import AdminLayout from './sharedLayout/AdminLayout';
@@ -53,6 +54,7 @@ function App() {
         <Route path='/admin' element={<AdminLayout />}>
           <Route index element={<UserManagement />} />
           <Route path='movies-management' element={<MoviesManagement />} />
+          <Route path='add-edit-user' element={<AddAndEditUsers />} />
           <Route path='support' element={<UnderMaintenance />} />
           <Route path='report-bug' element={<UnderMaintenance />} />
         </Route>

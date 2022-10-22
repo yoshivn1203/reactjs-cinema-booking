@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -17,40 +17,51 @@ import {
   AiOutlinePlusCircle,
 } from 'react-icons/ai';
 import Button from '@mui/material/Button';
-import { request } from '../../services/axios.configs';
-import { MOVIE_GROUP_ID } from '../../utils/common';
+import { toast } from 'react-toastify';
 import LoadingSpinner from '../../components/UI/LoadingSpinner';
+import {
+  fetchSearchUserApi,
+  fetchUserListApi,
+  deleteUserApi,
+} from '../../services/Admin/userList';
+import { useNavigate } from 'react-router-dom';
 
 const UserManagement = () => {
   const [user, setUser] = useState();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
-  useEffect(() => {
-    const fetchList = async () => {
-      const result = await request.get(
-        `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${MOVIE_GROUP_ID}&soTrang=${
-          page + 1
-        }&soPhanTuTrenTrang=${rowsPerPage}`
-      );
-      setUser(result.data.content);
-    };
-    const fetchSearch = async () => {
-      const result = await request.get(
-        `/QuanLyNguoiDung/TimKiemNguoiDungPhanTrang?MaNhom=${MOVIE_GROUP_ID}&tuKhoa=${searchValue}&soTrang=${
-          page + 1
-        }&soPhanTuTrenTrang=${rowsPerPage}`
-      );
-      setUser(result.data.content);
-    };
-    searchValue.trim() === '' ? fetchList() : fetchSearch();
+  const handleDelete = async (taiKhoan) => {
+    try {
+      await deleteUserApi(taiKhoan);
+      searchValue.trim() === '' ? fetchList() : fetchSearch();
+      toast('✔️ Xóa tài khoản thành công');
+    } catch (error) {
+      toast.error('Lỗi, xin vui lòng thử lại sau');
+      console.log(error);
+    }
+  };
+
+  const fetchList = useCallback(async () => {
+    const result = await fetchUserListApi(page, rowsPerPage);
+    setUser(result.data.content);
+  }, [page, rowsPerPage]);
+
+  const fetchSearch = useCallback(async () => {
+    const result = await fetchSearchUserApi(page, rowsPerPage, searchValue);
+    setUser(result.data.content);
   }, [page, rowsPerPage, searchValue]);
+
+  useEffect(() => {
+    searchValue.trim() === '' ? fetchList() : fetchSearch();
+  }, [fetchList, fetchSearch, searchValue]);
 
   if (!user) return <LoadingSpinner />;
 
@@ -67,7 +78,12 @@ const UserManagement = () => {
           style={{ width: '40%', paddingBottom: '1rem' }}
         />
 
-        <Button color='warning' variant='contained' sx={{ mb: 2 }}>
+        <Button
+          color='warning'
+          variant='contained'
+          sx={{ mb: 2 }}
+          onClick={() => navigate('add-edit-user')}
+        >
           <AiOutlinePlusCircle /> Thêm Tài Khoản
         </Button>
       </div>
@@ -103,7 +119,10 @@ const UserManagement = () => {
                 <TableCell>{item.matKhau}</TableCell>
                 <TableCell>
                   <div className='btns-container'>
-                    <button className='delete-btn' onClick={() => console.log('delete')}>
+                    <button
+                      className='delete-btn'
+                      onClick={() => handleDelete(item.taiKhoan)}
+                    >
                       <AiOutlineDelete /> Xóa
                     </button>
                     <button className='edit-btn' onClick={() => console.log('edit')}>

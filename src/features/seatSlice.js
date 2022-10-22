@@ -33,11 +33,8 @@ const seatSlice = createSlice({
         state.total += giaVe;
       }
     },
-    reset(state) {
-      state.selectedSeats = [];
-      state.selectedVipSeats = [];
-      state.bookingData = [];
-      state.total = 0;
+    reset() {
+      return { ...initialData };
     },
   },
 });

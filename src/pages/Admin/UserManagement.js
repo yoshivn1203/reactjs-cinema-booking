@@ -145,6 +145,7 @@ const UserManagement = () => {
                 rowsPerPage={rowsPerPage}
                 labelRowsPerPage={'Số hàng mỗi trang'}
                 onRowsPerPageChange={handleChangeRowsPerPage}
+                style={{ paddingTop: '2rem' }}
               />
             </TableRow>
           </TableFooter>
@@ -168,6 +169,7 @@ export const Wrapper = styled.div`
     font-size: 1.2rem;
     margin-right: 0.3rem;
   }
+
   .MuiTableCell-head {
     color: var(--primary-yellow);
     font-weight: bold;
@@ -189,17 +191,16 @@ export const Wrapper = styled.div`
       cursor: pointer;
       transition: all 0.3s ease;
       &:hover {
-      transform: scale(1.3);
-    }
+        transform: scale(1.3);
+      }
     }
   }
   .delete-btn {
     color: var(--primary-red);
-   
   }
   .edit-btn {
     color: var(--primary-blue);
-   
+  }
 `;
 
 export default UserManagement;

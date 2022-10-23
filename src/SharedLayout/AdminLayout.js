@@ -14,7 +14,16 @@ const items = [
   {
     title: 'Tài Khoản',
     icon: <BsPersonFill />,
-    path: '/admin',
+    childrens: [
+      {
+        title: 'Quản Lý Tài Khoản',
+        path: '/admin',
+      },
+      {
+        title: 'Thêm / Sửa Tài Khoản',
+        path: 'add-edit-user',
+      },
+    ],
   },
   {
     title: 'Phim',
@@ -25,8 +34,8 @@ const items = [
         path: 'movies-management',
       },
       {
-        title: 'Thêm Phim Mới',
-        path: 'add-movie',
+        title: 'Thêm / Sửa Phim',
+        path: 'add-edit-movie',
       },
     ],
   },
@@ -49,7 +58,7 @@ const items = [
 ];
 
 const SidebarItem = ({ item }) => {
-  const [openSubmenu, SetOpenSubmenu] = useState(false);
+  const [openSubmenu, SetOpenSubmenu] = useState(true);
 
   if (item.childrens) {
     return (
@@ -147,7 +156,7 @@ const Wrapper = styled.div`
     width: 16rem;
     flex-shrink: 0;
 
-    background-color: #1e1e1e;
+    background-color: var(--admin-gray);
     height: 100%;
     overflow: auto;
     transition: all 0.3s linear;
@@ -241,7 +250,7 @@ const Wrapper = styled.div`
   .navbar {
     width: 100%;
     height: 5rem;
-    background-color: #1e1e1e;
+    background-color: var(--admin-gray);
     display: flex;
     justify-content: space-between;
     align-items: center;

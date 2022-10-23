@@ -192,7 +192,7 @@ export const Wrapper = styled.div`
   .ant-form {
     color: var(--primary-white);
     font-size: 1rem;
-    background-color: #1e1e1e;
+    background-color: var(--admin-gray);
     padding: 2rem 0;
     border-radius: 10px;
     a {

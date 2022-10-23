@@ -10,6 +10,8 @@ import MoviesManagement from './Admin/MoviesManagement';
 import UserManagement from './Admin/UserManagement';
 import UnderMaintenance from './Admin/UnderMaintenance';
 import AddAndEditUsers from './Admin/AddAndEditUsers';
+import AddAndEditMovies from './Admin/AddAndEditMovies';
+
 export {
   BookingTickets,
   Home,
@@ -23,4 +25,5 @@ export {
   UserManagement,
   UnderMaintenance,
   AddAndEditUsers,
+  AddAndEditMovies,
 };

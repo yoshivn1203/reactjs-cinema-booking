@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Form, Input, Row, Radio } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
-import Button, { OutlineButton } from '../../components/UI/Button';
+import Button from '../../components/UI/Button';
 import { MOVIE_GROUP_ID } from '../../utils/common';
-import { signInApi, UpdateUserInfoApi } from '../../services/userApi';
 import { useDispatch } from 'react-redux';
-import { updateUser } from '../../features/userSlice';
 import 'antd/lib/radio/style/index.css';
+import { toast } from 'react-toastify';
 
 import styled from 'styled-components';
 
 import { finishLoading, loading } from '../../features/uiSlice';
+import { useLocation } from 'react-router-dom';
+import { addUserApi, updateUserApi } from '../../services/Admin/userList';
 
 const layout = {
   labelCol: {
@@ -35,33 +35,57 @@ const validateMessages = {
   },
 };
 
-const UserInfo = ({ userInfo }) => {
-  // const { matKhau, hoTen, soDT, email, taiKhoan, maLoaiNguoiDung } = userInfo;
+const UserInfo = () => {
+  const location = useLocation();
+  const { state } = location;
   const dispatch = useDispatch();
-  const initialValues = {
+  let initialValues = {
     user: {
       matKhau: '',
       hoTen: '',
-      soDT: '',
+      soDt: '',
       email: '',
       taiKhoan: '',
       maLoaiNguoiDung: '',
     },
   };
+  if (state) {
+    const { matKhau, hoTen, soDt, email, taiKhoan, maLoaiNguoiDung } = state;
+    initialValues = {
+      user: {
+        matKhau,
+        hoTen,
+        soDt,
+        email,
+        taiKhoan,
+        maLoaiNguoiDung,
+      },
+    };
+  }
   const onFinish = async (values) => {
-    console.log(values.user);
-    // const submitUpdateUserInfo = {
-    //   ...values.user,
-    //   maLoaiNguoiDung,
-    //   maNhom: MOVIE_GROUP_ID,
-    // };
-    dispatch(loading());
-    // await UpdateUserInfoApi(submitUpdateUserInfo);
-    dispatch(finishLoading());
+    const submitUpdateUserInfo = {
+      ...values.user,
+      maNhom: MOVIE_GROUP_ID,
+    };
+    try {
+      dispatch(loading());
+      if (state) {
+        await updateUserApi(submitUpdateUserInfo);
+        toast('✔️ Cập nhật người dùng thành công');
+      } else {
+        await addUserApi(submitUpdateUserInfo);
+        toast('✔️ Thêm người dùng thành công');
+      }
+      dispatch(finishLoading());
+    } catch (error) {
+      toast.error('Tên hoặc email đã tồn tại');
+      dispatch(finishLoading());
+    }
   };
 
   return (
     <Wrapper className='user-info'>
+      <h3>{state ? 'Sửa Thông Tin Người Dùng' : 'Thêm Người Dùng Mới'}</h3>
       <Form
         {...layout}
         name='nest-messages'
@@ -83,7 +107,7 @@ const UserInfo = ({ userInfo }) => {
                 },
               ]}
             >
-              <Input />
+              <Input disabled={state ? true : false} />
             </Form.Item>
 
             <Form.Item
@@ -119,7 +143,7 @@ const UserInfo = ({ userInfo }) => {
           </Col>
           <Col span={12}>
             <Form.Item
-              name={['user', 'soDT']}
+              name={['user', 'soDt']}
               label='Số Điện Thoại'
               rules={[
                 {
@@ -150,19 +174,27 @@ const UserInfo = ({ userInfo }) => {
             </Form.Item>
           </Col>
         </Row>
-
-        <Button type='submit' className='small'>
-          Lưu Thông Tin
-        </Button>
+        <Row justify='end'>
+          <Button type='submit' className='medium'>
+            {state ? 'Lưu Thay Đổi' : 'Thêm Người Dùng'}
+          </Button>
+        </Row>
       </Form>
     </Wrapper>
   );
 };
 
 export const Wrapper = styled.div`
+  h3 {
+    color: var(--primary-yellow);
+    margin-bottom: 3rem;
+  }
   .ant-form {
     color: var(--primary-white);
     font-size: 1rem;
+    background-color: #1e1e1e;
+    padding: 2rem 0;
+    border-radius: 10px;
     a {
       text-decoration: underline;
       font-weight: bold;
@@ -174,6 +206,19 @@ export const Wrapper = styled.div`
       color: var(--primary-yellow);
       font-size: 1rem;
     }
+  }
+  .ant-input-disabled {
+    background-color: var(--primary-gray) !important;
+    border-color: var(--primary-gray) !important;
+    color: var(--light-gray) !important;
+  }
+  .ant-input-affix-wrapper-disabled {
+    background-color: var(--primary-gray) !important;
+    border-color: var(--primary-gray) !important;
+  }
+  .medium {
+    margin-top: 1rem;
+    margin-right: 2rem;
   }
 `;
 

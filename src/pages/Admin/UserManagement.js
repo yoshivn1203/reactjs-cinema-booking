@@ -12,7 +12,7 @@ import TextField from '@mui/material/TextField';
 import styled from 'styled-components';
 import {
   AiFillSetting,
-  AiOutlineDelete,
+  AiTwotoneDelete,
   AiFillEdit,
   AiOutlinePlusCircle,
 } from 'react-icons/ai';
@@ -123,9 +123,12 @@ const UserManagement = () => {
                       className='delete-btn'
                       onClick={() => handleDelete(item.taiKhoan)}
                     >
-                      <AiOutlineDelete /> Xóa
+                      <AiTwotoneDelete /> Xóa
                     </button>
-                    <button className='edit-btn' onClick={() => console.log('edit')}>
+                    <button
+                      className='edit-btn'
+                      onClick={() => navigate('add-edit-user', { state: item })}
+                    >
                       <AiFillEdit /> Sửa
                     </button>
                   </div>
@@ -178,23 +181,25 @@ export const Wrapper = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
+    button {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+      transform: scale(1.3);
+    }
+    }
   }
   .delete-btn {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
     color: var(--primary-red);
+   
   }
   .edit-btn {
-    display: flex;
-    align-items: center;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
     color: var(--primary-blue);
-  }
+   
 `;
 
 export default UserManagement;

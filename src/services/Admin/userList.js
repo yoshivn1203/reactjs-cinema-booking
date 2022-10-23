@@ -18,25 +18,13 @@ export const fetchSearchUserApi = (page, rowsPerPage, searchValue) => {
 };
 
 export const deleteUserApi = (taiKhoan) => {
-  return request({
-    url: `/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
-    method: 'DELETE',
-    TaiKhoan: taiKhoan,
-  });
-};
-
-export const UpdateUserApi = (data) => {
-  return request({
-    url: `/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
-    method: 'POST',
-    data,
-  });
+  return request.delete(`/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`);
 };
 
 export const addUserApi = (data) => {
-  return request({
-    url: `/QuanLyNguoiDung/ThemNguoiDung`,
-    method: 'POST',
-    data,
-  });
+  return request.post(`/QuanLyNguoiDung/ThemNguoiDung`, data);
+};
+
+export const updateUserApi = (data) => {
+  return request.post(`/QuanLyNguoiDung/CapNhatThongTinNguoiDung`, data);
 };

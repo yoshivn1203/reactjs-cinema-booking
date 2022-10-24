@@ -35,7 +35,7 @@ const validateMessages = {
   },
 };
 
-const UserInfo = () => {
+const AddAndEditUsers = () => {
   const location = useLocation();
   const { state } = location;
   const dispatch = useDispatch();
@@ -222,4 +222,4 @@ export const Wrapper = styled.div`
   }
 `;
 
-export default UserInfo;
+export default AddAndEditUsers;

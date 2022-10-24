@@ -21,26 +21,18 @@ export const deleteMovieApi = (maPhim) => {
   return request.delete(`/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`);
 };
 
-const addFilmUpLoadApi = (data) => {
-  return request({
-    url: '/QuanLyPhim/ThemPhimUpLoadHinh',
-    method: 'POST',
-    data,
-  });
+export const addMovieApi = (data) => {
+  return request.post('/QuanLyPhim/ThemPhimUpLoadHinh', data);
+};
+
+export const updateMovieApi = (data) => {
+  return request.post('/QuanLyPhim/CapNhatPhimUpload', data);
 };
 
 const fetchFilmDetailApi = (maPhim) => {
   return request({
     url: `/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
     method: 'GET',
-  });
-};
-
-const updateFilmApi = (data) => {
-  return request({
-    url: '/QuanLyPhim/CapNhatPhimUpload',
-    method: 'POST',
-    data,
   });
 };
 

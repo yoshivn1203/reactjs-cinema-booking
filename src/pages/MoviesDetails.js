@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 import styled from 'styled-components';
-import { request } from '../services/axios.configs';
-import { loading, finishLoading } from '../features/uiSlice';
 import { useParams } from 'react-router-dom';
 import bg from '../assets/snow.jpg';
 import casts from '../assets/banner/cast';
 import CinemaSelect from '../components/MoviesDetails/CinemaSelect';
-
+import { getMoviesDetails } from '../services/moviesApi';
+import useFetch from '../hooks/useFetch';
 const MoviesDetails = () => {
-  const [data, setData] = useState({});
-
-  const dispatch = useDispatch();
   const { id } = useParams();
+  const { state: data } = useFetch(getMoviesDetails, id);
 
-  useEffect(() => {
-    const fetchMovie = async () => {
-      dispatch(loading());
-      const result = await request.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
-      // console.log(result.data.content);
-      setData(result.data.content);
-      dispatch(finishLoading());
-    };
-
-    fetchMovie();
-  }, [dispatch, id]);
   return (
     <>
       {data && (

@@ -13,6 +13,11 @@ export const getCinemas = () => {
   );
 };
 
+// for movies detail page
+export const getMoviesDetails = (id) => {
+  return request.get(`QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${id}`);
+};
+
 // Get movies info in ticket room
 
 export const getTicketRoomInfo = (showtimeId) => {

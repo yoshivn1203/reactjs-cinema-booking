@@ -3,7 +3,7 @@ import { request } from '../axios.configs';
 
 export const fetchUserListApi = (page, rowsPerPage) => {
   return request.get(
-    `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?MaNhom=${MOVIE_GROUP_ID}&soTrang=${
+    `/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?maNhom=${MOVIE_GROUP_ID}&soTrang=${
       page + 1
     }&soPhanTuTrenTrang=${rowsPerPage}`
   );

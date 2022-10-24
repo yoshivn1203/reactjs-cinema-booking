@@ -23,7 +23,7 @@ import {
   fetchSearchUserApi,
   fetchUserListApi,
   deleteUserApi,
-} from '../../services/Admin/userList';
+} from '../../services/Admin/adminUserApi';
 import { useNavigate } from 'react-router-dom';
 
 const UserManagement = () => {
@@ -67,7 +67,7 @@ const UserManagement = () => {
 
   return (
     <Wrapper>
-      <h3>Quản Lý Tài Khoản</h3>
+      <h3>Danh Sách Tài Khoản</h3>
       <div className='action'>
         <TextField
           id='standard-basic'
@@ -196,10 +196,10 @@ export const Wrapper = styled.div`
     }
   }
   .delete-btn {
-    color: var(--primary-red);
+    color: var(--secondary-red);
   }
   .edit-btn {
-    color: var(--primary-blue);
+    color: var(--secondary-blue);
   }
 `;
 

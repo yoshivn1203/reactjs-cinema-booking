@@ -16,7 +16,7 @@ const items = [
     icon: <BsPersonFill />,
     childrens: [
       {
-        title: 'Quản Lý Tài Khoản',
+        title: 'Danh Sách Tài Khoản',
         path: '/admin',
       },
       {
@@ -30,7 +30,7 @@ const items = [
     icon: <RiMovieFill />,
     childrens: [
       {
-        title: 'Quản Lý Phim',
+        title: 'Danh Sách Phim',
         path: 'movies-management',
       },
       {

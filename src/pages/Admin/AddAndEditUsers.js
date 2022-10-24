@@ -10,7 +10,7 @@ import styled from 'styled-components';
 
 import { finishLoading, loading } from '../../features/uiSlice';
 import { useLocation } from 'react-router-dom';
-import { addUserApi, updateUserApi } from '../../services/Admin/userList';
+import { addUserApi, updateUserApi } from '../../services/Admin/adminUserApi';
 
 const layout = {
   labelCol: {

@@ -136,9 +136,7 @@ const MoviesManagement = () => {
                     </button>
                     <button
                       className='showtime-btn'
-                      onClick={() =>
-                        navigate('/admin/add-showtime', { state: item.maPhim })
-                      }
+                      onClick={() => navigate('/admin/add-showtime', { state: item })}
                     >
                       <AiFillSchedule />
                       Lịch Chiếu

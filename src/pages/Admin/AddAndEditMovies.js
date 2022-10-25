@@ -5,13 +5,11 @@ import { MOVIE_GROUP_ID } from '../../utils/common';
 import { useDispatch } from 'react-redux';
 import moment from 'moment/moment';
 import { toast } from 'react-toastify';
-
 import styled from 'styled-components';
 import 'antd/lib/input-number/style/index.css';
 import 'antd/lib/switch/style/index.css';
 import { finishLoading, loading } from '../../features/uiSlice';
 import { useLocation } from 'react-router-dom';
-
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';

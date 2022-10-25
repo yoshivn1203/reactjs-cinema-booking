@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { BsPersonFill, BsChevronDown, BsFillBugFill } from 'react-icons/bs';
 import { BiSupport } from 'react-icons/bi';
 import { RiMovieFill } from 'react-icons/ri';
-import { AiFillSchedule } from 'react-icons/ai';
 import logo from '../assets/logo3.png';
 import { RiMenu2Fill } from 'react-icons/ri';
 import { useSelector } from 'react-redux';
@@ -38,11 +37,6 @@ const items = [
         path: 'add-edit-movie',
       },
     ],
-  },
-  {
-    title: 'Lịch Chiếu',
-    icon: <AiFillSchedule />,
-    path: 'add-showtime',
   },
 
   {

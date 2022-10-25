@@ -29,31 +29,14 @@ export const updateMovieApi = (data) => {
   return request.post('/QuanLyPhim/CapNhatPhimUpload', data);
 };
 
-// export const fetchMovieDetailApi = (maPhim) => {
-//   return request({
-//     url: `/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
-//     method: 'GET',
-//   });
-// };
-
 export const fetchCinemaListApi = () => {
-  return request({
-    url: 'QuanLyRap/LayThongTinHeThongRap',
-    method: 'GET',
-  });
+  return request.get('QuanLyRap/LayThongTinHeThongRap');
 };
 
 export const fetchCinemaGroupListApi = (maRap) => {
-  return request({
-    url: `QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maRap}`,
-    method: 'GET',
-  });
+  return request.get(`QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maRap}`);
 };
 
-const createTimeApi = (data) => {
-  return request({
-    url: '/QuanLyDatVe/TaoLichChieu',
-    method: 'POST',
-    data,
-  });
+export const createTimeApi = (data) => {
+  return request.post('/QuanLyDatVe/TaoLichChieu', data);
 };

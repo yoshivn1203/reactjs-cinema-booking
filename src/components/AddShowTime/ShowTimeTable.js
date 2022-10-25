@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { useDispatch } from 'react-redux';
 import { finishLoading, loading } from '../../features/uiSlice';
+import formatDate from '../../utils/formatDate';
 
 const ShowTimeTable = ({ maPhim, flag }) => {
   const [state, setState] = useState();
@@ -63,7 +64,7 @@ const ShowTimeTable = ({ maPhim, flag }) => {
                 </TableCell>
                 <TableCell>{row.tenCumRap}</TableCell>
                 <TableCell>{row.diaChi}</TableCell>
-                <TableCell>{row.thoiGian}</TableCell>
+                <TableCell>{formatDate(row.thoiGian)}</TableCell>
               </TableRow>
             ))}
           </TableBody>

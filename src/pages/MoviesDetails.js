@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import bg from '../assets/snow.jpg';
 import casts from '../assets/banner/cast';
-import CinemaSelect from '../components/MoviesDetails/CinemaSelect';
+import CinemaSelectTest from '../components/MoviesDetails/CinemaSelectTest';
 import { getMoviesDetails } from '../services/moviesApi';
 import useFetch from '../hooks/useFetch';
 const MoviesDetails = () => {
@@ -56,7 +56,7 @@ const MoviesDetails = () => {
                   src={data.trailer}
                 ></iframe>
               </div>
-              <CinemaSelect cinemas={data.heThongRapChieu} />
+              <CinemaSelectTest cinemas={data.heThongRapChieu} />
             </div>
           </div>
           <div className='container'></div>
@@ -204,6 +204,11 @@ const Wrapper = styled.div`
     color: var(--primary-yellow);
     background-color: var(--primary-gray);
     cursor: pointer;
+  }
+  .MuiBox-root {
+    img {
+      width: 5rem;
+    }
   }
 `;
 

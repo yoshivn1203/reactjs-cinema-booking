@@ -36,8 +36,7 @@ const validateMessages = {
 };
 
 const AddAndEditUsers = () => {
-  const location = useLocation();
-  const { state } = location;
+  const { state } = useLocation();
   const dispatch = useDispatch();
   let initialValues = {
     user: {

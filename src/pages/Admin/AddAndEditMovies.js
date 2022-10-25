@@ -242,7 +242,7 @@ const AddAndEditMovies = () => {
         </Row>
         <Row gutter={16} style={{ marginTop: '2rem' }}>
           <Col span={12}>
-            <img src={image} alt='' style={{ marginLeft: '12rem' }} />
+            <img src={image} alt='' style={{ marginLeft: '14rem' }} />
           </Col>
 
           <Col span={6}>

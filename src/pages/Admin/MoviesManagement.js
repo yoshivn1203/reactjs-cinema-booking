@@ -16,6 +16,7 @@ import {
   AiTwotoneDelete,
   AiFillEdit,
   AiOutlinePlusCircle,
+  AiFillSchedule,
 } from 'react-icons/ai';
 import Button from '@mui/material/Button';
 import { toast } from 'react-toastify';
@@ -133,6 +134,15 @@ const MoviesManagement = () => {
                     >
                       <AiFillEdit /> Sửa
                     </button>
+                    <button
+                      className='showtime-btn'
+                      onClick={() =>
+                        navigate('/admin/add-showtime', { state: item.maPhim })
+                      }
+                    >
+                      <AiFillSchedule />
+                      Lịch Chiếu
+                    </button>
                   </div>
                 </TableCell>
               </TableRow>
@@ -205,6 +215,9 @@ export const Wrapper = styled.div`
   }
   .edit-btn {
     color: var(--secondary-blue);
+  }
+  .showtime-btn {
+    color: var(--primary-green);
   }
 `;
 

@@ -18,6 +18,7 @@ import {
   UnderMaintenance,
   AddAndEditUsers,
   AddAndEditMovies,
+  AddShowTime,
 } from './pages';
 import HomeLayout from './sharedLayout/HomeLayout';
 import AdminLayout from './sharedLayout/AdminLayout';
@@ -57,6 +58,7 @@ function App() {
           <Route path='add-edit-user' element={<AddAndEditUsers />} />
           <Route path='movies-management' element={<MoviesManagement />} />
           <Route path='add-edit-movie' element={<AddAndEditMovies />} />
+          <Route path='add-showtime' element={<AddShowTime />} />
           <Route path='support' element={<UnderMaintenance />} />
           <Route path='report-bug' element={<UnderMaintenance />} />
         </Route>

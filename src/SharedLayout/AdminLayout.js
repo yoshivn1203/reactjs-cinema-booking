@@ -42,7 +42,7 @@ const items = [
   {
     title: 'Lịch Chiếu',
     icon: <AiFillSchedule />,
-    path: 'show-time',
+    path: 'add-showtime',
   },
 
   {

@@ -11,6 +11,7 @@ import UserManagement from './Admin/UserManagement';
 import UnderMaintenance from './Admin/UnderMaintenance';
 import AddAndEditUsers from './Admin/AddAndEditUsers';
 import AddAndEditMovies from './Admin/AddAndEditMovies';
+import AddShowTime from './Admin/AddShowTime';
 
 export {
   BookingTickets,
@@ -26,4 +27,5 @@ export {
   UnderMaintenance,
   AddAndEditUsers,
   AddAndEditMovies,
+  AddShowTime,
 };

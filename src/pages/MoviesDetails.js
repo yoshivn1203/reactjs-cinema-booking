@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import bg from '../assets/snow.jpg';
 import casts from '../assets/banner/cast';
-import CinemaSelectTest from '../components/MoviesDetails/CinemaSelectTest';
+import CinemaSelect from '../components/MoviesDetails/CinemaSelect';
 import { getMoviesDetails } from '../services/moviesApi';
 import useFetch from '../hooks/useFetch';
+
 const MoviesDetails = () => {
   const { id } = useParams();
   const { state: data } = useFetch(getMoviesDetails, id);
@@ -56,7 +57,7 @@ const MoviesDetails = () => {
                   src={data.trailer}
                 ></iframe>
               </div>
-              <CinemaSelectTest cinemas={data.heThongRapChieu} />
+              <CinemaSelect cinemas={data.heThongRapChieu} />
             </div>
           </div>
           <div className='container'></div>
@@ -185,30 +186,9 @@ const Wrapper = styled.div`
       }
     }
   }
-  .form-select {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    align-items: center;
-    justify-items: start;
-    gap: 1rem 3rem;
-  }
+
   h1 {
     color: var(--primary-yellow);
-  }
-
-  select {
-    outline: 0;
-    border: 0;
-    border-radius: 10px;
-    padding: 0.5rem 1rem;
-    color: var(--primary-yellow);
-    background-color: var(--primary-gray);
-    cursor: pointer;
-  }
-  .MuiBox-root {
-    img {
-      width: 5rem;
-    }
   }
 `;
 

@@ -8,3 +8,7 @@ export default function formatDate(date) {
 export const formatShortDate = (date) => {
   return moment(date).format('LL');
 };
+
+export const formatDateButton = (date) => {
+  return moment(date).format('ddd - HH:MM');
+};

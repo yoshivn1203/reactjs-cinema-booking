@@ -1,98 +1,158 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from '../UI/Button';
-import formatDate from '../../utils/formatDate';
+import { OutlineButton } from '../UI/Button';
+import { formatDateButton } from '../../utils/formatDate';
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role='tabpanel'
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography component={'span'}>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 const CinemaSelect = ({ cinemas }) => {
   const [selectedCinema, SetSelectedCinema] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState('');
-  const [selectedShowTime, setSelectedShowTime] = useState('');
+  const [value, setValue] = React.useState(0);
   const navigate = useNavigate();
 
   const locations = cinemas?.find((c) => c.maHeThongRap === selectedCinema)?.cumRapChieu;
-  const showTime = locations?.find((l) => l.maCumRap === selectedLocation)?.lichChieuPhim;
-  //   console.log(cinemas);
-
+  // console.log(locations);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
   useEffect(() => {
     if (cinemas?.length > 0) {
       SetSelectedCinema(cinemas[0].maHeThongRap);
     }
   }, [cinemas]);
 
-  useEffect(() => {
-    locations && setSelectedLocation(locations[0].maCumRap);
-    showTime && setSelectedShowTime(showTime[0].maLichChieu);
-    // eslint-disable-next-line
-  }, [selectedCinema]);
-  useEffect(() => {
-    showTime && setSelectedShowTime(showTime[0].maLichChieu);
-    // eslint-disable-next-line
-  }, [selectedLocation]);
-
   return (
-    <>
+    <Wrapper>
       {cinemas?.length > 0 ? (
-        <div className='mb-3'>
-          <h2 className='mb-2'>Đặt Vé</h2>
-          <div className='form-select mb-2'>
-            <h3>Hệ Thống Rạp</h3>
-            <select
-              name='cinema'
-              value={selectedCinema}
-              onChange={(e) => SetSelectedCinema(e.target.value)}
-              className='cinema'
-            >
-              {cinemas?.map((m) => {
+        <Box sx={{ width: '100%' }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label='basic tabs example'>
+              {cinemas?.map((c, i) => {
                 return (
-                  <option key={m.maHeThongRap} value={m.maHeThongRap}>
-                    {m.tenHeThongRap}
-                  </option>
+                  <Tab
+                    key={c.maHeThongRap}
+                    icon={<img src={c.logo} alt='' />}
+                    {...a11yProps(i)}
+                    style={{ minWidth: 50 }}
+                    onClick={() => SetSelectedCinema(c.maHeThongRap)}
+                  />
                 );
               })}
-            </select>
-            <h3>Cụm Rạp</h3>
-            <select
-              name='locations'
-              value={selectedLocation}
-              onChange={(e) => setSelectedLocation(e.target.value)}
-              className='locations'
-            >
-              {locations?.map((m) => {
-                return (
-                  <option key={m.maCumRap} value={m.maCumRap}>
-                    {m.tenCumRap}
-                  </option>
-                );
-              })}
-            </select>
-            <h3>Lịch Chiếu</h3>
-            <select
-              name='showTime'
-              value={selectedShowTime}
-              onChange={(e) => setSelectedShowTime(e.target.value)}
-              className='showTime'
-            >
-              {showTime?.map((m) => {
-                return (
-                  <option key={m.maLichChieu} value={m.maLichChieu}>
-                    {formatDate(m.ngayChieuGioChieu)}
-                  </option>
-                );
-              })}
-            </select>
-          </div>
-          <Button
-            className='medium'
-            onClick={() => navigate(`/showTime/${selectedShowTime}`)}
-          >
-            Đặt Vé
-          </Button>
-        </div>
+            </Tabs>
+          </Box>
+          {cinemas?.map((c, i) => {
+            return (
+              <TabPanel key={c.maHeThongRap} value={value} index={i}>
+                {locations?.map((l) => {
+                  return (
+                    <div key={l.maCumRap} className='cinema-card'>
+                      <h3>{l.tenCumRap}</h3>
+                      <p>{l.diaChi}</p>
+                      <h5>Chọn suất chiếu:</h5>
+                      <div className='btn-container'>
+                        {l.lichChieuPhim.map((q) => {
+                          return (
+                            <OutlineButton
+                              key={q.maLichChieu}
+                              className='small'
+                              onClick={() => navigate(`/showTime/${q.maLichChieu}`)}
+                            >
+                              {formatDateButton(q.ngayChieuGioChieu)}
+                            </OutlineButton>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  );
+                })}
+              </TabPanel>
+            );
+          })}
+        </Box>
       ) : (
-        <h3>Chưa có lịch chiếu cho phim này</h3>
+        <h3>Xin lỗi, hiện chưa có lịch chiếu cho phim này</h3>
       )}
-    </>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  .MuiBox-root {
+    img {
+      width: 4rem;
+    }
+  }
+  @media only screen and (max-width: 800px) {
+    .MuiBox-root {
+      img {
+        width: 3rem;
+      }
+    }
+  }
+  .cinema-card {
+    background-color: var(--secondary-black);
+    border-radius: 10px;
+    h3 {
+      color: var(--primary-yellow);
+    }
+    p {
+      color: var(--light-gray);
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    padding: 1rem;
+    margin-bottom: 1rem;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+  .btn-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 6rem);
+    gap: 1rem;
+    padding-top: 0.5rem;
+    button {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+`;
 
 export default CinemaSelect;

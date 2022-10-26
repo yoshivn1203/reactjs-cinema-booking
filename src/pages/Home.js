@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import TrailerModal from '../components/UI/Modal';
 import { HeroSlide, MovieSlide, MoviesList, Sidebar } from '../components/Home';
@@ -11,6 +11,7 @@ const Home = () => {
   const { state: cinemas } = useFetch(getCinemas);
   const [searchValue, SetSearchValue] = useState('');
   const [filteredMovies, SetFilteredMovies] = useState([]);
+  const myRef = useRef(null);
 
   useEffect(() => {
     if (movies) {
@@ -32,7 +33,7 @@ const Home = () => {
             <h2>Phim Sắp Chiếu</h2>
           </div>
           {movies && <MovieSlide movies={movies} />}
-          <div className='section__header mb-2'>
+          <div ref={myRef} className='section__header mb-2'>
             <h2>Phim Đang Chiếu</h2>
             <div className='search'>
               <form className='search-form'>
@@ -49,7 +50,7 @@ const Home = () => {
               </form>
             </div>
           </div>
-          <MoviesList movies={filteredMovies} />
+          {movies && <MoviesList movies={filteredMovies} myRef={myRef} />}
         </div>
       </Wrapper>
     </>

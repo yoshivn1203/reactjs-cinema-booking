@@ -1,24 +1,47 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { FaLongArrowAltRight } from 'react-icons/fa';
 
 import styled from 'styled-components';
 import MovieCard from './MovieCard';
 
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies, myRef }) => {
   const listMovies = movies.filter((movie) => movie.dangChieu === true);
-  // console.log(listMovies);
+  const [limitedList, setLimitedList] = useState(listMovies);
+  const [showMore, setShowMore] = useState(false);
+
+  useEffect(() => {
+    if (!showMore) {
+      setLimitedList(listMovies.slice(0, 10));
+    } else {
+      setLimitedList(listMovies);
+    }
+    // eslint-disable-next-line
+  }, [showMore, movies]);
 
   return (
-    <Wrapper className='movie-list'>
-      {listMovies.map((movie, i) => (
-        <MovieCard key={i} movie={movie} />
-      ))}
+    <Wrapper>
+      <div className='movie-list'>
+        {limitedList.map((movie, i) => (
+          <MovieCard key={i} movie={movie} />
+        ))}
+      </div>
+      <div className={`toggle-btn ${showMore ? 'showLess' : 'showMore'}`}>
+        <button
+          onClick={() => {
+            setShowMore(!showMore);
+            showMore && myRef.current.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          {showMore ? 'Ẩn Bớt' : 'Xem Thêm'}
+        </button>
+        <FaLongArrowAltRight />
+      </div>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  &.movie-list {
-    margin-bottom: 3rem;
+  .movie-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     justify-content: center;
@@ -27,6 +50,39 @@ const Wrapper = styled.div`
     column-gap: 1rem;
     @media only screen and (max-width: 1024px) {
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+  }
+  .toggle-btn {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    button {
+      background-color: transparent;
+      color: var(--primary-white);
+      border: none;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      color: var(--primary-yellow);
+    }
+    svg {
+      margin-left: 1rem;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+  }
+  .showMore {
+    button:hover + svg {
+      color: var(--primary-yellow);
+      transform: rotate(90deg);
+    }
+  }
+  .showLess {
+    button:hover + svg {
+      color: var(--primary-yellow);
+      transform: rotate(-90deg);
     }
   }
 `;

@@ -5,6 +5,7 @@ import { HeroSlide, MovieSlide, MoviesList, Sidebar } from '../components/Home';
 import { FaSearch } from 'react-icons/fa';
 import { getCinemas, getMovies } from '../services/moviesApi';
 import useFetch from '../hooks/useFetch';
+import ButtonBackToTop from '../components/ButtonBackToTop';
 
 const Home = () => {
   const { state: movies } = useFetch(getMovies);
@@ -26,6 +27,7 @@ const Home = () => {
     <>
       <TrailerModal />
       <HeroSlide />
+      <ButtonBackToTop />
       {cinemas && <Sidebar cinemas={cinemas} />}
       <Wrapper className='container'>
         <div className='section mb-3'>

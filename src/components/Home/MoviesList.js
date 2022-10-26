@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
 import styled from 'styled-components';
@@ -8,7 +8,6 @@ const MoviesList = ({ movies, myRef }) => {
   const listMovies = movies.filter((movie) => movie.dangChieu === true);
   const [limitedList, setLimitedList] = useState(listMovies);
   const [showMore, setShowMore] = useState(false);
-
   useEffect(() => {
     if (!showMore) {
       setLimitedList(listMovies.slice(0, 10));

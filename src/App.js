@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingSpinner from './components/UI/LoadingSpinner';
-import ScrollToTop from './components/ScrollToTop';
+import AutoScrollToTop from './components/AutoScrollToTop';
 import {
   BookingTickets,
   Home,
@@ -19,11 +19,13 @@ import {
   AddAndEditUsers,
   AddAndEditMovies,
   AddShowTime,
+  PageNotFound,
 } from './pages';
 import HomeLayout from './sharedLayout/HomeLayout';
 import AdminLayout from './sharedLayout/AdminLayout';
 import NoUserProtected from './protectedRoutes/NoUserProtected';
 import UserProtected from './protectedRoutes/UserProtected';
+import AdminProtected from './protectedRoutes/AdminProtected';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 function App() {
@@ -36,7 +38,7 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       {isLoading && <LoadingSpinner />}
-      <ScrollToTop />
+      <AutoScrollToTop />
       <ToastContainer theme='dark' autoClose={3000} />
       <Routes>
         <Route path='/' element={<HomeLayout />}>
@@ -53,14 +55,17 @@ function App() {
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/sign-in' element={<SignIn />} />
         </Route>
-        <Route path='/admin' element={<AdminLayout />}>
-          <Route index element={<UserManagement />} />
-          <Route path='add-edit-user' element={<AddAndEditUsers />} />
-          <Route path='movies-management' element={<MoviesManagement />} />
-          <Route path='add-edit-movie' element={<AddAndEditMovies />} />
-          <Route path='add-showtime' element={<AddShowTime />} />
-          <Route path='support' element={<UnderMaintenance />} />
-          <Route path='report-bug' element={<UnderMaintenance />} />
+        <Route element={<AdminProtected />}>
+          <Route path='/admin' element={<AdminLayout />}>
+            <Route index element={<UserManagement />} />
+            <Route path='add-edit-user' element={<AddAndEditUsers />} />
+            <Route path='movies-management' element={<MoviesManagement />} />
+            <Route path='add-edit-movie' element={<AddAndEditMovies />} />
+            <Route path='add-showtime' element={<AddShowTime />} />
+            <Route path='support' element={<UnderMaintenance />} />
+            <Route path='report-bug' element={<UnderMaintenance />} />
+          </Route>
+          <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
     </ThemeProvider>

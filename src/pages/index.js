@@ -12,6 +12,7 @@ import UnderMaintenance from './Admin/UnderMaintenance';
 import AddAndEditUsers from './Admin/AddAndEditUsers';
 import AddAndEditMovies from './Admin/AddAndEditMovies';
 import AddShowTime from './Admin/AddShowTime';
+import PageNotFound from './PageNotFound';
 
 export {
   BookingTickets,
@@ -28,4 +29,5 @@ export {
   AddAndEditUsers,
   AddAndEditMovies,
   AddShowTime,
+  PageNotFound,
 };

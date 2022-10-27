@@ -104,8 +104,14 @@ const Wrapper = styled.div`
     width: 85rem;
     height: 100%;
     z-index: 99;
-    /* background: var(--secondary-gray); */
-    background: url(${bg}), rgb(39, 47, 53);
+    background: url(${bg}),
+      linear-gradient(
+        90deg,
+        rgba(53, 53, 53, 1) 0%,
+        rgba(48, 48, 48, 1) 17%,
+        rgba(32, 32, 32, 1) 100%
+      );
+    box-shadow: var(--sidebar-boxShadow);
     display: grid;
     grid-template-rows: auto 1fr auto;
     row-gap: 1rem;

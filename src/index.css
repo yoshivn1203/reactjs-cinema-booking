@@ -6,7 +6,7 @@
   --primary-white: #fff;
   --primary-black: #0f0f0f;
   --secondary-black: #1f1f1f;
-  --primary-yellow: #f6aa00;
+  --primary-yellow: #ffa00a;
   --secondary-yellow: #e09900;
   --yellow-shadow: #f6a80079;
   --primary-red: #ce0303;
@@ -16,6 +16,7 @@
   --secondary-blue: #50a2ff;
   --primary-gray: #696969;
   --secondary-gray: #a0a0a0;
+  --dark-gray: #333333;
   --admin-gray: #1e1e1e;
   --light-gray: #c2c2c2;
   --primary-transparent: #00000060;
@@ -24,9 +25,6 @@
   --primary-borderRadius: 10px;
   --primary-boxShadow: rgba(255, 255, 255, 0.19) 0px 10px 20px,
     rgba(255, 255, 255, 0.23) 0px 6px 6px;
-  --sidebar-boxShadow: rgba(246, 170, 0, 0.25) 0px 55px 100px,
-    rgba(246, 170, 0, 0.12) 0px -24px 60px, rgba(246, 170, 0, 0.12) 0px 8px 12px,
-    rgba(246, 170, 0, 0.17) 0px 24px 26px, rgba(246, 170, 0, 0.09) 0px -6px 10px;
 }
 
 * {
@@ -70,7 +68,7 @@ iframe {
 }
 
 .container {
-  max-width: 1660px;
+  max-width: 1450px;
   margin: auto;
 }
 

@@ -63,7 +63,7 @@ const Cinema = ({ cinemas }) => {
       </div>
 
       <div className='form-control mb-3'>
-        <h2>Cụm Rạp</h2>
+        <h2>-- Cụm Rạp --</h2>
         <div className='select'>
           <select
             name='location'
@@ -82,7 +82,7 @@ const Cinema = ({ cinemas }) => {
         </div>
       </div>
       <div className='form-control mb-3'>
-        <h2>Chọn Phim</h2>
+        <h2>-- Chọn Phim --</h2>
         <div className='select'>
           <select
             name='movie'
@@ -101,7 +101,7 @@ const Cinema = ({ cinemas }) => {
         </div>
       </div>
       <div className='form-control mb-4'>
-        <h2>Chọn Suất Chiếu</h2>
+        <h2>-- Chọn Suất Chiếu --</h2>
         <div className='select'>
           <select
             name='showTime'
@@ -144,8 +144,9 @@ const Wrapper = styled.div`
       text-align: center;
       width: 6.5rem;
       p {
-        font-size: 0.7rem;
-        color: var(--light-gray);
+        font-size: 0.8rem;
+        font-weight: bold;
+        color: var(--primary-white);
       }
     }
     .logo:first-child {
@@ -160,13 +161,13 @@ const Wrapper = styled.div`
       width: 4rem;
     }
     .selected {
-      background-color: #34495e;
+      background-color: var(--secondary-yellow);
       filter: brightness(100%);
     }
   }
   h1 {
     font-size: 2rem;
-    color: var(--primary-yellow);
+    /* color: var(--primary-yellow); */
     margin-bottom: 3rem;
   }
 
@@ -181,16 +182,19 @@ const Wrapper = styled.div`
     box-shadow: none;
     flex: 1;
     padding: 0 1em;
-    background-color: #2c3e50;
+    background-color: var(--lighter-transparent);
     color: var(--primary-yellow);
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
   }
+  select option {
+    background-color: var(--admin-gray);
+  }
   .select {
     position: relative;
     display: flex;
-    width: 25em;
+    width: 27em;
     height: 3em;
     border-radius: 0.25em;
     overflow: hidden;
@@ -202,7 +206,7 @@ const Wrapper = styled.div`
     top: 0;
     right: 0;
     padding: 1em;
-    background-color: #34495e;
+    background-color: var(--dark-gray);
     transition: 0.25s all ease;
     pointer-events: none;
   }

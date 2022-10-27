@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
 import styled from 'styled-components';
-import MovieCard from './MovieCard';
+import MovieCardForList from './MovieCardForList';
 
 const MoviesList = ({ movies, myRef }) => {
   const listMovies = movies.filter((movie) => movie.dangChieu === true);
@@ -16,12 +16,12 @@ const MoviesList = ({ movies, myRef }) => {
     }
     // eslint-disable-next-line
   }, [showMore, movies]);
-
+  console.log(limitedList);
   return (
     <Wrapper>
       <div className='movie-list'>
         {limitedList.map((movie, i) => (
-          <MovieCard key={i} movie={movie} />
+          <MovieCardForList key={i} movie={movie} />
         ))}
       </div>
       <div className={`toggle-btn ${showMore ? 'showLess' : 'showMore'}`}>
@@ -42,11 +42,11 @@ const MoviesList = ({ movies, myRef }) => {
 const Wrapper = styled.div`
   .movie-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     justify-content: center;
     align-items: stretch;
     row-gap: 3rem;
-    column-gap: 1rem;
+    column-gap: 2rem;
     @media only screen and (max-width: 1024px) {
       grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }

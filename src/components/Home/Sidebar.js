@@ -68,15 +68,15 @@ const Wrapper = styled.div`
     }
   }
 
-  @keyframes bounce {
+  @keyframes jump {
     0% {
-      transform: scale(1);
+      transform: translateY(0%);
     }
     50% {
-      transform: scale(1.1);
+      transform: translateY(15%);
     }
     100% {
-      transform: scale(1);
+      transform: translateY(0%);
     }
   }
 
@@ -111,7 +111,6 @@ const Wrapper = styled.div`
         rgba(48, 48, 48, 1) 17%,
         rgba(32, 32, 32, 1) 100%
       );
-    box-shadow: var(--sidebar-boxShadow);
     display: grid;
     grid-template-rows: auto 1fr auto;
     row-gap: 1rem;

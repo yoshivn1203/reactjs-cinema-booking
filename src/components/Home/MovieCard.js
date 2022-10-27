@@ -20,7 +20,7 @@ const MovieCard = ({ movie }) => {
           Trailer
         </OutlineButton>
       </Wrapper>
-      <h3>{movie.tenPhim}</h3>
+      <h4>{movie.tenPhim}</h4>
     </div>
   );
 };

@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
-
 import { FaTimes } from 'react-icons/fa';
-import { BsFillArrowRightSquareFill } from 'react-icons/bs';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeSideBar, openSideBar } from '../../features/uiSlice';
 import Cinema from './Cinema';
 import bg from '../../assets/pattern.png';
+import ticket1 from '../../assets/ticket5.png';
 
 const Sidebar = ({ cinemas }) => {
   const { isSideBarOpen } = useSelector((store) => store.ui);
   const dispatch = useDispatch();
+  const ticketRef = useRef(null);
+
+  useEffect(() => {
+    const showTicket = () => {
+      if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+        ticketRef.current.classList.add('show');
+      } else {
+        ticketRef.current.classList.remove('show');
+      }
+    };
+    window.addEventListener('scroll', showTicket);
+    return () => {
+      window.removeEventListener('scroll', showTicket);
+    };
+  }, []);
+
   return (
     <Wrapper>
-      <button onClick={() => dispatch(openSideBar())} className='sidebar-toggle'>
-        <BsFillArrowRightSquareFill />
-      </button>
+      <div ref={ticketRef} className='sidebar-toggle'>
+        <img onClick={() => dispatch(openSideBar())} src={ticket1} alt='' />
+      </div>
       <aside className={`${isSideBarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
         <div className='sidebar-header'>
           <button className='close-btn' onClick={() => dispatch(closeSideBar())}>
@@ -34,17 +49,23 @@ const Sidebar = ({ cinemas }) => {
 const Wrapper = styled.div`
   .sidebar-toggle {
     position: fixed;
-    bottom: 5rem;
+    bottom: 6rem;
     left: 1rem;
     z-index: 99;
-
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
+    width: 5rem;
     background: transparent;
     border-color: transparent;
     color: var(--primary-yellow);
     transition: all 0.3s linear;
     cursor: pointer;
-    animation: bounce 2s ease-in-out infinite;
+    animation: jump 2s ease-in-out infinite;
+    display: none;
+    visibility: hidden;
+    &.show {
+      display: block;
+      visibility: visible;
+    }
   }
 
   @keyframes bounce {
@@ -52,7 +73,7 @@ const Wrapper = styled.div`
       transform: scale(1);
     }
     50% {
-      transform: scale(1.15);
+      transform: scale(1.1);
     }
     100% {
       transform: scale(1);

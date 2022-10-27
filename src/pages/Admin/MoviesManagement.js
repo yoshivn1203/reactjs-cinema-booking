@@ -111,14 +111,12 @@ const MoviesManagement = () => {
                 key={item.maPhim}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell component='th' scope='row'>
-                  {item.maPhim}
-                </TableCell>
+                <TableCell sx={{ width: 120 }}>{item.maPhim}</TableCell>
                 <TableCell sx={{ width: 300 }}>{item.tenPhim}</TableCell>
                 <TableCell>
                   <img src={item.hinhAnh} alt='phim' />
                 </TableCell>
-                <TableCell sx={{ width: 500 }}>{shortenString(item.moTa, 150)}</TableCell>
+                <TableCell sx={{ width: 450 }}>{shortenString(item.moTa, 150)}</TableCell>
                 <TableCell>{formatShortDate(item.ngayKhoiChieu)}</TableCell>
                 <TableCell>
                   <div className='btns-container'>

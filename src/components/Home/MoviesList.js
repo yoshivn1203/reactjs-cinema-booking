@@ -52,22 +52,22 @@ const Wrapper = styled.div`
     }
   }
   .toggle-btn {
+    margin-top: 3rem;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
     button {
       background-color: transparent;
       color: var(--primary-white);
       border: none;
       font-size: 1.2rem;
-      font-weight: bold;
       cursor: pointer;
     }
     button:hover {
       color: var(--primary-yellow);
     }
     svg {
-      margin-left: 1rem;
+      margin-left: 0.5rem;
       font-size: 1.5rem;
       transition: all 0.3s ease;
     }

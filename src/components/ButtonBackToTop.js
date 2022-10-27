@@ -55,7 +55,7 @@ const Wrapper = styled.div`
     border-radius: 50%;
     border: solid 2px var(--primary-yellow);
     cursor: pointer;
-    animation: jump 2s ease-in-out infinite;
+    /* animation: jump 2s ease-in-out infinite; */
   }
 
   @keyframes jump {

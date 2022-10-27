@@ -29,7 +29,6 @@ const ShowTimeTable = ({ maPhim, flag }) => {
     fetchData();
   }, [maPhim, flag, dispatch]);
 
-  console.log(flag);
   const renderData = (state) => {
     const tableData = state.heThongRapChieu.reduce((total, heThong) => {
       heThong.cumRapChieu.forEach((c) => {

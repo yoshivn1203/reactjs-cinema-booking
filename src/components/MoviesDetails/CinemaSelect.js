@@ -8,7 +8,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-
+import { TbMapPin } from 'react-icons/tb';
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -60,6 +60,9 @@ const CinemaSelect = ({ cinemas }) => {
 
   return (
     <Wrapper>
+      <div className='small-title'>
+        <h3>Chọn Rạp</h3>
+      </div>
       {cinemas?.length > 0 ? (
         <Box sx={{ width: '100%' }}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -84,7 +87,10 @@ const CinemaSelect = ({ cinemas }) => {
                   return (
                     <div key={l.maCumRap} className='cinema-card'>
                       <h3>{l.tenCumRap}</h3>
-                      <p>{l.diaChi}</p>
+                      <div className='address'>
+                        <TbMapPin />
+                        {l.diaChi}
+                      </div>
                       <h5>Chọn suất chiếu:</h5>
                       <div className='btn-container'>
                         {l.lichChieuPhim.map((q) => {
@@ -132,10 +138,17 @@ const Wrapper = styled.div`
     h3 {
       color: var(--primary-yellow);
     }
-    p {
+    .address {
+      display: flex;
+      align-items: center;
       color: var(--light-gray);
       font-size: 0.8rem;
       margin-bottom: 1rem;
+      svg {
+        color: var(--light-gray);
+        margin-right: 0.5rem;
+        font-size: 1rem;
+      }
     }
     padding: 1rem;
     margin-bottom: 1rem;

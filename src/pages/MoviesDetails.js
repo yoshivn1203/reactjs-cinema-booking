@@ -10,6 +10,7 @@ import useFetch from '../hooks/useFetch';
 const MoviesDetails = () => {
   const { id } = useParams();
   const { state: data } = useFetch(getMoviesDetails, id);
+  console.log(data);
 
   return (
     <>
@@ -26,13 +27,18 @@ const MoviesDetails = () => {
             <div className='movie-content__info'>
               <h1 className='title'>{data.tenPhim}</h1>
               <div className='genres'>
-                <span className='genres__item'>Phim Đang Chiếu</span>
+                <span className='genres__item'>
+                  {data.dangChieu ? 'Phim Đang Chiếu' : 'Phim Sắp Chiếu'}
+                </span>
+                <span className='genres__item'>{`Rating: ${data.danhGia}/10`}</span>
                 <span className='genres__item'>PG-13</span>
               </div>
               <p className='overview'>{data.moTa}</p>
               <div className='cast'>
                 <div className='section__header'>
-                  <h2>Diễn Viên</h2>
+                  <div className='small-title'>
+                    <h3>Diễn Viên</h3>
+                  </div>
                 </div>
                 <div className='casts'>
                   {casts.map((cast, i) => (
@@ -48,7 +54,9 @@ const MoviesDetails = () => {
               </div>
               <div className='trailer'>
                 <div className='section__header'>
-                  <h2>Trailer</h2>
+                  <div className='small-title'>
+                    <h3>Trailer</h3>
+                  </div>
                 </div>
                 <iframe
                   width='60%'
@@ -185,6 +193,13 @@ const Wrapper = styled.div`
         text-transform: capitalize;
       }
     }
+  }
+
+  .small-title {
+    margin-bottom: 1rem;
+    color: var(--primary-yellow);
+    padding: 0 0.5rem;
+    border-left: solid 2px var(--primary-yellow);
   }
 
   h1 {

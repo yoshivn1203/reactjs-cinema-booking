@@ -104,13 +104,12 @@ const Wrapper = styled.div`
     width: 85rem;
     height: 100%;
     z-index: 99;
-    background: url(${bg}),
-      linear-gradient(
-        90deg,
-        rgba(53, 53, 53, 1) 0%,
-        rgba(48, 48, 48, 1) 17%,
-        rgba(32, 32, 32, 1) 100%
-      );
+    background: linear-gradient(
+      90deg,
+      rgba(53, 53, 53, 1) 0%,
+      rgba(48, 48, 48, 1) 17%,
+      rgba(32, 32, 32, 1) 100%
+    );
     display: grid;
     grid-template-rows: auto 1fr auto;
     row-gap: 1rem;
@@ -119,6 +118,16 @@ const Wrapper = styled.div`
     .cinema {
       transform: skewX(15deg) translateX(22%);
     }
+  }
+  .sidebar:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0%;
+    background: url(${bg});
+    opacity: 0.5;
   }
   .show-sidebar {
     transform: translate(0) skewX(-15deg);

@@ -35,8 +35,8 @@ const Home = () => {
             <h2>Phim Sắp Chiếu</h2>
           </div>
           {movies && <MovieSlide movies={movies} />}
-          <div ref={myRef} className='section__header mb-2'>
-            <h2>Phim Đang Chiếu</h2>
+          <div ref={myRef} className='section__header__center mb-2'>
+            <h1>Phim Đang Chiếu</h1>
             <div className='search'>
               <form className='search-form'>
                 <input
@@ -46,9 +46,8 @@ const Home = () => {
                   value={searchValue}
                   onChange={(e) => SetSearchValue(e.target.value)}
                 />
-                <button type='button' className='submit-btn'>
-                  <FaSearch />
-                </button>
+
+                <FaSearch />
               </form>
             </div>
           </div>
@@ -60,18 +59,58 @@ const Home = () => {
 };
 
 const Wrapper = styled.div`
+  .section__header {
+    h2 {
+      color: var(--primary-yellow);
+    }
+  }
+  .section__header__center {
+    position: relative;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+    border-top: solid 1px var(--primary-gray);
+    h1 {
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      color: var(--primary-yellow);
+      transform: translate(-50%, 40%);
+      background-color: var(--primary-black);
+      padding: 0 2rem;
+      @media only screen and (max-width: 600px) {
+        padding: 0 0.5rem;
+      }
+    }
+  }
   .search {
-    width: 20%;
-    transition: width 0.3s ease;
+    width: 40%;
+    margin-top: 3rem;
   }
 
   .search:hover,
   .search:focus-within {
-    transition: width 0.3s ease;
-    width: 30%;
+    .search-form {
+      border: none;
+      border-radius: 0;
+      border-bottom: 2px solid var(--primary-yellow);
+      padding: 0.5rem 0;
+    }
   }
   .search-form {
     display: flex;
+    align-items: center;
+    padding: 0.5rem 3rem;
+    border: 2px solid var(--primary-yellow);
+    border-radius: 30px;
+    transition: all 0.5s ease;
+    svg {
+      font-size: 1.4rem;
+      color: var(--primary-yellow);
+    }
   }
 
   .search-form:focus-visible {
@@ -84,17 +123,14 @@ const Wrapper = styled.div`
   .form-input:focus-visible {
     outline: none;
   }
-  .form-input,
-  .submit-btn {
+  .form-input {
     padding: 0;
     border: none;
     outline: none;
     border-radius: 0;
     font-size: 1.4rem;
-    font-weight: bold;
     background: transparent;
     color: var(--primary-yellow);
-    border-bottom: 2px solid var(--primary-yellow);
   }
   .submit-btn:hover {
     background: transparent;

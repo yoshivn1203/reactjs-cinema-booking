@@ -46,7 +46,7 @@ const Cinema = ({ cinemas }) => {
 
   return (
     <Wrapper>
-      <h1>Đặt Vé Nhanh</h1>
+      <h2>Đặt Vé Nhanh</h2>
       <div className='logo-container mb-3'>
         {cinemas.map((c) => {
           return (
@@ -63,7 +63,7 @@ const Cinema = ({ cinemas }) => {
       </div>
 
       <div className='form-control mb-3'>
-        <h2>-- Cụm Rạp --</h2>
+        <h3>-- Cụm Rạp --</h3>
         <div className='select'>
           <select
             name='location'
@@ -82,7 +82,7 @@ const Cinema = ({ cinemas }) => {
         </div>
       </div>
       <div className='form-control mb-3'>
-        <h2>-- Chọn Phim --</h2>
+        <h3>-- Chọn Phim --</h3>
         <div className='select'>
           <select
             name='movie'
@@ -101,7 +101,7 @@ const Cinema = ({ cinemas }) => {
         </div>
       </div>
       <div className='form-control mb-4'>
-        <h2>-- Chọn Suất Chiếu --</h2>
+        <h3>-- Chọn Suất Chiếu --</h3>
         <div className='select'>
           <select
             name='showTime'
@@ -161,17 +161,16 @@ const Wrapper = styled.div`
       width: 4rem;
     }
     .selected {
-      background-color: var(--secondary-yellow);
+      background-color: var(--primary-yellow);
       filter: brightness(100%);
     }
   }
-  h1 {
+  h2 {
     font-size: 2rem;
-    /* color: var(--primary-yellow); */
     margin-bottom: 3rem;
   }
 
-  h2 {
+  h3 {
     margin-bottom: 1rem;
   }
 

@@ -16,7 +16,6 @@ const MoviesList = ({ movies, myRef }) => {
     }
     // eslint-disable-next-line
   }, [showMore, movies]);
-  console.log(limitedList);
   return (
     <Wrapper>
       <div className='movie-list'>

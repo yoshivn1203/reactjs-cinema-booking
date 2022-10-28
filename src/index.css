@@ -6,7 +6,7 @@
   --primary-white: #fff;
   --primary-black: #0f0f0f;
   --secondary-black: #1f1f1f;
-  --primary-yellow: #ce1571;
+  --primary-yellow: #ffa00a;
   --secondary-yellow: #ff950a;
   --yellow-shadow: #f6a80079;
   --primary-red: #ce0303;
@@ -21,6 +21,7 @@
   --light-gray: #c2c2c2;
   --primary-transparent: #00000060;
   --lighter-transparent: #00000034;
+  --lightest-transparent: #ffffff15;
   --darker-transparent: #000000b0;
   --primary-borderRadius: 10px;
   --primary-boxShadow: rgba(255, 255, 255, 0.19) 0px 10px 20px,
@@ -42,9 +43,15 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  /* background-color: #0f0f0f; */
-  background: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
   color: var(--primary-white);
+  /* background-color: #0f0f0f; */
+  background: rgb(22, 22, 22);
+  background: linear-gradient(
+    180deg,
+    rgba(22, 22, 22, 1) 0%,
+    rgba(4, 11, 19, 1) 49%,
+    rgba(9, 49, 97, 1) 100%
+  );
 }
 
 a {

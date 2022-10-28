@@ -47,7 +47,6 @@ const Wrapper = styled.div`
     background-repeat: no-repeat;
     background-size: cover;
     padding-top: 160%;
-    margin-bottom: 1rem;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     cursor: pointer;
@@ -107,6 +106,8 @@ const Wrapper = styled.div`
       bottom: 0;
       right: 0;
       background-color: #000;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -122,18 +123,20 @@ const Wrapper = styled.div`
   .name {
     padding: 0 0.5rem;
     text-align: center;
-    padding-bottom: 1rem;
+    padding: 1rem 0;
     color: var(--primary-yellow);
     text-transform: capitalize;
+    background-color: var(--lighter-transparent);
   }
 
   .release-date {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 0.5rem;
+    padding: 0 0.5rem;
     font-size: 0.9rem;
     color: var(--light-gray);
+    background-color: var(--lighter-transparent);
   }
 `;
 

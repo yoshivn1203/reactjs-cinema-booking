@@ -133,7 +133,7 @@ const Wrapper = styled.div`
     }
   }
   .cinema-card {
-    background-color: var(--secondary-black);
+    background-color: var(--lightest-transparent);
     border-radius: 10px;
     h3 {
       color: var(--primary-yellow);
@@ -153,7 +153,7 @@ const Wrapper = styled.div`
     padding: 1rem;
     margin-bottom: 1rem;
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(255, 255, 255, 0.2);
     }
   }
   .btn-container {

@@ -137,7 +137,6 @@ const Wrapper = styled.div`
   .logo-container {
     display: flex;
     .logo {
-      background-color: var(--lighter-transparent);
       padding: 1rem;
       filter: brightness(50%);
       opacity: 0.5;
@@ -162,14 +161,17 @@ const Wrapper = styled.div`
       width: 4rem;
     }
     .selected {
-      background-color: var(--primary-yellow);
       filter: brightness(100%);
+      filter: drop-shadow(4px 8px 12px rgb(3, 3, 3));
       opacity: 1;
+      p {
+        color: var(--primary-yellow);
+      }
     }
   }
   h2 {
     font-size: 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   h3 {

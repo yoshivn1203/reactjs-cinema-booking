@@ -10,7 +10,6 @@ import useFetch from '../hooks/useFetch';
 const MoviesDetails = () => {
   const { id } = useParams();
   const { state: data } = useFetch(getMoviesDetails, id);
-  console.log(data);
 
   return (
     <>
@@ -100,7 +99,7 @@ const Wrapper = styled.div`
       left: 0;
       width: 100%;
       height: 100px;
-      background-image: linear-gradient(to top, #0f0f0f, rgba(#000, 0));
+      background-image: linear-gradient(to top, #0f0f0f, rgba(0, 0, 0, 0));
     }
   }
 
@@ -154,7 +153,7 @@ const Wrapper = styled.div`
       }
 
       .title {
-        font-size: 4rem;
+        /* font-size: 4rem; */
         line-height: 1;
       }
 
@@ -200,10 +199,6 @@ const Wrapper = styled.div`
     color: var(--primary-yellow);
     padding: 0 0.5rem;
     border-left: solid 2px var(--primary-yellow);
-  }
-
-  h1 {
-    color: var(--primary-yellow);
   }
 `;
 

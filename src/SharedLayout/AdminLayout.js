@@ -130,6 +130,7 @@ const Wrapper = styled.div`
   grid-template-columns: auto 1fr;
   .main {
     width: 100%;
+    background-color: #0f0f0f;
   }
 
   .title {

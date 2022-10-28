@@ -61,7 +61,7 @@ const Home = () => {
 const Wrapper = styled.div`
   .section__header {
     h2 {
-      color: var(--primary-yellow);
+      color: var(--primary-white);
     }
   }
   .section__header__center {
@@ -77,9 +77,9 @@ const Wrapper = styled.div`
       position: absolute;
       top: -50%;
       left: 50%;
-      color: var(--primary-yellow);
+      color: var(--primary-white);
       transform: translate(-50%, 40%);
-      background-color: var(--primary-black);
+      background-color: rgba(4, 11, 19, 1);
       padding: 0 2rem;
       @media only screen and (max-width: 600px) {
         padding: 0 0.5rem;

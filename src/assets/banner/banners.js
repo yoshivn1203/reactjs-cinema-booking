@@ -3,31 +3,31 @@ const w500Image = 'https://image.tmdb.org/t/p/w500';
 
 const banners = [
   {
-    maPhim: 642885,
-    backdrop_path: `${originalImage}/iS9U3VHpPEjTWnwmW56CrBlpgLj.jpg`,
-    poster_path: `${w500Image}/7ze7YNmUaX81ufctGqt0AgHxRtL.jpg`,
-    title: 'Hocus Pocus 2',
+    maPhim: 10581,
+    backdrop_path: `${originalImage}/etP5jwlwvkNhwe7jnI2AyA6ZKrR.jpg`,
+    poster_path: `${w500Image}/rFljUdOozFEv6HDHIFpFvcYW0ec.jpg`,
+    title: 'Project Gemini',
     overview:
-      'It’s been 29 years since someone lit the Black Flame Candle and resurrected the 17th-century sisters, and they are looking for revenge. Now it is up to three high-school students to stop the ravenous witches from wreaking a new kind of havoc on Salem before dawn on All Hallow’s Eve.',
-    trailer: 'https://www.youtube.com/embed/4dDljHr0DHw',
+      'Tín Hiệu Diệt Vong kể về sau khi tên lửa Gemini được bắn lên không trung , nó đột nhiên mất tích. Bẵng đi 1 thời gian, các nhà thiên văn nhận được tín hiệu từ Gemini báo hiệu sắp có nguy hiểm xảy đến với Trái Đất. Họ ngay lập tức lên đường tìm hiểu lý do.',
+    trailer: 'https://www.youtube.com/embed/Cx5etN2nl-c',
   },
   {
-    maPhim: 985939,
-    backdrop_path: `${originalImage}/hT3OqvzMqCQuJsUjZnQwA5NuxgK.jpg`,
-    poster_path: `${w500Image}/spCAxD99U1A6jsiePFoqdEcY0dG.jpg`,
-    title: '"Fall"',
+    maPhim: 6060,
+    backdrop_path: `${originalImage}/lB41VF8VM7sCj1BDXufRKjZt1Oj.jpg`,
+    poster_path: `${w500Image}/chCrPG0LJeilfJwsWPAfmWiJI2T.jpg`,
+    title: 'Amsterdam',
     overview:
-      'For best friends Becky and Hunter, life is all about conquering fears and pushing limits. But after they climb 2,000 feet to the top of a remote, abandoned radio tower, they find themselves stranded with no way down. Now Becky and Hunter’s expert climbing skills will be put to the ultimate test as they desperately fight to survive the elements, a lack of supplies, and vertigo-inducing heights',
-    trailer: 'https://www.youtube.com/embed/FNk7Cu4sJOs',
+      'Amsterdam - Vụ Án Mạng Kỳ Bí dựa trên Business Plot - 1 âm mưu chính trị năm 1933 tại Hoa Kỳ. Khán giả sẽ theo chân 3 người bạn thân - 1 bác sĩ, 1 y tá và 1 luật sư vô tình trở thành nhân vật chính trong vụ án chấn động lịch sử Hoa Kỳ.',
+    trailer: 'https://www.youtube.com/embed/GLs2xxM0e78',
   },
   {
-    maPhim: 960704,
-    backdrop_path: `${originalImage}/5hoS3nEkGGXUfmnu39yw1k52JX5.jpg`,
-    poster_path: `${w500Image}/AeyiuQUUs78bPkz18FY3AzNFF8b.jpg`,
-    title: 'Fullmetal Alchemist: The Final Alchemy',
+    maPhim: 10351,
+    backdrop_path: `${originalImage}/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg`,
+    poster_path: `${w500Image}/1yppMeTNQwDrzaUH4dRCx4mr8We.jpg`,
+    title: 'Avatar: The Way of Water',
     overview:
-      'The Elric brothers’ long and winding journey comes to a close in this epic finale, where they must face off against an unworldly, nationwide threat.',
-    trailer: 'https://www.youtube.com/embed/iOL7uUAbsUQ',
+      'Jake Sully và Neytiri, giờ đã thành đôi và nguyện sẽ ở bên nhau. Tuy nhiên, cả hai buộc phải rời khỏi nhà và khám phá những miền đất mới trên mặt trăng Pandora, cũng chính là lúc những mối nguy cũ quay lại cản trở họ.',
+    trailer: 'https://www.youtube.com/embed/oeRG9A6bDdY',
   },
 ];
 

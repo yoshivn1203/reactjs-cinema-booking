@@ -11,9 +11,7 @@ const DownloadApp = () => {
   return (
     <Wrapper>
       <div className='info'>
-        <h2>
-          Tải App ngay và đăng ký thành viên để nhận được nhiều chương trình ưu đãi.
-        </h2>
+        <h2>Tải App ngay và đăng ký thành viên để nhận được nhiều ưu đãi.</h2>
         <p>
           Đặt vé xem phim chưa bao giờ dễ dàng hơn. Chỉ với vài click để đặt vé xem phim ở
           hơn 50 cụm rạp trên toàn quốc với mức giá tốt nhất trong vòng 2 phút. Hãy tải

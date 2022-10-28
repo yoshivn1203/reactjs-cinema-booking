@@ -6,6 +6,7 @@ import { FaSearch } from 'react-icons/fa';
 import { getCinemas, getMovies } from '../services/moviesApi';
 import useFetch from '../hooks/useFetch';
 import ButtonBackToTop from '../components/ButtonBackToTop';
+import DownloadApp from '../components/Home/DownloadApp';
 
 const Home = () => {
   const { state: movies } = useFetch(getMovies);
@@ -46,12 +47,12 @@ const Home = () => {
                   value={searchValue}
                   onChange={(e) => SetSearchValue(e.target.value)}
                 />
-
                 <FaSearch />
               </form>
             </div>
           </div>
           {movies && <MoviesList movies={filteredMovies} myRef={myRef} />}
+          <DownloadApp />
         </div>
       </Wrapper>
     </>

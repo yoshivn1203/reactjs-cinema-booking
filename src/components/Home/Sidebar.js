@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeSideBar, openSideBar } from '../../features/uiSlice';
 import Cinema from './Cinema';
 import bg from '../../assets/pattern.png';
-import ticket1 from '../../assets/ticket5.png';
+import ticket from '../../assets/ticket-edited.png';
 
 const Sidebar = ({ cinemas }) => {
   const { isSideBarOpen } = useSelector((store) => store.ui);
@@ -29,7 +29,7 @@ const Sidebar = ({ cinemas }) => {
   return (
     <Wrapper>
       <div ref={ticketRef} className='sidebar-toggle'>
-        <img onClick={() => dispatch(openSideBar())} src={ticket1} alt='' />
+        <img onClick={() => dispatch(openSideBar())} src={ticket} alt='' />
       </div>
       <aside className={`${isSideBarOpen ? 'sidebar show-sidebar' : 'sidebar'}`}>
         <div className='sidebar-header'>

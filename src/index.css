@@ -23,6 +23,7 @@
   --lighter-transparent: #00000034;
   --lightest-transparent: #ffffff15;
   --darker-transparent: #000000b0;
+  --darkest-transparent: #000000e3;
   --primary-borderRadius: 10px;
   --primary-boxShadow: rgba(255, 255, 255, 0.19) 0px 10px 20px,
     rgba(255, 255, 255, 0.23) 0px 6px 6px;
@@ -48,9 +49,9 @@ body {
   background: rgb(22, 22, 22);
   background: linear-gradient(
     180deg,
-    rgba(22, 22, 22, 1) 0%,
+    rgb(18, 18, 18) 0%,
     rgba(4, 11, 19, 1) 49%,
-    rgba(9, 49, 97, 1) 100%
+    rgb(7, 40, 80) 100%
   );
 }
 

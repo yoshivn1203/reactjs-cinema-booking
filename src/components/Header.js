@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import Dropdown from './Dropdown';
 import styled from 'styled-components';
-import logo from '../assets/logo3.png';
+import logo from '../assets/new-logo.png';
 import { useSelector } from 'react-redux';
 
 const headerNav = [
@@ -46,8 +46,9 @@ const Header = () => {
     <Wrapper ref={headerRef} className='header'>
       <div className='header__wrap container'>
         <div className='logo'>
-          <img src={logo} alt='' />
-          <Link to='/'>Cyber</Link>
+          <Link to='/'>
+            <img src={logo} alt='' />
+          </Link>
         </div>
         <ul className='header__nav'>
           {headerNav.map((e, i) => (
@@ -82,20 +83,17 @@ const Wrapper = styled.div`
   transition: height 0.3s ease, background-color 0.3s ease;
   &.shrink {
     height: 5rem;
-    background-color: var(--primary-black);
+    background-color: var(--darkest-transparent);
   }
   .logo {
-    font-size: 2rem;
-    font-weight: 600;
     display: flex;
     align-items: center;
 
     img {
       margin-right: 10px;
-      width: 50px;
-
+      width: 150px;
       @media only screen and (max-width: 600px) {
-        width: 30px;
+        width: 100px;
         margin-right: 0;
       }
     }

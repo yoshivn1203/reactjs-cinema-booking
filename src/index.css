@@ -6,7 +6,7 @@
   --primary-white: #fff;
   --primary-black: #0f0f0f;
   --secondary-black: #1f1f1f;
-  --primary-yellow: #ffa00a;
+  --primary-yellow: #ce1571;
   --secondary-yellow: #ff950a;
   --yellow-shadow: #f6a80079;
   --primary-red: #ce0303;
@@ -42,7 +42,8 @@ body {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   line-height: 1.5;
-  background-color: #0f0f0f;
+  /* background-color: #0f0f0f; */
+  background: linear-gradient(109.6deg, rgb(43, 1, 91) 13.4%, rgb(122, 2, 54) 100.2%);
   color: var(--primary-white);
 }
 

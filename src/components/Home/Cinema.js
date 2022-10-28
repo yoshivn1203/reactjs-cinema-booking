@@ -139,7 +139,8 @@ const Wrapper = styled.div`
     .logo {
       background-color: var(--lighter-transparent);
       padding: 1rem;
-      filter: brightness(30%);
+      filter: brightness(50%);
+      opacity: 0.5;
       cursor: pointer;
       text-align: center;
       width: 6.5rem;
@@ -163,6 +164,7 @@ const Wrapper = styled.div`
     .selected {
       background-color: var(--primary-yellow);
       filter: brightness(100%);
+      opacity: 1;
     }
   }
   h2 {
@@ -182,13 +184,13 @@ const Wrapper = styled.div`
     flex: 1;
     padding: 0 1em;
     background-color: var(--lighter-transparent);
-    color: var(--primary-yellow);
+    color: var(--primary-white);
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
   }
   select option {
-    background-color: var(--admin-gray);
+    background-color: var(--dark-gray);
   }
   .select {
     position: relative;
@@ -210,7 +212,7 @@ const Wrapper = styled.div`
     pointer-events: none;
   }
   .select:hover::after {
-    color: #f39c12;
+    color: var(--primary-yellow);
   }
 `;
 

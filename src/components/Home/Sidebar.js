@@ -98,18 +98,14 @@ const Wrapper = styled.div`
   }
 
   .sidebar {
+    overflow: hidden;
     position: fixed;
     top: 0;
     left: -160px;
     width: 85rem;
     height: 100%;
     z-index: 99;
-    background: linear-gradient(
-      90deg,
-      rgba(53, 53, 53, 1) 0%,
-      rgba(48, 48, 48, 1) 17%,
-      rgba(32, 32, 32, 1) 100%
-    );
+    background: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%);
     display: grid;
     grid-template-rows: auto 1fr auto;
     row-gap: 1rem;
@@ -122,12 +118,13 @@ const Wrapper = styled.div`
   .sidebar:before {
     content: '';
     position: absolute;
-    width: 100%;
+    width: 120%;
     height: 100%;
     top: 0;
     left: 0%;
     background: url(${bg});
-    opacity: 0.5;
+    opacity: 0.3;
+    transform: skewX(15deg);
   }
   .show-sidebar {
     transform: translate(0) skewX(-15deg);

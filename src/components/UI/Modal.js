@@ -74,7 +74,7 @@ const Wrapper = styled.div`
         font-size: 1.5rem;
         cursor: pointer;
         &:hover {
-          color: var(--primary-black);
+          color: var(--primary-red);
         }
       }
     }

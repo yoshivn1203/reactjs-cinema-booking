@@ -19,7 +19,8 @@ import Seats from '../components/BookingTicket/Seats';
 import BookingInfo from '../components/BookingTicket/BookingInfo';
 import { getTicketRoomInfo, bookingMovie } from '../services/moviesApi';
 import useFetch from '../hooks/useFetch';
-import { finishLoading, loading } from '../features/uiSlice';
+import { finishLoading, loading, openModal } from '../features/uiSlice';
+import CardPaymentModal from '../components/BookingTicket/CardPaymentModal';
 
 const BookingTickets = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ const BookingTickets = () => {
   const { selectedSeats, selectedVipSeats, bookingData } = useSelector(
     (state) => state.seat
   );
+  const { isModalOpen } = useSelector((state) => state.ui);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -60,6 +62,9 @@ const BookingTickets = () => {
     }
     toast('✔️ Đặt vé thành công');
     handleNext();
+  };
+  const handleCardPayment = () => {
+    dispatch(openModal());
   };
 
   const getStepContent = (step) => {
@@ -96,7 +101,7 @@ const BookingTickets = () => {
               disabled={!checked}
               variant='contained'
               sx={{ mt: 5, mb: 5 }}
-              onClick={() => toast.error('Tính năng đang được cập nhật')}
+              onClick={handleCardPayment}
             >
               <FaCcVisa />
               Thanh Toán Qua Thẻ
@@ -141,6 +146,7 @@ const BookingTickets = () => {
 
   return (
     <Wrapper>
+      {isModalOpen && <CardPaymentModal handleBooking={handleBooking} />}
       <Box className='steppers-box'>
         <Stepper activeStep={activeStep} orientation='vertical'>
           {steps.map((step, index) => (

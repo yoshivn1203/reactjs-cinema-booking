@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-
 import Button, { OutlineButton } from '../UI/Button';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
@@ -13,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 const HeroSlide = () => {
   return (
     <Wrapper className='hero-slide'>
-      <Swiper grabCursor={true} spaceBetween={0} slidesPerView={1}>
+      <Swiper grabCursor={true} spaceBetween={0} slidesPerView={1} loop={true}>
         {banners.map((item, i) => (
           <SwiperSlide key={i}>
             {({ isActive }) => (

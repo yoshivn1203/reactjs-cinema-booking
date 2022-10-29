@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -6,6 +7,7 @@ import { logoutUser } from '../features/userSlice';
 import { useDispatch } from 'react-redux';
 import { MdOutlineArrowDropDown } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
+import avatar from '../assets/avatar.jpg';
 
 export default function BasicMenu({ userInfo }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -17,7 +19,7 @@ export default function BasicMenu({ userInfo }) {
     setAnchorEl(event.currentTarget);
   };
   return (
-    <div>
+    <Wrapper>
       <Button
         id='basic-button'
         aria-controls={open ? 'basic-menu' : undefined}
@@ -25,7 +27,7 @@ export default function BasicMenu({ userInfo }) {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        {`Hi ${userInfo.taiKhoan}`} <MdOutlineArrowDropDown />
+        <img src={avatar} alt='' /> {userInfo.taiKhoan} <MdOutlineArrowDropDown />
       </Button>
       <Menu
         id='basic-menu'
@@ -63,6 +65,14 @@ export default function BasicMenu({ userInfo }) {
           Đăng Xuất
         </MenuItem>
       </Menu>
-    </div>
+    </Wrapper>
   );
 }
+
+export const Wrapper = styled.div`
+  img {
+    width: 2.5rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+  }
+`;

@@ -65,8 +65,8 @@ function App() {
             <Route path='support' element={<UnderMaintenance />} />
             <Route path='report-bug' element={<UnderMaintenance />} />
           </Route>
-          <Route path='*' element={<PageNotFound />} />
         </Route>
+        <Route path='*' element={<PageNotFound />} />
       </Routes>
     </ThemeProvider>
   );

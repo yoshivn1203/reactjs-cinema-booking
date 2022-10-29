@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import bg from '../assets/snow.jpg';
 import casts from '../assets/banner/cast';
 import CinemaSelect from '../components/MoviesDetails/CinemaSelect';
+import Comments from '../components/MoviesDetails/Comments';
 import { getMoviesDetails } from '../services/moviesApi';
 import useFetch from '../hooks/useFetch';
 
@@ -65,6 +66,7 @@ const MoviesDetails = () => {
                 ></iframe>
               </div>
               <CinemaSelect cinemas={data.heThongRapChieu} />
+              <Comments />
             </div>
           </div>
           <div className='container'></div>
@@ -180,11 +182,18 @@ const Wrapper = styled.div`
     gap: 1rem;
 
     .casts__item {
+      overflow: hidden;
+      border-radius: 10px;
       .casts__item__img {
         padding-top: 160px;
         background-size: cover;
         background-position: center;
         margin-bottom: 0.5rem;
+        border-radius: 10px;
+        transition: all 0.5s ease;
+        &:hover {
+          transform: scale(1.1);
+        }
       }
 
       .casts__item__name {

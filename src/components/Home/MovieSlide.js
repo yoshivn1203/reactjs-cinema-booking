@@ -1,6 +1,6 @@
 import React from 'react';
 import { SwiperSlide, Swiper } from 'swiper/react';
-import SwiperCore, { Autoplay } from 'swiper';
+import { Autoplay } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 
@@ -8,8 +8,6 @@ import styled from 'styled-components';
 import MovieCard from './MovieCard';
 
 const MovieSlide = ({ movies }) => {
-  SwiperCore.use([Autoplay]);
-
   const slideMovies = movies.filter((movie) => movie.sapChieu === true);
   // console.log(slideMovies);
 
@@ -20,7 +18,11 @@ const MovieSlide = ({ movies }) => {
         grabCursor={true}
         spaceBetween={10}
         slidesPerView={'auto'}
-        // autoplay={true}
+        loop={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
       >
         {slideMovies.map((movie, i) => (
           <SwiperSlide key={i}>

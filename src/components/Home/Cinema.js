@@ -148,6 +148,7 @@ const Wrapper = styled.div`
         font-weight: bold;
         color: var(--primary-white);
       }
+      transition: all 0.5s ease;
     }
     .logo:first-child {
       border-top-left-radius: 20px;

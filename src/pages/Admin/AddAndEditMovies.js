@@ -108,10 +108,15 @@ const AddAndEditMovies = () => {
       dispatch(loading());
       if (state) {
         formData.append('maPhim', state.maPhim);
-        await updateMovieApi(formData);
+        console.log(Object.fromEntries(formData));
+
+        const result = await updateMovieApi(formData);
+        console.log(result);
         toast('✔️ Cập nhật phim thành công');
       } else {
-        await addMovieApi(formData);
+        const result = await addMovieApi(formData);
+        console.log(result);
+
         toast('✔️ Thêm phim thành công');
       }
       dispatch(finishLoading());

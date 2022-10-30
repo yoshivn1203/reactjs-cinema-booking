@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { closeModal } from '../../features/uiSlice';
 import StripeCheckout from './StripeCheckout';
-
+import payMethods from '../../assets/pay-methods.png';
 const CardPaymentModal = ({ handleBooking }) => {
   const dispatch = useDispatch();
   return (
@@ -12,6 +12,9 @@ const CardPaymentModal = ({ handleBooking }) => {
         <StripeCheckout handleBooking={handleBooking} />
         <div className='modal__content__close' onClick={() => dispatch(closeModal())}>
           <span>x</span>
+        </div>
+        <div className='pay-methods'>
+          <img src={payMethods} alt='' />
         </div>
       </div>
     </Wrapper>
@@ -54,6 +57,11 @@ const Wrapper = styled.div`
         &:hover {
           color: var(--primary-red);
         }
+      }
+      .pay-methods {
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 1rem;
       }
     }
   }

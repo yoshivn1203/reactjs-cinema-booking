@@ -8,6 +8,7 @@ import { registerUser, toggleRegister } from '../features/userSlice';
 import bg from '../assets/poster2.jpg';
 import 'antd/lib/form/style/index.css';
 import 'antd/lib/input/style/index.css';
+import { MOVIE_GROUP_ID } from '../utils/common';
 
 /* eslint-disable no-template-curly-in-string */
 
@@ -37,7 +38,7 @@ const SignUp = () => {
   const { isRegistered } = useSelector((store) => store.user);
 
   const onFinish = async (values) => {
-    const submitSignUpData = { ...values.user, maNhom: 'GP03' };
+    const submitSignUpData = { ...values.user, maNhom: MOVIE_GROUP_ID };
     // console.log(submitSignUpData);
     dispatch(registerUser(submitSignUpData));
   };

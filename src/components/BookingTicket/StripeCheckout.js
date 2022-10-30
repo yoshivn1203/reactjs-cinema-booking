@@ -4,11 +4,12 @@ import { loadStripe } from '@stripe/stripe-js';
 import { CardElement, useStripe, Elements, useElements } from '@stripe/react-stripe-js';
 import axios from 'axios';
 import { REACT_APP_STRIPE_PUBLIC_KEY } from '../../utils/common';
+import { useSelector } from 'react-redux';
 
 const promise = loadStripe(REACT_APP_STRIPE_PUBLIC_KEY);
 
 const CheckoutForm = ({ handleBooking }) => {
-  const total_amount = 100;
+  const { total: total_amount } = useSelector((state) => state.seat);
   //Stripe stuff
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -80,21 +81,30 @@ const CheckoutForm = ({ handleBooking }) => {
     <div>
       {succeeded ? (
         <article>
-          <h4>Thank you</h4>
-          <h4>Your payment was successful!</h4>
-          <h4>Redirecting to home page shortly</h4>
+          <h4>Thanh toán thành công</h4>
+          <h4>Mã giao dịch: 18w7a876zz</h4>
         </article>
       ) : (
         <article>
-          <p>Your total is {total_amount}</p>
-          <p>Test Card Number 4242 4242 4242 4242</p>
+          <p style={{ marginBottom: '0.5rem' }}>
+            Bạn cần thanh toán:{' '}
+            <span
+              style={{ color: '#ff0000', marginLeft: '0.5rem', marginRight: '0.5rem' }}
+            >
+              {total_amount}
+            </span>
+            VND
+          </p>
+          <p>
+            Mã thẻ test: <span style={{ marginLeft: '0.5rem' }}>4242 4242 4242 4242</span>{' '}
+          </p>
         </article>
       )}
       <form id='payment-form' onSubmit={handleSubmit}>
         <CardElement id='card-element' options={cardStyle} onChange={handleChange} />
         <button disabled={processing || disabled || succeeded}>
           <span id='button-text'>
-            {processing ? <div className='spinner' id='spinner'></div> : 'Pay'}
+            {processing ? <div className='spinner' id='spinner'></div> : 'Thanh toán'}
           </span>
         </button>
         {/* {show error when processing payment} */}
@@ -103,18 +113,6 @@ const CheckoutForm = ({ handleBooking }) => {
             {error}
           </div>
         )}
-        {/* {show success message  after payment} */}
-        <p className={succeeded ? 'result-message' : 'result-message hidden'}>
-          Payment succeeded, see the result in your{' '}
-          <a
-            href={`https://dashboard.stripe.com/test/payments`}
-            target='_blank'
-            rel='noreferrer noopener'
-          >
-            Stripe dashboard.
-          </a>
-          Refresh the page to pay again
-        </p>
       </form>
     </div>
   );

@@ -37,6 +37,7 @@ const Wrapper = styled.div`
       padding: 2rem;
       background-color: var(--lightest-transparent);
       width: 30%;
+      border-radius: 10px;
       transition: transform 0.6s ease, opacity 1s ease;
       position: relative;
 
@@ -46,7 +47,7 @@ const Wrapper = styled.div`
 
       .modal__content__close {
         position: absolute;
-        right: 5px;
+        right: 10px;
         top: 5px;
         font-size: 1.5rem;
         cursor: pointer;

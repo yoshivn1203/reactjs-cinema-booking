@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import styled from 'styled-components';
 
 import { finishLoading, loading } from '../../features/uiSlice';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { addUserApi, updateUserApi } from '../../services/Admin/adminUserApi';
 
 const layout = {
@@ -38,6 +38,8 @@ const validateMessages = {
 const AddAndEditUsers = () => {
   const { state } = useLocation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   let initialValues = {
     user: {
       matKhau: '',
@@ -71,9 +73,11 @@ const AddAndEditUsers = () => {
       if (state) {
         await updateUserApi(submitUpdateUserInfo);
         toast('✔️ Cập nhật người dùng thành công');
+        navigate('/admin');
       } else {
         await addUserApi(submitUpdateUserInfo);
         toast('✔️ Thêm người dùng thành công');
+        navigate('/admin');
       }
       dispatch(finishLoading());
     } catch (error) {

@@ -9,7 +9,7 @@ import styled from 'styled-components';
 import 'antd/lib/input-number/style/index.css';
 import 'antd/lib/switch/style/index.css';
 import { finishLoading, loading } from '../../features/uiSlice';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
@@ -47,6 +47,7 @@ const AddAndEditMovies = () => {
   const location = useLocation();
   const { state } = location;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   let initialValues = {
     movie: {
       tenPhim: '',
@@ -108,15 +109,13 @@ const AddAndEditMovies = () => {
       dispatch(loading());
       if (state) {
         formData.append('maPhim', state.maPhim);
-        console.log(Object.fromEntries(formData));
-
-        const result = await updateMovieApi(formData);
-        console.log(result);
+        // console.log(Object.fromEntries(formData));
+        await updateMovieApi(formData);
+        navigate('/admin/movies-management');
         toast('✔️ Cập nhật phim thành công');
       } else {
-        const result = await addMovieApi(formData);
-        console.log(result);
-
+        await addMovieApi(formData);
+        navigate('/admin/movies-management');
         toast('✔️ Thêm phim thành công');
       }
       dispatch(finishLoading());

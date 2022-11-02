@@ -18,7 +18,7 @@ const banners = [
     title: 'Jungle Cruise',
     overview:
       'Nhà khoa học Lily cùng em trai MacGregor vì muốn tìm ra những cánh hoa Nguyệt Lệ trong truyền thuyết để bào chữa thuốc chữa trị cho mọi người nên họ đã đến Brazil, xuôi theo dòng Amazon và truy tìm thứ mà ai cũng cho là hoang đường này.',
-    trailer: 'https://www.youtube.com/embed/GLs2xxM0e78',
+    trailer: 'https://www.youtube.com/embed/f_HvoipFcA8',
   },
   {
     maPhim: 9013,

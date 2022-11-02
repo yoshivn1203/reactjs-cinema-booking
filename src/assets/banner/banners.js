@@ -3,7 +3,7 @@ const w500Image = 'https://image.tmdb.org/t/p/w500';
 
 const banners = [
   {
-    maPhim: 10581,
+    maPhim: 10727,
     backdrop_path: `${originalImage}/etP5jwlwvkNhwe7jnI2AyA6ZKrR.jpg`,
     poster_path: `${w500Image}/rFljUdOozFEv6HDHIFpFvcYW0ec.jpg`,
     title: 'Project Gemini',
@@ -12,16 +12,16 @@ const banners = [
     trailer: 'https://www.youtube.com/embed/Cx5etN2nl-c',
   },
   {
-    maPhim: 6060,
-    backdrop_path: `${originalImage}/lB41VF8VM7sCj1BDXufRKjZt1Oj.jpg`,
-    poster_path: `${w500Image}/chCrPG0LJeilfJwsWPAfmWiJI2T.jpg`,
-    title: 'Amsterdam',
+    maPhim: 8056,
+    backdrop_path: `${originalImage}/7WJjFviFBffEJvkAms4uWwbcVUk.jpg`,
+    poster_path: `${w500Image}/9dKCd55IuTT5QRs989m9Qlb7d2B.jpg`,
+    title: 'Jungle Cruise',
     overview:
-      'Amsterdam - Vụ Án Mạng Kỳ Bí dựa trên Business Plot - 1 âm mưu chính trị năm 1933 tại Hoa Kỳ. Khán giả sẽ theo chân 3 người bạn thân - 1 bác sĩ, 1 y tá và 1 luật sư vô tình trở thành nhân vật chính trong vụ án chấn động lịch sử Hoa Kỳ.',
+      'Nhà khoa học Lily cùng em trai MacGregor vì muốn tìm ra những cánh hoa Nguyệt Lệ trong truyền thuyết để bào chữa thuốc chữa trị cho mọi người nên họ đã đến Brazil, xuôi theo dòng Amazon và truy tìm thứ mà ai cũng cho là hoang đường này.',
     trailer: 'https://www.youtube.com/embed/GLs2xxM0e78',
   },
   {
-    maPhim: 10351,
+    maPhim: 9013,
     backdrop_path: `${originalImage}/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg`,
     poster_path: `${w500Image}/1yppMeTNQwDrzaUH4dRCx4mr8We.jpg`,
     title: 'Avatar: The Way of Water',

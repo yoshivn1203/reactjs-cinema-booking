@@ -217,7 +217,7 @@ const Wrapper = styled.div`
     transition: max-height 0.3s linear;
   }
   .sidebar-item.open > .sidebar-content {
-    max-height: 200px; //change this value and the timer to get desired speed of transition
+    max-height: 200px; //change this value and the timer to get desired speed of transition.
   }
 
   .sidebar-item.plain {
